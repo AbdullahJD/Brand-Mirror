@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Services\NotificationService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -13,9 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::latest()->get();
         $categories = Category::orderBy('id', 'asc')->get();
-        return view('Dashboard.Pages.Category.index', compact('categories'));
+        return view('Dashboard.Pages.Category.index',compact('categories'));
     }
 
     /**
@@ -24,7 +25,7 @@ class CategoryController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('Dashboard.Pages.Category.create', compact('categories'));
+        return view('Dashboard.Pages.Category.create',compact('categories'));
     }
 
     /**
@@ -35,8 +36,24 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required|max:255',
         ]);
+        $data = $request->only([
+            'name',
+            'description',
+            'parent_id',
+            'status'
+        ]);
 
-        Category::create($request->all());
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('categories', 'public');
+        }
+
+        $categories = Category::create($data);
+        app(NotificationService::class)->notifyRoles(
+            ['admin'],
+            'category',
+            'New category name Created',
+            "category {$categories->name} was created"
+        );
 
         return redirect()->route('categories.index')
                         ->with('success', 'Category created successfully');
@@ -57,7 +74,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $categories = Category::where('id', '!=', $id)->get();
-        return view('Dashboard.Pages.Category.edit', compact('category','categories'));
+        return view('Dashboard.Pages.Category.edit',compact('category','categories'));
     }
 
     /**
@@ -67,18 +84,44 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        $category->update($request->all());
+        $data = $request->all();
+
+        // 🔥 إذا في صورة جديدة
+        if ($request->hasFile('image')) {
+
+            // حذف الصورة القديمة إذا موجودة
+            if ($category->image) {
+                Storage::disk('public')->delete($category->image);
+            }
+
+            // حفظ الجديدة
+            $data['image'] = $request->file('image')->store('categories', 'public');
+        }
+
+        $category->update($data);
 
         return redirect()->route('categories.index')
-                            ->with('updated', 'Category updated successfully');
+            ->with('updated', 'Category updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        Category::findOrFail($id)->delete();
+        //  حذف الصورة إذا موجودة
+        if ($category->image) {
+            Storage::disk('public')->delete($category->image);
+        }
+
+        $category->delete();
+
+        app(NotificationService::class)->notifyRoles(
+            ['admin'],
+            'category',
+            'Category Deleted',
+            "category {$category->name} was Deleted"
+        );
 
         return back()->with('deleted', 'Category deleted successfully');
     }

@@ -1,5 +1,9 @@
 @extends('Dashboard.layouts.master')
 
+@section('title')
+Edit Product Variants
+@endsection
+
 @section('content')
 
 <div class="post d-flex flex-column-fluid">

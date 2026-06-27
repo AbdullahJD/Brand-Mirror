@@ -1,11 +1,15 @@
 @extends('Dashboard.layouts.master')
 
+@section('title')
+Add Categories
+@endsection
+
 @section('content')
 
 <div class="post d-flex flex-column-fluid" id="kt_post"> 
     <div class="container-xxl">
 
-        <form method="POST" action="{{ route('categories.store') }}">
+        <form method="POST" action="{{ route('categories.store') }}" enctype="multipart/form-data">
             @csrf
 
             <div class="card card-flush py-4">
@@ -31,6 +35,11 @@
                             placeholder="Category Name"
                             value="{{ old('name') }}"
                         >
+                    </div>
+
+                    <div class="mb-5">
+                        <label class="form-label">Image</label>
+                        <input type="file" name="image" class="form-control">
                     </div>
 
                     {{-- Description --}}

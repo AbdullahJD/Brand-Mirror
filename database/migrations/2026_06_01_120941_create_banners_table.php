@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('link')->nullable();
             $table->boolean('status')->default(true);
+            $table->string('position')->default('home_slider');
             $table->timestamps();
         });
     }

@@ -1,5 +1,9 @@
 @extends('Dashboard.layouts.master')
 
+@section('title')
+Products
+@endsection
+
 @section('content')
     <!--begin::Post-->
         <div class="post d-flex flex-column-fluid" id="kt_post">

@@ -39,6 +39,7 @@ return new class extends Migration
                 'draft',
                 'inactive'
             ])->default('draft');
+            $table->json('additional_information')->nullable();
 
             $table->timestamps();
         });

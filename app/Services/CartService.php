@@ -6,60 +6,88 @@ use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\Product;
 use App\Models\ProductVariant;
+use Illuminate\Support\Str;
 
 class CartService
 {
-    /**
-     * جلب أو إنشاء السلة الحالية
-     */
-    public function getCart(): Cart
+    public function resolveCart(): Cart
     {
-        if (auth()->check()) {
+        $customer = auth('customer')->user();
+
+        if ($customer) {
             return Cart::firstOrCreate([
-                'user_id' => auth()->id()
+                'customer_id' => $customer->id
             ]);
         }
 
-        // API SAFE MODE
-        $sessionId = request()->header('X-CART-SESSION');
+        $sessionId = $this->getSessionId();
 
-        if (!$sessionId) {
-            throw new \Exception("Missing X-CART-SESSION header");
-        }
+        // logger()->info([
+        //     'cookie' => request()->cookie('cart_session'),
+        //     'session_id' => session()->getId(),
+        //     'customer' => auth('customer')->id(),
+        // ]);
 
         return Cart::firstOrCreate([
+            'session_id' => $sessionId
+        ], [
             'session_id' => $sessionId
         ]);
     }
 
+    private function getSessionId(): string
+    {
+        $sessionId = request()->cookie('cart_session');
+
+        if (!$sessionId) {
+            $sessionId = (string) Str::uuid();
+
+            cookie()->queue(cookie('cart_session', $sessionId, 60 * 24 * 30));
+        }
+
+        return $sessionId;
+    }
+
+    public function getCart(): Cart
+    {
+        return $this->resolveCart()->load(['items.product', 'items.variant']);
+    }
+
     /**
-     * إضافة منتج للسلة
+     *  المصدر الوحيد للحساب
      */
+    public function getSubtotal(): float
+    {
+        return $this->resolveCart()->items->sum('subtotal');
+    }
+
+    public function getTotal(): float
+    {
+        $subtotal = $this->getSubtotal();
+        $shipping = 5;
+        return $subtotal + $shipping;
+    }
+
     public function addToCart(int $productId, ?int $variantId = null, int $quantity = 1): CartItem
     {
-        $cart = $this->getCart();
+        $cart = $this->resolveCart();
 
         $product = Product::findOrFail($productId);
 
-        $price = $product->price;
+        $price = $product->discount_price ?: $product->price;
 
         if ($variantId) {
             $variant = ProductVariant::findOrFail($variantId);
             $price = $variant->price;
         }
 
-        // 🔥 منع التلاعب: السعر دائمًا من السيرفر
-        $subtotal = $price * $quantity;
-
-        $item = CartItem::where('cart_id', $cart->id)
+        $item = $cart->items()
             ->where('product_id', $productId)
             ->where('product_variant_id', $variantId)
             ->first();
 
         if ($item) {
-
             $item->increment('quantity', $quantity);
-
             $item->update([
                 'subtotal' => $item->price * $item->quantity
             ]);
@@ -67,113 +95,35 @@ class CartService
             return $item;
         }
 
-        return $cart->items()->create([
+        return CartItem::create([
+            'cart_id' => $cart->id,
             'product_id' => $productId,
             'product_variant_id' => $variantId,
             'quantity' => $quantity,
             'price' => $price,
-            'subtotal' => $subtotal,
+            'subtotal' => $price * $quantity,
         ]);
     }
 
-    /**
-     * تحديث كمية المنتج
-     */
-    public function updateQuantity(int $itemId, int $quantity): CartItem
+    public function updateQuantity(int $itemId, int $quantity)
     {
         $item = CartItem::findOrFail($itemId);
 
         if ($quantity <= 0) {
             $item->delete();
-            return $item;
+            return null;
         }
 
         $item->update([
             'quantity' => $quantity,
-            'subtotal' => $item->price * $quantity
+            'subtotal' => $item->price * $quantity, // الآن price = discount_price
         ]);
 
         return $item;
     }
 
-    /**
-     * حذف عنصر
-     */
-    public function removeItem(int $itemId): bool
+    public function removeItem(int $itemId): void
     {
-        return CartItem::where('id', $itemId)->delete();
-    }
-
-    /**
-     * عرض السلة
-     */
-    public function getCartDetails(): Cart
-    {
-        return $this->getCart()->load('items.product', 'items.variant');
-    }
-
-    /**
-     * حساب إجمالي السلة (Server-side)
-     */
-    public function getTotal(): float
-    {
-        return $this->getCart()
-            ->items
-            ->sum('subtotal');
-    }
-
-    /**
-     * تفريغ السلة
-     */
-    public function clearCart(): void
-    {
-        $this->getCart()->items()->delete();
-    }
-
-    /**
-     * دمج سلة الضيف مع المستخدم (IMPORTANT)
-     */
-    public function mergeGuestCartWithUser(): void
-    {
-        if (!auth()->check()) return;
-
-        $sessionCart = Cart::where('session_id', session()->getId())->first();
-
-        $userCart = Cart::firstOrCreate([
-            'user_id' => auth()->id()
-        ]);
-
-        if (!$sessionCart) return;
-
-        foreach ($sessionCart->items as $item) {
-
-            $existingItem = $userCart->items()
-                ->where('product_id', $item->product_id)
-                ->where('product_variant_id', $item->product_variant_id)
-                ->first();
-
-            if ($existingItem) {
-
-                $existingItem->increment('quantity', $item->quantity);
-
-                $existingItem->update([
-                    'subtotal' => $existingItem->price * $existingItem->quantity
-                ]);
-
-            } else {
-
-                $userCart->items()->create([
-                    'product_id' => $item->product_id,
-                    'product_variant_id' => $item->product_variant_id,
-                    'quantity' => $item->quantity,
-                    'price' => $item->price,
-                    'subtotal' => $item->subtotal,
-                ]);
-            }
-        }
-
-        //  تنظيف كامل (مو بس items)
-        $sessionCart->items()->delete();
-        $sessionCart->delete();
+        CartItem::findOrFail($itemId)->delete();
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Attribute;
 use App\Models\AttributeValue;
+use App\Services\NotificationService;
 use Illuminate\Http\Request;
 
 class AttributeValueController extends Controller
@@ -14,8 +15,7 @@ class AttributeValueController extends Controller
         $attributeValues = AttributeValue::with('attribute')->latest()->get();
 
         return view(
-            'Dashboard.Pages.attribute-values.index',
-            compact('attributeValues')
+            'Dashboard.Pages.attribute-values.index',compact('attributeValues')
         );
 
     }
@@ -25,8 +25,7 @@ class AttributeValueController extends Controller
          $attributes = Attribute::all();
 
         return view(
-            'Dashboard.Pages.attribute-values.create',
-            compact('attributes')
+            'Dashboard.Pages.attribute-values.create',compact('attributes')
         );
     }
 
@@ -37,7 +36,14 @@ class AttributeValueController extends Controller
             'value' => 'required|string|max:255',
         ]);
 
-        AttributeValue::create($request->all());
+        $attributeValue = AttributeValue::create($request->all());
+
+        app(NotificationService::class)->notifyRoles(
+            ['admin'],
+            'attribute',
+            'New attribute Value Created',
+            "attribute Value {$attributeValue->value} was created"
+        );
 
         return redirect()
             ->route('attribute-values.index')
@@ -55,8 +61,7 @@ class AttributeValueController extends Controller
         $attributes = Attribute::all();
 
         return view(
-            'Dashboard.Pages.attribute-values.edit',
-            compact('attributeValue', 'attributes')
+            'Dashboard.Pages.attribute-values.edit',compact('attributeValue', 'attributes')
         );
 
     }
@@ -70,14 +75,28 @@ class AttributeValueController extends Controller
 
         $attributeValue->update($request->all());
 
+        app(NotificationService::class)->notifyRoles(
+            ['admin'],
+            'attribute',
+            'New attribute Value Updated',
+            "attribute Value {$attributeValue->value} was updated"
+        );
+
         return redirect()
             ->route('attribute-values.index')
             ->with('updated', 'Attribute Value Updated Successfully');
     }
 
-    public function destroy(AttributeValue $attributeValue)
+    public function destroy(AttributeValue $attribute)
     {
-        $attributeValue->delete();
+        $attribute->delete();
+
+        app(NotificationService::class)->notifyRoles(
+            ['admin'],
+            'attribute',
+            'New attribute Value Deleted',
+            "attribute Value {$attribute->value} was deleted"
+        );
 
         return redirect()
             ->route('attribute-values.index')

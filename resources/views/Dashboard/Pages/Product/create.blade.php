@@ -1,5 +1,9 @@
 @extends('Dashboard.layouts.master')
 
+@section('title')
+Add Product
+@endsection
+
 @section('content')
 
 <div class="post d-flex flex-column-fluid">
@@ -144,6 +148,46 @@
 
                         </div>
 
+                    </div>
+
+                    {{-- Additional Information --}}
+                    <div class="mb-5">
+                        <label class="form-label">
+                            Additional Information
+                        </label>
+
+                        <div id="info-wrapper">
+
+                            <div class="row mb-2">
+                                <div class="col-md-5">
+                                    <input type="text"
+                                        name="info_keys[]"
+                                        class="form-control"
+                                        placeholder="Brand">
+                                </div>
+
+                                <div class="col-md-5">
+                                    <input type="text"
+                                        name="info_values[]"
+                                        class="form-control"
+                                        placeholder="Nike">
+                                </div>
+
+                                <div class="col-md-2">
+                                    <button type="button"
+                                            class="btn btn-danger remove-info">
+                                        X
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button type="button"
+                                id="add-info"
+                                class="btn btn-light-primary mt-2">
+                            Add Information
+                        </button>
                     </div>
 
                     {{-- Status --}}

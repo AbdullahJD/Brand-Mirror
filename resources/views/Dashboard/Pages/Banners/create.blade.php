@@ -1,5 +1,9 @@
 @extends('Dashboard.layouts.master')
 
+@section('title')
+Add Banner
+@endsection
+
 @section('content')
 
 <div class="post d-flex flex-column-fluid">
@@ -51,6 +55,19 @@
                             name="link"
                             value="{{ old('link') }}"
                             class="form-control">
+                    </div>
+
+                    <!--  POSITION IMPORTANT -->
+                    <div class="mb-3">
+                        <label>Position</label>
+
+                        <select name="position" class="form-control">
+                            <option value="home_slider">Home Slider</option>
+                            <option value="offer_left">Offer Left</option>
+                            <option value="offer_right">Offer Right</option>
+                            <option value="offer_top">Offer Top</option>
+                            <option value="offer_bottom">Offer Bottom</option>
+                        </select>
                     </div>
 
                     <div class="mb-5">

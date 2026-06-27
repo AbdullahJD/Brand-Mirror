@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Attribute;
+use App\Services\NotificationService;
 use Illuminate\Http\Request;
 
 class AttributeController extends Controller
@@ -20,7 +21,7 @@ class AttributeController extends Controller
     {
         $attributes = Attribute::latest()->get();
 
-        return view('Dashboard.Pages.attributes.create', compact('attributes'));
+        return view('Dashboard.Pages.attributes.create',compact('attributes'));
     }
 
     public function store(Request $request)
@@ -29,7 +30,14 @@ class AttributeController extends Controller
             'name' => 'required|string|max:255|unique:attributes,name'
         ]);
 
-        Attribute::create($data);
+        $attribute = Attribute::create($data);
+
+        app(NotificationService::class)->notifyRoles(
+            ['admin'],
+            'attribute',
+            'New attribute Created',
+            "attribute {$attribute->name} was created"
+        );
 
         return redirect()
             ->route('attributes.index')
@@ -46,8 +54,7 @@ class AttributeController extends Controller
     public function edit(Attribute $attribute)
     {
         return view(
-            'Dashboard.Pages.attributes.edit',
-            compact('attribute')
+            'Dashboard.Pages.attributes.edit',compact('attribute')
         );
     }
 
@@ -60,6 +67,13 @@ class AttributeController extends Controller
 
         $attribute->update($data);
 
+        app(NotificationService::class)->notifyRoles(
+            ['admin'],
+            'attribute',
+            'New attribute Updated',
+            "attribute {$attribute->name} was updated"
+        );
+
         return redirect()
             ->route('attributes.index')
             ->with('updated', 'Attribute Updated Successfully');
@@ -70,6 +84,13 @@ class AttributeController extends Controller
     {
         $attribute->delete();
 
+        app(NotificationService::class)->notifyRoles(
+            ['admin'],
+            'attribute',
+            'New attribute Deleted',
+            "attribute {$attribute->name} was deleted"
+        );
+        
         return redirect()
             ->route('attributes.index')
             ->with('deleted', 'Attribute Deleted Successfully');

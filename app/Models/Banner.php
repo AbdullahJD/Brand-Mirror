@@ -13,7 +13,8 @@ class Banner extends Model
         'title',
         'image',
         'link',
-        'status'
+        'status',
+        'position'
     ];
 
     protected $casts = [

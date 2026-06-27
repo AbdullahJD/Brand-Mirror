@@ -10,7 +10,7 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'customer_id',
         'customer_name',
         'phone',
         'address',
@@ -27,23 +27,19 @@ class Order extends Model
         return $this->hasMany(OrderItem::class);
     }
 
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
+
+    public function activityLogs()
+    {
+        return $this->hasMany(ActivityLog::class);
+    }
+
     // =========================
     // STATUS HELPERS
     // =========================
-    public function markAsProcessing(): void
-    {
-        $this->update(['status' => 'processing']);
-    }
-
-    public function markAsCompleted(): void
-    {
-        $this->update(['status' => 'completed']);
-    }
-
-    public function markAsCancelled(): void
-    {
-        $this->update(['status' => 'cancelled']);
-    }
 
     public function isPending(): bool
     {
@@ -53,5 +49,10 @@ class Order extends Model
     public function isEditable(): bool
     {
         return in_array($this->status, ['pending', 'confirmed']);
+    }
+
+    public function getCustomerTypeAttribute(): string
+    {
+        return $this->customer_id  ? 'Customer' : 'Guest';
     }
 }

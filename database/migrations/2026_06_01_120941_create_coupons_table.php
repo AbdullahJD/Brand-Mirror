@@ -33,7 +33,6 @@ return new class extends Migration
             $table->boolean('is_active')->default(true);
 
             $table->boolean('is_single_use')->default(false);
-
             $table->timestamps();
         });
     }

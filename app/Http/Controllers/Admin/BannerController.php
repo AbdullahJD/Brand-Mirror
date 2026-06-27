@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BannerRequest;
 use App\Models\Banner;
+use App\Services\NotificationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,8 +19,7 @@ class BannerController extends Controller
         $banners = Banner::latest()->paginate(15);
 
         return view(
-            'Dashboard.Pages.Banners.index',
-            compact('banners')
+            'Dashboard.Pages.Banners.index',compact('banners')
         );
     }
 
@@ -30,15 +30,22 @@ class BannerController extends Controller
 
     public function store(BannerRequest $request)
     {
-        $image = $request->file('image')
-            ->store('banners', 'public');
+        $image = $request->file('image')->store('banners', 'public');
 
-        Banner::create([
+        $banner = Banner::create([
             'title' => $request->title,
             'image' => $image,
             'link' => $request->link,
             'status' => $request->boolean('status'),
+            'position' => $request->position,
         ]);
+
+        app(NotificationService::class)->notifyRoles(
+            ['admin'],
+            'banner',
+            'New banner name Created',
+            "banner {$banner->title} was created"
+        );
 
         return redirect()
             ->route('banners.index')
@@ -61,6 +68,7 @@ class BannerController extends Controller
             'title' => $request->title,
             'link' => $request->link,
             'status' => $request->boolean('status'),
+            'position' => $request->position,
         ];
 
         if ($request->hasFile('image')) {
@@ -79,6 +87,13 @@ class BannerController extends Controller
 
         $banner->update($data);
 
+        app(NotificationService::class)->notifyRoles(
+            ['admin'],
+            'banner',
+            'New banner name Updated',
+            "banner {$banner->title} was updated"
+        );
+
         return redirect()->route('banners.index')->with('updated', 'Banner updated');
     }
 
@@ -89,6 +104,13 @@ class BannerController extends Controller
         }
 
         $banner->delete();
+
+        app(NotificationService::class)->notifyRoles(
+            ['admin'],
+            'banner',
+            'New banner name Deleted',
+            "banner {$banner->title} was deleted"
+        );
 
         return redirect()->route('banners.index')->with('deleted', 'Banner deleted successfully');
     }

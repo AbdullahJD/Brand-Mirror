@@ -1,5 +1,9 @@
 @extends('Dashboard.layouts.master')
 
+@section('title')
+Banners
+@endsection
+
 @section('content')
 
 <div class="post d-flex flex-column-fluid" id="kt_post">
@@ -36,6 +40,7 @@
                             <th>Image</th>
                             <th>Title</th>
                             <th>Link</th>
+                            <th>Position</th>
                             <th>Status</th>
                             <th class="text-end">Actions</th>
                         </tr>
@@ -61,6 +66,12 @@
 
                                 <td>
                                     {{ $banner->link ?? '-' }}
+                                </td>
+
+                                <td>
+                                    <span class="badge bg-info">
+                                        {{ $banner->position }}
+                                    </span>
                                 </td>
 
                                 <td>

@@ -1,58 +1,59 @@
-		<!--begin::Javascript-->
-		<script>var hostUrl = "{{ URL::asset('assets/') }}";</script>
-		<!--begin::Global Javascript Bundle(used by all pages)-->
-		<script src="{{ URL::asset('assets/plugins/global/plugins.bundle.js') }}"></script>
-		<script src="{{ URL::asset('assets/js/scripts.bundle.js') }}"></script>
-		<!--end::Global Javascript Bundle-->
-		<!--begin::Page Vendors Javascript(used by this page)-->
-		<script src="{{ URL::asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
-		<script src="{{ URL::asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
-		<!--end::Page Vendors Javascript-->
-		<!--begin::Page Custom Javascript(used by this page)-->
-		<script src="{{ URL::asset('assets/js/widgets.bundle.js') }}"></script>
-		<script src="{{ URL::asset('assets/js/custom/widgets.js') }}"></script>
-		<script src="{{ URL::asset('assets/js/custom/apps/chat/chat.js') }}"></script>
-		<script src="{{ URL::asset('assets/js/custom/utilities/modals/upgrade-plan.js') }}"></script>
-		<script src="{{ URL::asset('assets/js/custom/utilities/modals/create-app.js') }}"></script>
-		<script src="{{ URL::asset('assets/js/custom/utilities/modals/users-search.js') }}"></script>
-		<!--end::Page Custom Javascript-->
-		<!--end::Javascript-->
+<!--begin::Javascript-->
+	<script>var hostUrl = "{{ URL::asset('assets/') }}";</script>
+	<!--begin::Global Javascript Bundle(used by all pages)-->
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-		<script src="{{ URL::asset('assets/js/custom/apps/ecommerce/catalog/categories.js') }}"></script>
-		<script src="{{ URL::asset('assets/js/custom/apps/ecommerce/catalog/products.js') }}"></script>
+	<script src="{{ URL::asset('assets/plugins/global/plugins.bundle.js') }}"></script>
+	<script src="{{ URL::asset('assets/js/scripts.bundle.js') }}"></script>
+	<!--end::Global Javascript Bundle-->
+	<!--begin::Page Vendors Javascript(used by this page)-->
+	<script src="{{ URL::asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
+	<script src="{{ URL::asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
+	<!--end::Page Vendors Javascript-->
+	<!--begin::Page Custom Javascript(used by this page)-->
+	<script src="{{ URL::asset('assets/js/widgets.bundle.js') }}"></script>
+	<script src="{{ URL::asset('assets/js/custom/widgets.js') }}"></script>
+	<script src="{{ URL::asset('assets/js/custom/apps/chat/chat.js') }}"></script>
+	<script src="{{ URL::asset('assets/js/custom/utilities/modals/upgrade-plan.js') }}"></script>
+	<script src="{{ URL::asset('assets/js/custom/utilities/modals/create-app.js') }}"></script>
+	<script src="{{ URL::asset('assets/js/custom/utilities/modals/users-search.js') }}"></script>
+	<!--end::Page Custom Javascript-->
 
-		{{-- <script src="https://cdn.jsdelivr.net/npm/laravel-echo@1.16.1/dist/echo.iife.js"></script>
-		<script src="https://js.pusher.com/8.2.0/pusher.min.js"></script> --}}
-		{{-- <script>
-			window.Pusher = Pusher;
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-			window.Echo = new Echo({
-				broadcaster: 'reverb',
-				key: '{{ env("REVERB_APP_KEY") }}',
-				wsHost: window.location.hostname,
-				wsPort: 8080,
-				forceTLS: false,
-				disableStats: true,
+	<script src="{{ URL::asset('assets/js/custom/apps/ecommerce/catalog/categories.js') }}"></script>
+	<script src="{{ URL::asset('assets/js/custom/apps/ecommerce/catalog/products.js') }}"></script>
+
+	{{-- <script src="https://cdn.jsdelivr.net/npm/laravel-echo@1.16.1/dist/echo.iife.js"></script>
+	<script src="https://js.pusher.com/8.2.0/pusher.min.js"></script> --}}
+	{{-- <script>
+		window.Pusher = Pusher;
+
+		window.Echo = new Echo({
+			broadcaster: 'reverb',
+			key: '{{ env("REVERB_APP_KEY") }}',
+			wsHost: window.location.hostname,
+			wsPort: 8080,
+			forceTLS: false,
+			disableStats: true,
+		});
+
+		window.Echo.private('admin.orders')
+			.listen('.order.created', (e) => {
+				console.log('NEW ORDER:', e);
+				alert("New Order: " + e.order_number);
 			});
+	</script> --}}
 
-			window.Echo.private('admin.orders')
-				.listen('.order.created', (e) => {
-					console.log('NEW ORDER:', e);
-					alert("New Order: " + e.order_number);
-				});
-		</script> --}}
-
-		<script>
-			toastr.options = {
-				"closeButton": true,
-				"progressBar": true,
-				"positionClass": "toast-top-right",
-				"timeOut": "3000"
-			};
-		</script>
+	<script>
+		toastr.options = {
+			"closeButton": true,
+			"progressBar": true,
+			"positionClass": "toast-top-right",
+			"timeOut": "3000"
+		};
+	</script>
 
 	@if(session('success'))
 		<script>
@@ -77,3 +78,91 @@
 			toastr.error("{{ session('error') }}");
 		</script>
 	@endif
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	@stack('scripts')
+
+<!--end::Javascript-->
+
+<script>
+document.getElementById('add-info').addEventListener('click', function () {
+
+    let html = `
+        <div class="row mb-2">
+            <div class="col-md-5">
+                <input type="text"
+                       name="info_keys[]"
+                       class="form-control"
+                       placeholder="Attribute">
+            </div>
+
+            <div class="col-md-5">
+                <input type="text"
+                       name="info_values[]"
+                       class="form-control"
+                       placeholder="Value">
+            </div>
+
+            <div class="col-md-2">
+                <button type="button"
+                        class="btn btn-danger remove-info">
+                    X
+                </button>
+            </div>
+        </div>
+    `;
+
+    document.getElementById('info-wrapper')
+        .insertAdjacentHTML('beforeend', html);
+});
+
+document.addEventListener('click', function(e){
+
+    if(e.target.classList.contains('remove-info')){
+        e.target.closest('.row').remove();
+    }
+
+});
+</script>
+
+
+<script>
+document.addEventListener("submit", function (e) {
+    const form = e.target;
+
+    if (form.tagName === "FORM") {
+        const btn = form.querySelector("button[type='submit']");
+
+        if (btn) {
+            btn.disabled = true;
+            btn.innerText = "Submitting...";
+        }
+    }
+});
+</script>
+
+
+<script>
+	const btn = document.getElementById('add-info');
+
+	if (btn) {
+		btn.addEventListener('click', function () {
+			let html = `
+				<div class="row mb-2">
+					<div class="col-md-5">
+						<input type="text" name="info_keys[]" class="form-control" placeholder="Attribute">
+					</div>
+					<div class="col-md-5">
+						<input type="text" name="info_values[]" class="form-control" placeholder="Value">
+					</div>
+					<div class="col-md-2">
+						<button type="button" class="btn btn-danger remove-info">X</button>
+					</div>
+				</div>
+			`;
+
+			document.getElementById('info-wrapper')
+				.insertAdjacentHTML('beforeend', html);
+		});
+	}
+</script>

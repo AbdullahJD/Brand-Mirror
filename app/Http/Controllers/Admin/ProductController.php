@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Services\NotificationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -27,7 +28,7 @@ class ProductController extends Controller
     {
         $categories = Category::all();
 
-        return view('Dashboard.Pages.Product.create', compact('categories'));
+        return view('Dashboard.Pages.Product.create',compact('categories'));
     }
 
     /**
@@ -55,6 +56,20 @@ class ProductController extends Controller
                 ->store('products', 'public');
         }
 
+        $additional_information = [];
+
+        if ($request->info_keys) {
+
+            foreach ($request->info_keys as $index => $key) {
+
+                if (!empty($key)) {
+
+                    $additional_information[$key] =
+                        $request->info_values[$index] ?? '';
+                }
+            }
+        }
+
         $product = Product::create([
             'category_id'    => $request->category_id,
             'name'           => $request->name,
@@ -65,6 +80,7 @@ class ProductController extends Controller
             'main_image'     => $mainImage,
             'is_featured'    => $request->has('is_featured'),
             'status'         => $request->status,
+            'additional_information' => $additional_information,
         ]);
 
         if ($request->hasFile('images')) {
@@ -79,6 +95,13 @@ class ProductController extends Controller
                 ]);
             }
         }
+
+        app(NotificationService::class)->notifyRoles(
+            ['admin'],
+            'product',
+            'New Product Created',
+            "Product {$product->name} was created"
+        );
 
         return redirect()
         ->route('products.index')
@@ -120,6 +143,7 @@ class ProductController extends Controller
             'status'          => 'required',
             'main_image'      => 'nullable|image',
             'images.*'        => 'nullable|image',
+            'additional_information' => 'nullable|string',
         ]);
 
         // =========================
@@ -145,6 +169,18 @@ class ProductController extends Controller
         // =========================
         // UPDATE PRODUCT BASIC DATA
         // =========================
+        $additionalInformation = [];
+        foreach ($request->info_keys as $index => $key) {
+            if (!empty($key) && !empty($request->info_values[$index])) {
+
+                $additionalInformation[$key] = $request->info_values[$index];
+            }
+        }
+        $product->update([
+            // باقي الحقول...
+            'additional_information' => $additionalInformation,
+        ]);
+        
         $product->update($data);
 
         // =========================
@@ -162,6 +198,13 @@ class ProductController extends Controller
                 ]);
             }
         }
+
+        app(NotificationService::class)->notifyRoles(
+            ['admin'],
+            'product',
+            'New Product Updated',
+            "Product {$product->name} was updated"
+        );
 
         return redirect()
             ->route('products.index')
@@ -188,6 +231,13 @@ class ProductController extends Controller
 
         // حذف المنتج
         $product->delete();
+
+        app(NotificationService::class)->notifyRoles(
+            ['admin'],
+            'product',
+            'New Product Deleted',
+            "Product {$product->name} was deleted"
+        );
 
         return redirect()
             ->route('products.index')

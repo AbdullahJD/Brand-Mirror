@@ -1,5 +1,8 @@
 @extends('Dashboard.layouts.master')
 
+@section('title')
+Orders
+@endsection
 @section('content')
 
 <div class="post d-flex flex-column-fluid" id="kt_post">
@@ -75,6 +78,7 @@
                             <th>Phone</th>
                             <th>Total</th>
                             <th>Status</th>
+                            <th>Type</th>
                             <th>Date</th>
                             <th class="text-end">Actions</th>
                         </tr>
@@ -124,6 +128,13 @@
                                         @default
                                             <span class="badge badge-light-secondary">{{ $order->status }}</span>
                                     @endswitch
+                                </td>
+                                <td>
+                                    @if($order->customer_id)
+                                        <span class="badge badge-light-primary">User</span>
+                                    @else
+                                        <span class="badge badge-light-secondary">Guest</span>
+                                    @endif
                                 </td>
 
                                 <td>{{ $order->created_at->format('Y-m-d H:i') }}</td>

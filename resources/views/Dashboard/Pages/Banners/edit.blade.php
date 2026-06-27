@@ -1,5 +1,9 @@
 @extends('Dashboard.layouts.master')
 
+@section('title')
+Edit Banner
+@endsection
+
 @section('content')
 
     <div class="post d-flex flex-column-fluid">
@@ -57,6 +61,30 @@
                                 name="link"
                                 value="{{ old('link',$banner->link) }}"
                                 class="form-control">
+                        </div>
+
+                        <!-- POSITION -->
+                        <div class="mb-3">
+                            <label>Position</label>
+
+                            <select name="position" class="form-control">
+
+                                @foreach([
+                                    'home_slider',
+                                    'offer_left',
+                                    'offer_right',
+                                    'offer_top',
+                                    'offer_bottom'
+                                ] as $pos)
+
+                                    <option value="{{ $pos }}"
+                                        {{ $banner->position == $pos ? 'selected' : '' }}>
+                                        {{ $pos }}
+                                    </option>
+
+                                @endforeach
+
+                            </select>
                         </div>
 
                         <div class="mb-5">

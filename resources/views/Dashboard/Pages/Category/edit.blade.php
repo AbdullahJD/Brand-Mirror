@@ -1,11 +1,15 @@
 @extends('Dashboard.layouts.master')
 
+@section('title')
+Edit Categories
+@endsection
+
 @section('content')
 
 <div class="post d-flex flex-column-fluid">
     <div class="container-xxl">
 
-        <form method="POST" action="{{ route('categories.update', $category->id) }}">
+        <form method="POST" action="{{ route('categories.update', $category->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -26,7 +30,13 @@
                                value="{{ $category->name }}"
                                class="form-control">
                     </div>
+                    
+                    <div class="mb-5">
+                        <label class="form-label">Image</label>
+                        <input type="file" name="image" class="form-control">
+                    </div>
 
+                    
                     {{-- Description --}}
                     <div class="mb-5">
                         <label class="form-label">Description</label>

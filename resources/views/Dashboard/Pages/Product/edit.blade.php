@@ -1,5 +1,9 @@
 @extends('Dashboard.layouts.master')
 
+@section('title')
+Edit Product
+@endsection
+
 @section('content')
 
 <div class="post d-flex flex-column-fluid">
@@ -166,6 +170,77 @@
 
                         </div>
 
+                    </div>
+
+                    {{-- Additional Information --}}
+                    <div class="mb-5">
+                        <label class="form-label">
+                            Additional Information
+                        </label>
+
+                        <div id="info-wrapper">
+
+                            @if(!empty($product->additional_information))
+                                @foreach($product->additional_information as $key => $value)
+                                    <div class="row mb-2">
+                                        <div class="col-md-5">
+                                            <input type="text"
+                                                name="info_keys[]"
+                                                class="form-control"
+                                                value="{{ $key }}"
+                                                placeholder="Brand">
+                                        </div>
+
+                                        <div class="col-md-5">
+                                            <input type="text"
+                                                name="info_values[]"
+                                                class="form-control"
+                                                value="{{ $value }}"
+                                                placeholder="Nike">
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <button type="button"
+                                                    class="btn btn-danger remove-info">
+                                                X
+                                            </button>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @else
+
+                                <div class="row mb-2">
+                                    <div class="col-md-5">
+                                        <input type="text"
+                                            name="info_keys[]"
+                                            class="form-control"
+                                            placeholder="Brand">
+                                    </div>
+
+                                    <div class="col-md-5">
+                                        <input type="text"
+                                            name="info_values[]"
+                                            class="form-control"
+                                            placeholder="Nike">
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <button type="button"
+                                                class="btn btn-danger remove-info">
+                                            X
+                                        </button>
+                                    </div>
+                                </div>
+
+                            @endif
+
+                        </div>
+
+                        <button type="button"
+                                id="add-info"
+                                class="btn btn-light-primary mt-2">
+                            Add Information
+                        </button>
                     </div>
 
                     {{-- Status --}}

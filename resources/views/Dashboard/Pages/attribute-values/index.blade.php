@@ -1,5 +1,9 @@
 @extends('Dashboard.layouts.master')
 
+@section('title')
+Attribute Values
+@endsection
+
 @section('content')
 
 <div class="post d-flex flex-column-fluid" id="kt_post">

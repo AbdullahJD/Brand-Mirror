@@ -11,11 +11,23 @@ class Cart extends Model
 
     protected $fillable = [
         'session_id',
-        'user_id',
+        'customer_id',
+        'discount',
+        'coupon_id',
     ];
 
     public function items()
     {
-        return $this->hasMany(CartItem::class);
+        return $this->hasMany(CartItem::class, 'cart_id');
+    }
+
+    public function coupon()
+    {
+        return $this->belongsTo(Coupon::class);
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
     }
 }

@@ -41,8 +41,14 @@ class Handler extends ExceptionHandler
      */
     public function register(): void
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->renderable(function (Throwable $e, $request) {
+            if ($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
+                return response()->view('errors.404', [], 404);
+            }
+
+            if ($e instanceof \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException) {
+                return response()->view('errors.403', [], 403);
+            }
         });
     }
 }

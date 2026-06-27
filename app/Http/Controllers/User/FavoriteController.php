@@ -8,25 +8,26 @@ use Illuminate\Http\Request;
 
 class FavoriteController extends Controller
 {
-    public function toggle(Request $request, FavoriteService $service) 
+    public function toggle(int $productId, FavoriteService $service)
     {
-
-        $request->validate([
-            'product_id' => 'required|exists:products,id'
-        ]);
-
         return response()->json([
             'status' => true,
-            'data' => $service->toggle(
-                $request->product_id
-            )
+            'data' => $service->toggle($productId)
         ]);
     }
 
     public function index(FavoriteService $service) 
     {
+
         return response()->json([
             'status' => true,
+            'favorites' => $service->list()
+        ]);
+    }
+
+    public function page(FavoriteService $service)
+    {
+        return view('Store.pages.favorite', [
             'favorites' => $service->list()
         ]);
     }

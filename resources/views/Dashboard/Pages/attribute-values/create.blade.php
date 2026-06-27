@@ -1,5 +1,9 @@
 @extends('Dashboard.layouts.master')
 
+@section('title')
+Add Attribute Value
+@endsection
+
 @section('content')
 
 <div class="container-xxl">

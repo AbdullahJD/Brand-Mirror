@@ -18,7 +18,12 @@ class Product extends Model
         'stock',
         'main_image',
         'is_featured',
-        'status'
+        'status',
+        'additional_information',
+    ];
+
+    protected $casts = [
+        'additional_information' => 'array',
     ];
 
     public function category()
@@ -34,5 +39,10 @@ class Product extends Model
     public function variants()
     {
         return $this->hasMany(ProductVariant::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 }

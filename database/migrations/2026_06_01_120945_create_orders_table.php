@@ -14,26 +14,16 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('user_id')
-                ->nullable()
-                ->constrained()
-                ->nullOnDelete();
-
+            $table->foreignId('customer_id')->nullable()->constrained('customers')->nullOnDelete();
+            $table->string('session_id')->nullable();
             $table->string('customer_name');
             $table->string('phone');
             $table->text('address');
-
             $table->string('order_number')->unique();
             $table->decimal('total', 10, 2);
             $table->enum('status', ['pending','confirmed','processing','shipped','delivered','cancelled'])->default('pending');
-
-            $table->foreignId('coupon_id')
-                ->nullable()
-                ->constrained('coupons')
-                ->nullOnDelete();
-
+            $table->foreignId('coupon_id')->nullable()->constrained('coupons')->nullOnDelete();
             $table->decimal('discount_amount',10,2)->default(0);
-            // $table->decimal('final_total', 10, 2);
             $table->decimal('final_total', 10, 2)->nullable();
 
             $table->timestamps();

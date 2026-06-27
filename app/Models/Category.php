@@ -12,7 +12,8 @@ class Category extends Model
         'name',
         'description',
         'parent_id',
-        'status'
+        'status',
+        'image',
     ];
 
     public function products()
@@ -28,5 +29,17 @@ class Category extends Model
     public function children()
     {
         return $this->hasMany(Category::class, 'parent_id');
+    }
+
+    public function activeChildren()
+    {
+        return $this->hasMany(Category::class, 'parent_id')
+            ->where('status', 1);
+    }
+
+    public function activeProducts()
+    {
+    return $this->hasMany(Product::class)
+        ->where('status', 1);
     }
 }

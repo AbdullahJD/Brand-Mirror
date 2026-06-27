@@ -29,10 +29,19 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        // دمج السلة بعد تسجيل الدخول
-        app(\App\Services\CartService::class)->mergeGuestCartWithUser();
+        // لو عندك cart service (اختياري)
+        // if (class_exists(\App\Services\CartService::class)) {
+        //     app(\App\Services\CartService::class)->mergeGuestCartWithUser();
+        // }
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $user = Auth::user();
+
+        //  أهم جزء: التوجيه حسب الدور
+        return match ($user->role) {
+            'admin' => redirect()->route('admin.dashboard'),
+            'employee' => redirect()->route('employee.dashboard'),
+            default => abort(403),
+        };
     }
 
     /**
@@ -46,6 +55,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect()->route('admin.login');
     }
 }

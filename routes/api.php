@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\OrderDashboardController;
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\User\BannerController;
-use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\CouponController;
 use App\Http\Controllers\User\FavoriteController;
@@ -26,22 +26,19 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('/checkout', [CheckoutController::class, 'checkout']);
-Route::post('/apply-coupon', [CouponController::class, 'apply']);
+// Route::post('/apply-coupon', [CouponController::class, 'apply']);
 
-Route::post('/cart/add', [CartController::class, 'add']);
-Route::get('/cart', [CartController::class, 'cart']);
-Route::post('/cart/update', [CartController::class, 'update']);
-Route::post('/cart/remove', [CartController::class, 'remove']);
+Route::get('/banners', [BannerController::class, 'index']);
 
-Route::prefix('admin')->group(function () {
+// Route::post('/register', [AuthController::class, 'register']);
+// Route::post('/login', [AuthController::class, 'login']);
 
-    Route::get('/orders', [OrderDashboardController::class, 'index']);
-    Route::get('/orders/{order}', [OrderDashboardController::class, 'show']);
-    Route::get('/orders-stats', [OrderDashboardController::class, 'stats']);
 
-    Route::get('/banners', [BannerController::class, 'index']);
-});
+// Route::middleware('auth:sanctum')->group(function () {
+//     Route::post('/favorites/toggle', [FavoriteController::class, 'toggle']);
+//     Route::get('/favorites', [FavoriteController::class, 'index']);
+//     Route::delete('/favorites/{productId}', [FavoriteController::class, 'destroy']);
 
-Route::post('/favorites/toggle', [FavoriteController::class, 'toggle']);
-Route::get('/favorites', [FavoriteController::class, 'index']);
-Route::delete('/favorites/{productId}', [FavoriteController::class, 'destroy']);
+//     Route::post('/logout', [AuthController::class, 'logout']);
+
+// });

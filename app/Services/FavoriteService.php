@@ -6,25 +6,19 @@ use App\Models\Favorite;
 
 class FavoriteService
 {
-    private function getSessionId(): string
-    {
-        $sessionId = request()->header('X-CART-SESSION');
-
-        if (!$sessionId) {
-            throw new \Exception('Missing X-CART-SESSION header');
-        }
-
-        return $sessionId;
-    }
-
     public function toggle(int $productId): array
     {
-        $favorite = Favorite::where('session_id', $this->getSessionId())
+        $customer = auth('customer')->user();
+
+        if (!$customer) {
+            throw new \Exception('Unauthorized');
+        }
+
+        $favorite = Favorite::where('customer_id', $customer->id)
             ->where('product_id', $productId)
             ->first();
 
         if ($favorite) {
-
             $favorite->delete();
 
             return [
@@ -34,7 +28,7 @@ class FavoriteService
         }
 
         Favorite::create([
-            'session_id' => $this->getSessionId(),
+            'customer_id' => $customer->id,
             'product_id' => $productId,
         ]);
 
@@ -46,15 +40,27 @@ class FavoriteService
 
     public function list()
     {
+        $customer = auth('customer')->user();
+
+        if (!$customer) {
+            throw new \Exception('Unauthorized');
+        }
+
         return Favorite::with('product')
-            ->where('session_id', $this->getSessionId())
+            ->where('customer_id', $customer->id)
             ->latest()
             ->get();
     }
 
     public function remove(int $productId): void
     {
-        Favorite::where('session_id', $this->getSessionId())
+        $customer = auth('customer')->user();
+
+        if (!$customer) {
+            throw new \Exception('Unauthorized');
+        }
+
+        Favorite::where('customer_id', $customer->id)
             ->where('product_id', $productId)
             ->delete();
     }

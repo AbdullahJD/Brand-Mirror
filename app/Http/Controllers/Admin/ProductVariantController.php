@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AttributeValue;
 use App\Models\Product;
 use App\Models\ProductVariant;
+use App\Services\NotificationService;
 use Illuminate\Http\Request;
 
 class ProductVariantController extends Controller
@@ -18,8 +19,7 @@ class ProductVariantController extends Controller
         ])->latest()->get();
 
         return view(
-            'Dashboard.Pages.ProductVariant.index',
-            compact('variants')
+            'Dashboard.Pages.ProductVariant.index',compact('variants')
         );
     }
 
@@ -64,6 +64,13 @@ class ProductVariantController extends Controller
             $request->attribute_values ?? []
         );
 
+        app(NotificationService::class)->notifyRoles(
+            ['admin'],
+            'product',
+            'New Product Variant Created',
+            "Product Variant {$variant->sku} was created"
+        );
+
         return redirect()
             ->route('product-variants.index')
             ->with(
@@ -85,13 +92,7 @@ class ProductVariantController extends Controller
             ->get();
 
         return view(
-            'Dashboard.Pages.ProductVariant.edit',
-            compact(
-                'productVariant',
-                'products',
-                'attributeValues'
-            )
-        );
+            'Dashboard.Pages.ProductVariant.edit',compact('productVariant','products','attributeValues'));
     }
 
     public function update(
@@ -121,6 +122,13 @@ class ProductVariantController extends Controller
             $request->attribute_values ?? []
         );
 
+        app(NotificationService::class)->notifyRoles(
+            ['admin'],
+            'product',
+            'New Product Variant Updated',
+            "Product Variant {$productVariant->sku} was updated"
+        );
+
         return redirect()
             ->route('product-variants.index')
             ->with(
@@ -132,6 +140,13 @@ class ProductVariantController extends Controller
     public function destroy(ProductVariant $productVariant)
     {
         $productVariant->delete();
+
+        app(NotificationService::class)->notifyRoles(
+            ['admin'],
+            'product',
+            'New Product Variant Deleted',
+            "Product Variant {$productVariant->sku} was deleted"
+        );
 
         return redirect()
             ->route('product-variants.index')

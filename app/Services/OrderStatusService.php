@@ -109,4 +109,19 @@ class OrderStatusService
             default => 'Unknown'
         };
     }
+
+    public function markProcessing(Order $order): Order
+    {
+        return $this->changeStatus($order, 'processing');
+    }
+
+    public function markCompleted(Order $order): Order
+    {
+        return $this->changeStatus($order, 'delivered');
+    }
+
+    public function markCancelled(Order $order): Order
+    {
+        return $this->changeStatus($order, 'cancelled');
+    }
 }

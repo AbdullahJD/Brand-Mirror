@@ -42,6 +42,7 @@
 		</div>
 		<!--end::Root-->
 		<!--end::Modals-->
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 			@include('Dashboard.layouts.script')
 		<!--end::Javascript-->
 	</body>

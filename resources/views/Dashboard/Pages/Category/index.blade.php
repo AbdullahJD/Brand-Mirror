@@ -1,5 +1,8 @@
 @extends('Dashboard.layouts.master')
 
+@section('title')
+Category
+@endsection
 
 @section('content')
 	<!--begin::Content-->
@@ -46,6 +49,7 @@
 								<!--begin::Table row-->
 								<tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
 									<th class="w-10px pe-2">#</th>
+									<th class="min-w-250px">image</th>
 									<th class="min-w-250px">Category Name</th>
 									<th class="min-w-150px">Parent Category</th>
 									<th class="min-w-100px">Status</th>
@@ -61,6 +65,14 @@
 
 										<td>{{ $loop->iteration }}</td>
 
+										<td>
+											@if($category->image)
+												<img src="{{ asset('storage/'.$category->image) }}"
+													width="50" class="rounded">
+											@else
+												<span>No image</span>
+											@endif
+										</td>
 										<td>
 											<div class="d-flex flex-column">
 												<span class="text-gray-800 fw-bolder fs-6">

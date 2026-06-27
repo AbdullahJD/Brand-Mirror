@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    public function add(Request $request, CartService $cartService)
+    public function __construct(private CartService $cartService) {}
+
+    public function add(Request $request)
     {
         $request->validate([
             'product_id' => 'required|integer',
@@ -16,7 +18,7 @@ class CartController extends Controller
             'quantity' => 'nullable|integer|min:1',
         ]);
 
-        $item = $cartService->addToCart(
+        $this->cartService->addToCart(
             $request->product_id,
             $request->product_variant_id,
             $request->quantity ?? 1
@@ -24,48 +26,41 @@ class CartController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'Added to cart',
-            'data' => $item
+            'cart' => $this->cartService->getCart(),
+            'cart_count' => $this->cartService->getCart()->items->sum('quantity'),
+            'total' => $this->cartService->getTotal(),
         ]);
     }
 
-    public function cart(CartService $cartService)
-    {
-        return response()->json([
-            'status' => true,
-            'cart' => $cartService->getCartDetails()
-        ]);
-    }
-
-    public function update(Request $request, CartService $cartService)
+    public function update(Request $request)
     {
         $request->validate([
             'item_id' => 'required|integer',
             'quantity' => 'required|integer|min:0',
         ]);
 
-        $item = $cartService->updateQuantity(
+        $this->cartService->updateQuantity(
             $request->item_id,
             $request->quantity
         );
 
         return response()->json([
             'status' => true,
-            'data' => $item
+            'cart' => $this->cartService->getCart(),
+            'cart_count' => $this->cartService->getCart()->items->sum('quantity'),
+            'total' => $this->cartService->getTotal(),
         ]);
     }
 
-    public function remove(Request $request, CartService $cartService)
+    public function remove(Request $request)
     {
-        $request->validate([
-            'item_id' => 'required|integer',
-        ]);
-
-        $cartService->removeItem($request->item_id);
+        $this->cartService->removeItem($request->item_id);
 
         return response()->json([
             'status' => true,
-            'message' => 'Item removed'
+            'cart' => $this->cartService->getCart(),
+            'cart_count' => $this->cartService->getCart()->items->sum('quantity'),
+            'total' => $this->cartService->getTotal(),
         ]);
     }
 }

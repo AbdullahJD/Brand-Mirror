@@ -7,17 +7,15 @@ use Carbon\Carbon;
 
 class CouponService
 {
-    /**
-     * جلب الكوبون
-     */
+    public function __construct(
+        private CartService $cartService
+    ) {}
+
     public function findCoupon(string $code): ?Coupon
     {
         return Coupon::where('code', $code)->first();
     }
 
-    /**
-     * التحقق من صلاحية الكوبون
-     */
     public function validateCoupon(?Coupon $coupon, float $orderTotal): void
     {
         if (!$coupon) {
@@ -47,9 +45,6 @@ class CouponService
         }
     }
 
-    /**
-     * حساب الخصم
-     */
     public function calculateDiscount(Coupon $coupon, float $orderTotal): float
     {
         $discount = 0;
@@ -66,34 +61,26 @@ class CouponService
             $discount = $coupon->max_discount;
         }
 
-        // لا يمكن أن يكون الخصم أكبر من الطلب
-        if ($discount > $orderTotal) {
-            $discount = $orderTotal;
-        }
-
-        return round($discount, 2);
+        return min($discount, $orderTotal);
     }
 
-    /**
-     * زيادة عدد الاستخدام
-     */
-    public function applyCoupon(Coupon $coupon): void
-    {
-        $coupon->increment('used_count');
-    }
-
-    /**
-     * العملية الكاملة
-     */
-    public function process(string $code, float $orderTotal): array
+    public function process(string $code): array
     {
         $coupon = $this->findCoupon($code);
+
+        // مهم: subtotal فقط
+        $orderTotal = $this->cartService->getSubtotal();
+
+        // logger()->info([
+        //     'subtotal' => $orderTotal,
+        //     'coupon_minimum' => $coupon->min_order_amount,
+        //     'customer' => auth('customer')->id(),
+        // ]);
 
         $this->validateCoupon($coupon, $orderTotal);
 
         $discount = $this->calculateDiscount($coupon, $orderTotal);
 
-        // مهم: تسجيل الاستخدام
         $this->applyCoupon($coupon);
 
         return [
@@ -101,5 +88,10 @@ class CouponService
             'discount' => $discount,
             'final_total' => $orderTotal - $discount
         ];
+    }
+
+    public function applyCoupon(Coupon $coupon): void
+    {
+        $coupon->increment('used_count');
     }
 }
