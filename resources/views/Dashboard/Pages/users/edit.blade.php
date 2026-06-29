@@ -87,7 +87,7 @@ Edit User
                             <option
                                 value="employee"
                                 {{ $user->role == 'employee' ? 'selected' : '' }}>
-                                Employee
+                                {{ __('messages.employee') }}
                             </option>
 
                             <option

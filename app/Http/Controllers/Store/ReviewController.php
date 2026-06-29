@@ -27,6 +27,6 @@ class ReviewController extends Controller
             'is_approved' => false
         ]);
 
-        return back()->with('success', 'Review submitted successfully');
+        return back()->with('success', __('messages.flash_review_submitted'));
     }
 }

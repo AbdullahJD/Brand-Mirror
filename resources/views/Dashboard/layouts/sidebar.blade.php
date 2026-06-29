@@ -73,14 +73,14 @@
                                     </svg>
                                 </span>
                             </span>
-                            <span class="menu-title">Dashboards</span>
+                            <span class="menu-title">{{ __('messages.dashboards') }}</span>
                         </a>
                     </div>
 
                     {{-- SECTION --}}
                     <div class="menu-item">
                         <div class="menu-content pt-8 pb-2">
-                            <span class="menu-section text-muted text-uppercase fs-8 ls-1">ADMIN PANEL</span>
+                            <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ __('messages.admin_panel') }}</span>
                         </div>
                     </div>
 
@@ -88,7 +88,7 @@
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
                             <span class="menu-icon">📁</span>
-                            <span class="menu-title">Catalog</span>
+                            <span class="menu-title">{{ __('messages.catalog') }}</span>
                             <span class="menu-arrow"></span>
                         </span>
 
@@ -96,21 +96,21 @@
                             <div class="menu-item">
                                 <a href="{{ route('categories.index') }}" class="menu-link">
                                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                                    <span class="menu-title">Categories</span>
+                                    <span class="menu-title">{{ __('messages.categories') }}</span>
                                 </a>
                             </div>
 
                             <div class="menu-item">
                                 <a href="{{ route('products.index') }}" class="menu-link">
                                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                                    <span class="menu-title">Products</span>
+                                    <span class="menu-title">{{ __('messages.products') }}</span>
                                 </a>
                             </div>
 
                             <div class="menu-item">
                                 <a href="{{ route('product-variants.index') }}" class="menu-link">
                                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                                    <span class="menu-title">Product Variants</span>
+                                    <span class="menu-title">{{ __('messages.product_variants') }}</span>
                                 </a>
                             </div>
 
@@ -121,7 +121,7 @@
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
                             <span class="menu-icon">🛒</span>
-                            <span class="menu-title">PRODUCT CONFIGURATION</span>
+                            <span class="menu-title">{{ __('messages.product_configuration') }}</span>
                             <span class="menu-arrow"></span>
                         </span>
 
@@ -129,14 +129,14 @@
                             <div class="menu-item">
                                 <a href="{{ route('attributes.index') }}" class="menu-link">
                                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                                    <span class="menu-title">Attributes</span>
+                                    <span class="menu-title">{{ __('messages.attributes') }}</span>
                                 </a>
                             </div>
 
                             <div class="menu-item">
                                 <a href="{{ route('attribute-values.index') }}" class="menu-link">
                                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                                    <span class="menu-title">Attribute Values</span>
+                                    <span class="menu-title">{{ __('messages.attribute_values') }}</span>
                                 </a>
                             </div>
                         </div>
@@ -146,7 +146,7 @@
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
                             <span class="menu-icon">⭐</span>
-                            <span class="menu-title">Ratings</span>
+                            <span class="menu-title">{{ __('messages.ratings') }}</span>
                             <span class="menu-arrow"></span>
                         </span>
 
@@ -154,7 +154,7 @@
                             <div class="menu-item">
                                 <a href="{{ route('reviews.index') }}" class="menu-link">
                                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                                    <span class="menu-title">Review</span>
+                                    <span class="menu-title">{{ __('messages.review') }}</span>
                                 </a>
                             </div>
                         </div>
@@ -164,7 +164,7 @@
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
                             <span class="menu-icon">🏷️</span>
-                            <span class="menu-title">SALES</span>
+                            <span class="menu-title">{{ __('messages.sales') }}</span>
                             <span class="menu-arrow"></span>
                         </span>
 
@@ -172,7 +172,7 @@
                             <div class="menu-item">
                                 <a href="{{ route('orders.index') }}" class="menu-link">
                                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                                    <span class="menu-title">Orders</span>
+                                    <span class="menu-title">{{ __('messages.orders') }}</span>
                                 </a>
                             </div>
                         </div>
@@ -182,7 +182,7 @@
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
                             <span class="menu-icon">📢</span>
-                            <span class="menu-title">MARKETING</span>
+                            <span class="menu-title">{{ __('messages.marketing') }}</span>
                             <span class="menu-arrow"></span>
                         </span>
 
@@ -190,14 +190,14 @@
                             <div class="menu-item">
                                 <a href="{{ route('banners.index') }}" class="menu-link">
                                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                                    <span class="menu-title">Banners</span>
+                                    <span class="menu-title">{{ __('messages.banners') }}</span>
                                 </a>
                             </div>
 
                             <div class="menu-item">
                                 <a href="{{ route('coupons.index') }}" class="menu-link">
                                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                                    <span class="menu-title">Coupons</span>
+                                    <span class="menu-title">{{ __('messages.coupons') }}</span>
                                 </a>
                             </div>
                         </div>
@@ -207,7 +207,7 @@
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
                             <span class="menu-icon">👨‍💼</span>
-                            <span class="menu-title">Employee</span>
+                            <span class="menu-title">{{ __('messages.employee') }}</span>
                             <span class="menu-arrow"></span>
                         </span>
 
@@ -215,7 +215,7 @@
                             <div class="menu-item">
                                 <a href="{{ route('users.index') }}" class="menu-link">
                                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                                    <span class="menu-title">All Employees</span>
+                                    <span class="menu-title">{{ __('messages.all_employees') }}</span>
                                 </a>
                             </div>
                         </div>
@@ -240,13 +240,13 @@
                                     </svg>
                                 </span>
                             </span>
-                            <span class="menu-title">Dashboards</span>
+                            <span class="menu-title">{{ __('messages.dashboards') }}</span>
                         </a>
                     </div>
                     <div class="menu-item">
                         <div class="menu-content pt-8 pb-2">
                             <span class="menu-section text-muted text-uppercase fs-8">
-                                EMPLOYEE PANEL
+                                {{ __('messages.employee_panel') }}
                             </span>
                         </div>
                     </div>
@@ -255,7 +255,7 @@
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
                             <span class="menu-icon">🏷️</span>
-                            <span class="menu-title">SALES</span>
+                            <span class="menu-title">{{ __('messages.sales') }}</span>
                             <span class="menu-arrow"></span>
                         </span>
 
@@ -263,7 +263,7 @@
                             <div class="menu-item">
                                 <a href="{{ route('employee.orders.index') }}" class="menu-link">
                                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                                    <span class="menu-title">Orders</span>
+                                    <span class="menu-title">{{ __('messages.orders') }}</span>
                                 </a>
                             </div>
                         </div>
@@ -273,7 +273,7 @@
                     <div class="menu-item menu-accordion" data-kt-menu-trigger="click">
                         <span class="menu-link">
                             <span class="menu-icon">🎟️</span>
-                            <span class="menu-title">Coupons</span>
+                            <span class="menu-title">{{ __('messages.coupons') }}</span>
                             <span class="menu-arrow"></span>
                         </span>
 
@@ -281,7 +281,7 @@
                             <div class="menu-item">
                                 <a href="{{ route('employee.coupons.index') }}" class="menu-link">
                                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                                    <span class="menu-title">View Coupons</span>
+                                    <span class="menu-title">{{ __('messages.view_coupons') }}</span>
                                 </a>
                             </div>
                         </div>

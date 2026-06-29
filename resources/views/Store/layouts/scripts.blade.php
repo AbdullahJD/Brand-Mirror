@@ -1,3 +1,26 @@
+<script>
+    window.i18n = {!! json_encode([
+        'submitting' => __('messages.submitting'),
+        'errorRemovingItem' => __('messages.error_removing_item'),
+        'addedToCart' => __('messages.added_to_cart'),
+        'couponError' => __('messages.coupon_error'),
+        'ok' => __('messages.ok'),
+        'couponApplied' => __('messages.coupon_applied'),
+        'couponAppliedSuccess' => __('messages.coupon_applied_success'),
+        'serverError' => __('messages.server_error'),
+        'somethingWentWrong' => __('messages.something_went_wrong'),
+        'loginRequired' => __('messages.login_required'),
+        'loginRequiredForFavorites' => __('messages.login_required_for_favorites'),
+        'login' => __('messages.login'),
+        'addedToFavorites' => __('messages.added_to_favorites'),
+        'removedFromFavorites' => __('messages.removed_from_favorites'),
+        'errorRemovingFavorite' => __('messages.error_removing_favorite'),
+        'products' => __('messages.products'),
+        'categories' => __('messages.categories'),
+        'noResultsFound' => __('messages.no_results_found'),
+    ], JSON_UNESCAPED_UNICODE) !!};
+</script>
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 <script src="{{ URL::asset('website/lib/easing/easing.min.js') }}"></script>
@@ -14,7 +37,7 @@
 @yield('js')
 
 <script>
-    window.isLoggedIn = @json(auth()->check());
+    window.isLoggedIn = @json(auth('customer')->check());
 </script>
 
 <script>
@@ -26,7 +49,7 @@ document.addEventListener("submit", function (e) {
 
         if (btn) {
             btn.disabled = true;
-            btn.innerText = "Submitting...";
+            btn.innerText = window.i18n.submitting;
         }
     }
 });
@@ -56,7 +79,7 @@ document.addEventListener("submit", function (e) {
 
         } catch (error) {
             console.log(error);
-            alert('Error removing item');
+            alert(window.i18n.errorRemovingItem);
         }
     }
 </script>
@@ -109,7 +132,7 @@ document.addEventListener("submit", function (e) {
         .then(data => {
             if (data.status) {
                 updateCartUI(data.cart, data.cart_count);
-                showToast('تمت الإضافة ✔️');
+                showToast(window.i18n.addedToCart);
             }
         });
     });
@@ -235,9 +258,9 @@ function showToast(message) {
 
                 Swal.fire({
                     icon: 'warning',
-                    title: 'Coupon Error',
+                    title: window.i18n.couponError,
                     text: data.message,
-                    confirmButtonText: 'OK'
+                    confirmButtonText: window.i18n.ok
                 });
 
                 return;
@@ -245,8 +268,8 @@ function showToast(message) {
 
             Swal.fire({
                 icon: 'success',
-                title: 'Coupon Applied',
-                text: 'Coupon applied successfully',
+                title: window.i18n.couponApplied,
+                text: window.i18n.couponAppliedSuccess,
             });
 
             document.getElementById('discount-value').innerText =
@@ -258,8 +281,8 @@ function showToast(message) {
         .catch(err => {
             Swal.fire({
                 icon: 'error',
-                title: 'Server Error',
-                text: 'Something went wrong'
+                title: window.i18n.serverError,
+                text: window.i18n.somethingWentWrong
             });
         });
     }
@@ -277,19 +300,22 @@ function showToast(message) {
 
         //  CHECK LOGIN FIRST
         if (!window.isLoggedIn) {
-            Swal.fire({
-                icon: 'warning',
-                title: 'Login Required',
-                text: 'You must login first to add items to favorites',
-                confirmButtonText: 'Login'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = '/login';
-                }
-            });
 
-            return; // stop here
-        }
+        Swal.fire({
+            icon: 'warning',
+            title: window.i18n.loginRequired,
+            text: window.i18n.loginRequiredForFavorites,
+            confirmButtonText: window.i18n.login
+        }).then((result) => {
+
+            if (result.isConfirmed) {
+                window.location.href = "{{ route('store.login') }}";
+            }
+
+        });
+
+        return;
+    }
 
         const response = await fetch(`/favorites/toggle/${productId}`, {
             method: 'POST',
@@ -319,9 +345,9 @@ function showToast(message) {
         await updateFavoritesCount();
 
         if (isFav) {
-            showToast('تمت الإضافة إلى المفضلة ❤️');
+            showToast(window.i18n.addedToFavorites);
         } else {
-            showToast('تمت الإزالة من المفضلة 💔');
+            showToast(window.i18n.removedFromFavorites);
         }
     });
 </script>
@@ -428,7 +454,7 @@ function showToast(message) {
                     const item = btn.closest('.col-lg-3');
                     if (item) item.remove();
 
-                    showToast('تمت الإزالة من المفضلة 💔');
+                    showToast(window.i18n.removedFromFavorites);
 
                     // تحديث العداد في الهيدر
                     updateFavoritesCount();
@@ -436,7 +462,7 @@ function showToast(message) {
 
             } catch (err) {
                 console.log(err);
-                showToast('حدث خطأ أثناء الحذف ❌');
+                showToast(window.i18n.errorRemovingFavorite);
             }
         });
 
@@ -495,7 +521,7 @@ function showToast(message) {
 
                     // المنتجات
                     if (data.products.length) {
-                        html += `<div class="p-2 text-muted">Products</div>`;
+                        html += `<div class="p-2 text-muted">${window.i18n.products}</div>`;
                         data.products.forEach(p => {
                             html += `
                                 <a href="/product/${p.id}"
@@ -508,7 +534,7 @@ function showToast(message) {
 
                     // الأقسام
                     if (data.categories.length) {
-                        html += `<div class="p-2 text-muted">Categories</div>`;
+                        html += `<div class="p-2 text-muted">${window.i18n.categories}</div>`;
                         data.categories.forEach(c => {
                             html += `
                                 <a href="/category/${c.id}"
@@ -520,7 +546,7 @@ function showToast(message) {
                     }
 
                     if (!data.products.length && !data.categories.length) {
-                        html = `<div class="p-2 text-muted">No results found</div>`;
+                        html = `<div class="p-2 text-muted">${window.i18n.noResultsFound}</div>`;
                     }
 
                     resultsBox.innerHTML = html;

@@ -71,7 +71,7 @@ Attributes
                             <th>Values Count</th>
 
                             <th class="text-end">
-                                Actions
+                                {{ __('messages.actions') }}
                             </th>
 
                         </tr>
@@ -103,7 +103,7 @@ Attributes
                                         data-kt-menu-trigger="click"
                                         data-kt-menu-placement="bottom-end">
 
-                                        Actions
+                                        {{ __('messages.actions') }}
 
                                     </a>
 
@@ -118,7 +118,7 @@ Attributes
                                             <a href="{{ route('attributes.edit',$attribute->id) }}"
                                                 class="menu-link px-3">
 
-                                                Edit
+                                                {{ __('messages.edit') }}
 
                                             </a>
 
@@ -131,7 +131,7 @@ Attributes
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#deleteModal-{{ $attribute->id }}">
 
-                                                Delete
+                                                {{ __('messages.delete') }}
 
                                             </a>
 
@@ -186,7 +186,7 @@ Attributes
                 <div class="modal-header">
 
                     <h5 class="modal-title">
-                        Confirm Delete
+                        {{ __('messages.confirm_delete') }}
                     </h5>
 
                     <button type="button"
@@ -214,14 +214,14 @@ Attributes
                         class="btn btn-secondary"
                         data-bs-dismiss="modal">
 
-                        Cancel
+                        {{ __('messages.cancel') }}
 
                     </button>
 
                     <button type="submit"
                         class="btn btn-danger">
 
-                        Delete
+                        {{ __('messages.delete') }}
 
                     </button>
 

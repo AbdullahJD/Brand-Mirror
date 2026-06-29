@@ -105,7 +105,7 @@ class ProductController extends Controller
 
         return redirect()
         ->route('products.index')
-        ->with('success', 'Product Created Successfully');
+        ->with('success', __('messages.flash_product_created'));
 
     }
 
@@ -208,7 +208,7 @@ class ProductController extends Controller
 
         return redirect()
             ->route('products.index')
-            ->with('updated', 'Product Updated Successfully');
+            ->with('updated', __('messages.flash_product_updated'));
     }
 
     /**
@@ -241,6 +241,6 @@ class ProductController extends Controller
 
         return redirect()
             ->route('products.index')
-            ->with('deleted', 'Product deleted successfully');;
+            ->with('deleted', __('messages.flash_product_deleted'));
     }
 }

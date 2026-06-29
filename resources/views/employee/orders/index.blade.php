@@ -33,7 +33,7 @@ Order
                         <th>Customer</th>
                         <th>Total</th>
                         <th>Status</th>
-                        <th>Actions</th>
+                        <th>{{ __('messages.actions') }}</th>
                     </tr>
                 </thead>
 
@@ -67,14 +67,14 @@ Order
 
                         <td>
                             <a href="{{ route('employee.orders.show', $order->id) }}" class="btn btn-sm btn-primary">
-                                View
+                                {{ __('messages.view') }}
                             </a>
                         </td>
 
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4" class="text-center">No Orders Found</td>
+                        <td colspan="4" class="text-center">{{ __('messages.no_orders_found') }}</td>
                     </tr>
                 @endforelse
                 </tbody>

@@ -4,29 +4,27 @@
             <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
 
                 <div class="carousel-inner">
-
                     @foreach($banners as $key => $banner)
+                        <div class="carousel-item {{ $key == 0 ? 'active' : '' }} position-relative"
+                            style="height: 430px; overflow: hidden;">
+                            <img class="w-100 h-100"
+                                src="{{ asset('storage/'.$banner->image) }}"
+                                style="object-fit: cover; object-position: center;"
+                            >
 
-                    <div class="carousel-item {{ $key == 0 ? 'active' : '' }} position-relative"
-                        style="height: 430px; overflow: hidden;">
-                        <img class="w-100 h-100"
-                            src="{{ asset('storage/'.$banner->image) }}"
-                            style="object-fit: cover; object-position: center;">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <div class="p-3">
+                                    <h1 class="display-4 text-white">{{ $banner->title }}</h1>
 
-                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                            <div class="p-3">
-                                <h1 class="display-4 text-white">{{ $banner->title }}</h1>
-
-                                @if($banner->link)
-                                    <a href="{{ $banner->link }}" class="btn btn-outline-light mt-3">
-                                        Shop Now
-                                    </a>
-                                @endif
+                                    @if($banner->link)
+                                        <a href="{{ $banner->link }}" class="btn btn-outline-light mt-3">
+                                            {{ __('messages.shop_now') }}
+                                        </a>
+                                    @endif
+                                </div>
                             </div>
+
                         </div>
-
-                    </div>
-
                     @endforeach
 
                 </div>
@@ -38,9 +36,9 @@
                     <img class="img-fluid" src="{{ asset('storage/'.$offerTop->image) }}" alt="">
                 @endif
                 <div class="offer-text">
-                    <h6 class="text-white text-uppercase">Save 20%</h6>
-                    <h3 class="text-white mb-3">Special Offer</h3>
-                    <a href="{{ route("store.shop") }}" class="btn btn-primary">Shop Now</a>
+                    <h6 class="text-white text-uppercase">{{ __('messages.save_20_percent') }}</h6>
+                    <h3 class="text-white mb-3">{{ __('messages.special_offer') }}</h3>
+                    <a href="{{ route("store.shop") }}" class="btn btn-primary">{{ __('messages.shop_now') }}</a>
                 </div>
             </div>
             <div class="product-offer mb-30" style="height: 200px;">
@@ -48,9 +46,9 @@
                     <img class="img-fluid" src="{{ asset('storage/'.$offerBottom->image) }}" alt="">
                 @endif
                 <div class="offer-text">
-                    <h6 class="text-white text-uppercase">Save 20%</h6>
-                    <h3 class="text-white mb-3">Special Offer</h3>
-                    <a href="{{ route("store.shop") }}" class="btn btn-primary">Shop Now</a>
+                    <h6 class="text-white text-uppercase">{{ __('messages.save_20_percent') }}</h6>
+                    <h3 class="text-white mb-3">{{ __('messages.special_offer') }}</h3>
+                    <a href="{{ route("store.shop") }}" class="btn btn-primary">{{ __('messages.shop_now') }}</a>
                 </div>
             </div>
         </div>

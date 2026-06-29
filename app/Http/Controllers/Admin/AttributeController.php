@@ -41,7 +41,7 @@ class AttributeController extends Controller
 
         return redirect()
             ->route('attributes.index')
-            ->with('success', 'Attribute Created Successfully');
+            ->with('success', __('messages.flash_attribute_created'));
         }
 
    
@@ -76,7 +76,7 @@ class AttributeController extends Controller
 
         return redirect()
             ->route('attributes.index')
-            ->with('updated', 'Attribute Updated Successfully');
+            ->with('updated', __('messages.flash_attribute_updated'));
         }
 
     
@@ -93,6 +93,6 @@ class AttributeController extends Controller
         
         return redirect()
             ->route('attributes.index')
-            ->with('deleted', 'Attribute Deleted Successfully');
+            ->with('deleted', __('messages.flash_attribute_deleted'));
         }
 }

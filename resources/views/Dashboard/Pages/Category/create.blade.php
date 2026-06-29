@@ -82,8 +82,8 @@ Add Categories
                         </label>
 
                         <select name="status" class="form-select">
-                            <option value="1">Active</option>
-                            <option value="0">Inactive</option>
+                            <option value="1">{{ __('messages.active') }}</option>
+                            <option value="0">{{ __('messages.inactive') }}</option>
                         </select>
                     </div>
 

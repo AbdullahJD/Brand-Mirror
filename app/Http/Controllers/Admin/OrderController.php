@@ -30,6 +30,6 @@ class OrderController extends Controller
         );
         return redirect()
             ->route('orders.show', $order)
-            ->with('updated', 'Order status updated successfully');
+            ->with('updated', __('messages.flash_order_status_updated'));
     }
 }

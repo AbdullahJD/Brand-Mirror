@@ -54,7 +54,7 @@ Add Attribute Value
             <div class="card-footer text-end">
 
                 <button class="btn btn-primary">
-                    Save
+                    {{ __('messages.save') }}
                 </button>
 
             </div>

@@ -1,6 +1,6 @@
 <div class="container-fluid pt-5">
     <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4">
-        <span class="bg-secondary pr-3">Categories</span>
+        <span class="bg-secondary pr-3">{{ __('messages.categories') }}</span>
     </h2>
 
     <div class="row px-xl-5 pb-3">
@@ -26,7 +26,7 @@
                             <h6>{{ $category->name }}</h6>
 
                             <small class="text-body">
-                                {{ $category->products_count }} Products
+                                {{ __('messages.products_count', ['count' => $category->products_count]) }}
                             </small>
                         </div>
 

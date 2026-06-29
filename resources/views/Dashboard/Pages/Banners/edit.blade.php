@@ -97,12 +97,12 @@ Edit Banner
 
                                 <option value="1"
                                     {{ $banner->status ? 'selected' : '' }}>
-                                    Active
+                                    {{ __('messages.active') }}
                                 </option>
 
                                 <option value="0"
                                     {{ !$banner->status ? 'selected' : '' }}>
-                                    Inactive
+                                    {{ __('messages.inactive') }}
                                 </option>
 
                             </select>

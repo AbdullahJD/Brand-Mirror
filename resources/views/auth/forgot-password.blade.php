@@ -94,7 +94,7 @@
                                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                         </span>
                                     </button>
-									<a href="{{ route('login') }}" class="btn btn-lg btn-light-primary fw-bolder">Cancel</a>
+									<a href="{{ route('login') }}" class="btn btn-lg btn-light-primary fw-bolder">{{ __('messages.cancel') }}</a>
 								</div>
 								<!--end::Actions-->
 							</form>

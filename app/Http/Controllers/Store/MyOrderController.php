@@ -44,7 +44,7 @@ class MyOrderController extends Controller
             ->first();
 
         if (!$order) {
-            return back()->with('error', 'Order not found');
+            return back()->with('error', __('messages.flash_order_not_found'));
         }
 
         return view('Store.pages.orderDetails', compact('order'));

@@ -135,7 +135,7 @@ Edit Product Variants
                     <div class="mb-7">
 
                         <label class="form-label fs-5 fw-bold">
-                            Attributes
+                            {{ __('messages.attributes') }}
                         </label>
 
                         @php
@@ -223,14 +223,14 @@ Edit Product Variants
                             <option value="1"
                                 {{ old('status',$productVariant->status) == 1 ? 'selected' : '' }}>
 
-                                Active
+                                {{ __('messages.active') }}
 
                             </option>
 
                             <option value="0"
                                 {{ old('status',$productVariant->status) == 0 ? 'selected' : '' }}>
 
-                                Inactive
+                                {{ __('messages.inactive') }}
 
                             </option>
 
@@ -245,7 +245,7 @@ Edit Product Variants
                     <a href="{{ route('product-variants.index') }}"
                        class="btn btn-light me-3">
 
-                        Cancel
+                        {{ __('messages.cancel') }}
 
                     </a>
 

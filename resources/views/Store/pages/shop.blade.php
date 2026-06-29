@@ -1,7 +1,7 @@
 @extends('Store.layouts.master')
 
 @section('title')
-Shop
+{{ __('messages.shop') }}
 @endsection
 
 @section('content')
@@ -10,10 +10,9 @@ Shop
 
     <div class="row px-xl-5">
 
-        {{-- ================= LEFT FILTER ================= --}}
         <div class="col-lg-3 col-md-4">
 
-            <h5 class="mb-3">Categories</h5>
+            <h5 class="mb-3">{{ __('messages.categories') }}</h5>
 
             <div class="list-group">
                 @foreach($categories as $category)
@@ -29,7 +28,7 @@ Shop
 
             <hr>
 
-            <h5>Filter</h5>
+            <h5>{{ __('messages.filter') }}</h5>
 
             <form method="GET" action="{{ route('store.shop') }}">
 
@@ -37,38 +36,35 @@ Shop
                     <input type="hidden" name="category" value="{{ request('category') }}">
                 @endif
 
-                <label>Min Price</label>
+                <label>{{ __('messages.min_price') }}</label>
                 <input type="number" name="min" value="{{ request('min') }}" class="form-control mb-2">
 
-                <label>Max Price</label>
+                <label>{{ __('messages.max_price') }}</label>
                 <input type="number" name="max" value="{{ request('max') }}" class="form-control mb-3">
 
-                <button class="btn btn-primary btn-block">Filter</button>
+                <button class="btn btn-primary btn-block">{{ __('messages.filter') }}</button>
             </form>
 
         </div>
 
-        {{-- ================= PRODUCTS ================= --}}
         <div class="col-lg-9 col-md-8">
 
-            {{-- Top bar --}}
             <div class="d-flex justify-content-between align-items-center mb-4">
 
                 <div>
-                    <strong>{{ $products->count() }}</strong> Products found
+                    {{ __('messages.products_found', ['count' => $products->count()]) }}
                 </div>
 
                 <form method="GET">
                     <select name="sort" class="form-control" onchange="this.form.submit()">
-                        <option value="latest">Newest</option>
-                        <option value="price_low">Price Low</option>
-                        <option value="price_high">Price High</option>
+                        <option value="latest">{{ __('messages.sort_newest') }}</option>
+                        <option value="price_low">{{ __('messages.sort_price_low') }}</option>
+                        <option value="price_high">{{ __('messages.sort_price_high') }}</option>
                     </select>
                 </form>
 
             </div>
 
-            {{-- Products Grid --}}
             <div class="row">
 
                 @forelse($products as $product)
@@ -123,7 +119,7 @@ Shop
 
                     <div class="col-12 text-center">
                         <div class="alert alert-info">
-                            No products found
+                            {{ __('messages.no_products_found') }}
                         </div>
                     </div>
 

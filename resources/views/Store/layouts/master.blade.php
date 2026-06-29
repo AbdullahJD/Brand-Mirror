@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
 
 <head>
     @include('Store.layouts.head')
 </head>
 
-<body>
+<body class="{{ app()->getLocale() === 'ar' ? 'text-right rtl-layout' : '' }}">
 
     <!-- Topbar Start and Navbar Start -->
 
@@ -19,7 +19,7 @@
     <div id="toast" style="
         position: fixed;
         bottom: 30px;
-        right: 30px;
+        {{ app()->getLocale() === 'ar' ? 'left' : 'right' }}: 30px;
         background: #28a745;
         color: white;
         padding: 12px 18px;

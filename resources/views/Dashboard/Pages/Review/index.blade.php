@@ -34,7 +34,7 @@ Review
                             <th>Rating</th>
                             <th>Comment</th>
                             <th>Status</th>
-                            <th class="text-end">Actions</th>
+                            <th class="text-end">{{ __('messages.actions') }}</th>
 
                         </tr>
                     </thead>
@@ -117,7 +117,7 @@ Review
                                         @method('DELETE')
                                         <button class="btn btn-sm btn-light-danger"
                                                 onclick="return confirm('Delete this review?')">
-                                            Delete
+                                            {{ __('messages.delete') }}
                                         </button>
                                     </form>
                                 </td>

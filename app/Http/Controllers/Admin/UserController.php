@@ -46,7 +46,7 @@ class UserController extends Controller
         );
 
         return redirect()->route('users.index')
-            ->with('success', 'User created');
+            ->with('success', __('messages.flash_user_created'));
     }
 
     public function show(string $id)
@@ -76,7 +76,7 @@ class UserController extends Controller
 
             if ($adminCount <= 1) {
                 return redirect()->back()
-                    ->with('error', 'You cannot change the last admin to employee.');
+                    ->with('error', __('messages.flash_cannot_change_last_admin'));
             }
         }
 
@@ -87,7 +87,7 @@ class UserController extends Controller
 
             if ($adminCount <= 1) {
                 return redirect()->back()
-                    ->with('error', 'You cannot downgrade yourself. You are the last admin.');
+                    ->with('error', __('messages.flash_cannot_downgrade_self'));
             }
         }
 
@@ -105,7 +105,7 @@ class UserController extends Controller
         );
 
         return redirect()->route('users.index')
-            ->with('updated', 'User updated successfully.');
+            ->with('updated', __('messages.flash_user_updated'));
     }
 
     public function destroy(string $id)
@@ -115,7 +115,7 @@ class UserController extends Controller
         //  منع حذف نفسه
         if (auth()->id() === $user->id) {
             return redirect()->back()
-                ->with('error', 'You cannot delete your own account.');
+                ->with('error', __('messages.flash_cannot_delete_self'));
         }
 
         //  منع حذف آخر Admin
@@ -124,7 +124,7 @@ class UserController extends Controller
 
             if ($adminCount <= 1) {
                 return redirect()->back()
-                    ->with('error', 'You cannot delete the last admin in the system.');
+                    ->with('error', __('messages.flash_cannot_delete_last_admin'));
             }
         }
 
@@ -138,6 +138,6 @@ class UserController extends Controller
         );
 
         return redirect()->route('users.index')
-            ->with('deleted', 'User deleted successfully.');
+            ->with('deleted', __('messages.flash_user_deleted'));
     }
 }

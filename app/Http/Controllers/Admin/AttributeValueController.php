@@ -47,7 +47,7 @@ class AttributeValueController extends Controller
 
         return redirect()
             ->route('attribute-values.index')
-            ->with('success', 'Attribute Value Created Successfully');
+            ->with('success', __('messages.flash_attribute_value_created'));
 
     }
 
@@ -84,7 +84,7 @@ class AttributeValueController extends Controller
 
         return redirect()
             ->route('attribute-values.index')
-            ->with('updated', 'Attribute Value Updated Successfully');
+            ->with('updated', __('messages.flash_attribute_value_updated'));
     }
 
     public function destroy(AttributeValue $attribute)
@@ -100,7 +100,7 @@ class AttributeValueController extends Controller
 
         return redirect()
             ->route('attribute-values.index')
-            ->with('deleted', 'Attribute Value Deleted Successfully');
+            ->with('deleted', __('messages.flash_attribute_value_deleted'));
 
     }
 }

@@ -36,7 +36,7 @@ User (Admin || Employee)
                             <th>Email</th>
                             <th>Role</th>
                             <th>Created At</th>
-                            <th class="text-end">Actions</th>
+                            <th class="text-end">{{ __('messages.actions') }}</th>
                         </tr>
                     </thead>
 
@@ -59,7 +59,7 @@ User (Admin || Employee)
                                         </span>
                                     @else
                                         <span class="badge badge-light-primary">
-                                            Employee
+                                            {{ __('messages.employee') }}
                                         </span>
                                     @endif
                                 </td>
@@ -73,7 +73,7 @@ User (Admin || Employee)
                                     <a href="#"
                                         class="btn btn-sm btn-light btn-active-light-primary"
                                         data-kt-menu-trigger="click">
-                                        Actions
+                                        {{ __('messages.actions') }}
                                     </a>
 
                                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded
@@ -84,7 +84,7 @@ User (Admin || Employee)
                                         <div class="menu-item px-3">
                                             <a href="{{ route('users.edit',$user->id) }}"
                                                 class="menu-link px-3">
-                                                Edit
+                                                {{ __('messages.edit') }}
                                             </a>
                                         </div>
 
@@ -93,7 +93,7 @@ User (Admin || Employee)
                                                 class="menu-link px-3 text-danger"
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#deleteModal-{{ $user->id }}">
-                                                Delete
+                                                {{ __('messages.delete') }}
                                             </a>
                                         </div>
 
@@ -161,12 +161,12 @@ User (Admin || Employee)
                     <button type="button"
                         class="btn btn-secondary"
                         data-bs-dismiss="modal">
-                        Cancel
+                        {{ __('messages.cancel') }}
                     </button>
 
                     <button type="submit"
                         class="btn btn-danger">
-                        Delete
+                        {{ __('messages.delete') }}
                     </button>
 
                 </div>

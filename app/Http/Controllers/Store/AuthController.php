@@ -33,7 +33,7 @@ class AuthController extends Controller
 
         Auth::guard('customer')->login($customer);
 
-        return redirect('/')->with('success', 'Account created successfully');
+        return redirect('/')->with('success', __('messages.flash_account_created'));
     }
 
     public function login(Request $request)

@@ -79,11 +79,11 @@ Add Banner
                                 class="form-select">
 
                             <option value="1">
-                                Active
+                                {{ __('messages.active') }}
                             </option>
 
                             <option value="0">
-                                Inactive
+                                {{ __('messages.inactive') }}
                             </option>
 
                         </select>

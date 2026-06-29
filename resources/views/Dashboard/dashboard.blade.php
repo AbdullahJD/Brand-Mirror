@@ -7,8 +7,8 @@
 
     {{-- TITLE --}}
     <div class="mb-5">
-        <h2 class="fw-bold">Dashboard</h2>
-        <p class="text-muted">Store Overview</p>
+        <h2 class="fw-bold">{{ __('messages.dashboard') }}</h2>
+        <p class="text-muted">{{ __('messages.store_overview') }}</p>
     </div>
 
     {{-- STATS --}}
@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3>{{ $productsCount }}</h3>
-                    <span class="text-muted">Products</span>
+                    <span class="text-muted">{{ __('messages.products') }}</span>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3>{{ $ordersCount }}</h3>
-                    <span class="text-muted">Orders</span>
+                    <span class="text-muted">{{ __('messages.orders') }}</span>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
     {{-- LATEST ORDERS --}}
     <div class="card mt-8">
         <div class="card-header">
-            <h3>Latest Orders</h3>
+            <h3>{{ __('messages.latest_orders') }}</h3>
         </div>
 
         <div class="card-body p-0">

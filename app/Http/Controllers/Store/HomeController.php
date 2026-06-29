@@ -57,6 +57,12 @@ class HomeController extends Controller
         ->where('status', 1)
         ->first();
         
+        // dd([
+        //     'locale' => app()->getLocale(),
+        //     'count' => $banners->count(),
+        //     'data' => $banners
+        // ]);
+        
         return view('Store.pages.home', compact(
             'featuredProducts', 
             'recentProducts', 

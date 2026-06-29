@@ -56,7 +56,7 @@ class CategoryController extends Controller
         );
 
         return redirect()->route('categories.index')
-                        ->with('success', 'Category created successfully');
+                        ->with('success', __('messages.flash_category_created'));
     }
 
     /**
@@ -101,7 +101,7 @@ class CategoryController extends Controller
         $category->update($data);
 
         return redirect()->route('categories.index')
-            ->with('updated', 'Category updated successfully');
+            ->with('updated', __('messages.flash_category_updated'));
     }
 
     /**
@@ -123,6 +123,6 @@ class CategoryController extends Controller
             "category {$category->name} was Deleted"
         );
 
-        return back()->with('deleted', 'Category deleted successfully');
+        return back()->with('deleted', __('messages.flash_category_deleted'));
     }
 }

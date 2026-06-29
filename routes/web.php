@@ -16,8 +16,11 @@ use App\Http\Controllers\Admin\ReviewController;
 
 use App\Http\Controllers\Employee\EmployeeController;
 use App\Http\Controllers\Employee\EmployeeOrderController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/lang/{locale}', [LocaleController::class, 'switch'])->name('lang.switch');
 
 /*
 |--------------------------------------------------------------------------

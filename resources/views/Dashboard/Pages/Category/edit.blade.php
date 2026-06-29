@@ -65,10 +65,10 @@ Edit Categories
 
                         <select name="status" class="form-select">
                             <option value="1" {{ $category->status == 1 ? 'selected' : '' }}>
-                                Active
+                                {{ __('messages.active') }}
                             </option>
                             <option value="0" {{ $category->status == 0 ? 'selected' : '' }}>
-                                Inactive
+                                {{ __('messages.inactive') }}
                             </option>
                         </select>
                     </div>

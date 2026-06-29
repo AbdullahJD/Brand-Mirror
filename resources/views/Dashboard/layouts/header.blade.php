@@ -33,7 +33,7 @@
 						<div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-5 my-lg-0 align-items-stretch" id="#kt_header_menu" data-kt-menu="true">
 							<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item here show menu-lg-down-accordion me-lg-1">
 								<span class="menu-link py-3">
-									<span class="menu-title">Dashboards</span>
+									<span class="menu-title">{{ __('messages.dashboards') }}</span>
 									<span class="menu-arrow d-lg-none"></span>
 								</span>
 							</div>
@@ -42,7 +42,7 @@
     						@if(auth()->check() && auth()->user()->role === 'admin')
 								<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
 									<span class="menu-link py-3">
-										<span class="menu-title">Catalog</span>
+										<span class="menu-title">{{ __('messages.catalog') }}</span>
 										<span class="menu-arrow d-lg-none"></span>
 									</span>
 									<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
@@ -53,7 +53,7 @@
 													<span class="menu-icon">📂</span>
 													<!--end::Svg Icon-->
 												</span>
-												<span class="menu-title">Categories</span>
+												<span class="menu-title">{{ __('messages.categories') }}</span>
 												<span class="menu-arrow"></span>
 											</span>
 											<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-active-bg py-lg-4 w-lg-225px">
@@ -142,7 +142,7 @@
 
 								<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
 									<span class="menu-link py-3">
-										<span class="menu-title">PRODUCT CONFIGURATION</span>
+										<span class="menu-title">{{ __('messages.product_configuration') }}</span>
 										<span class="menu-arrow d-lg-none"></span>
 									</span>
 									<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
@@ -153,7 +153,7 @@
 													<span class="menu-icon">🏷️</span>
 													<!--end::Svg Icon-->
 												</span>
-												<span class="menu-title">Attributes</span>
+												<span class="menu-title">{{ __('messages.attributes') }}</span>
 												<span class="menu-arrow"></span>
 											</span>
 											<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-active-bg py-lg-4 w-lg-225px">
@@ -184,7 +184,7 @@
 													<span class="menu-icon">🔖</span>
 													<!--end::Svg Icon-->
 												</span>
-												<span class="menu-title">Attribute Values</span>
+												<span class="menu-title">{{ __('messages.attribute_values') }}</span>
 												<span class="menu-arrow"></span>
 											</span>
 											<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-active-bg py-lg-4 w-lg-225px">
@@ -213,7 +213,7 @@
 
 								<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
 									<span class="menu-link py-3">
-										<span class="menu-title">SALES</span>
+										<span class="menu-title">{{ __('messages.sales') }}</span>
 										<span class="menu-arrow d-lg-none"></span>
 									</span>
 									<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
@@ -224,7 +224,7 @@
 													<span class="menu-icon">🛒</span>
 													<!--end::Svg Icon-->
 												</span>
-												<span class="menu-title">Orders</span>
+												<span class="menu-title">{{ __('messages.orders') }}</span>
 												<span class="menu-arrow"></span>
 											</span>
 											<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-active-bg py-lg-4 w-lg-225px">
@@ -243,7 +243,7 @@
 
 								<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
 									<span class="menu-link py-3">
-										<span class="menu-title">MARKETING</span>
+										<span class="menu-title">{{ __('messages.marketing') }}</span>
 										<span class="menu-arrow d-lg-none"></span>
 									</span>
 									<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
@@ -254,7 +254,7 @@
 													<span class="menu-icon">📢</span>
 													<!--end::Svg Icon-->
 												</span>
-												<span class="menu-title">Banners</span>
+												<span class="menu-title">{{ __('messages.banners') }}</span>
 												<span class="menu-arrow"></span>
 											</span>
 											<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-active-bg py-lg-4 w-lg-225px">
@@ -285,7 +285,7 @@
 													<span class="menu-icon">🎟️</span>
 													<!--end::Svg Icon-->
 												</span>
-												<span class="menu-title">Coupons</span>
+												<span class="menu-title">{{ __('messages.coupons') }}</span>
 												<span class="menu-arrow"></span>
 											</span>
 											<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-active-bg py-lg-4 w-lg-225px">
@@ -315,7 +315,7 @@
 							@if(auth()->check() && auth()->user()->role === 'employee')
 								<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
 									<span class="menu-link py-3">
-										<span class="menu-title">SALES</span>
+										<span class="menu-title">{{ __('messages.sales') }}</span>
 										<span class="menu-arrow d-lg-none"></span>
 									</span>
 									<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
@@ -326,7 +326,7 @@
 													<span class="menu-icon">🛒</span>
 													<!--end::Svg Icon-->
 												</span>
-												<span class="menu-title">Orders</span>
+												<span class="menu-title">{{ __('messages.orders') }}</span>
 												<span class="menu-arrow"></span>
 											</span>
 											<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-active-bg py-lg-4 w-lg-225px">
@@ -351,6 +351,9 @@
 				<!--end::Navbar-->
 				<!--begin::Toolbar wrapper-->
 				<div class="d-flex align-items-stretch flex-shrink-0">
+					<div class="d-flex align-items-center ms-1 ms-lg-3 me-3">
+						@include('components.language-switcher', ['btnClass' => 'btn-light-primary'])
+					</div>
 					<!--begin::Search-->
 					<div class="d-flex align-items-stretch ms-1 ms-lg-3">
 					</div>
@@ -398,7 +401,7 @@
 								<form method="POST" action="{{ route('admin.logout') }}">
 									@csrf
 									<button type="submit" class="menu-link px-5 border-0 bg-transparent w-100 text-start">
-										Sign Out
+										{{ __('messages.sign_out') }}
 									</button>
 								</form>
 							</div>

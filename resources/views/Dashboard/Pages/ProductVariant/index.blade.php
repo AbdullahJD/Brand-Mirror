@@ -82,9 +82,9 @@ Product Variants
                         <th>SKU</th>
                         <th>Price</th>
                         <th>Quantity</th>
-                        <th>Attributes</th>
+                        <th>{{ __('messages.attributes') }}</th>
                         <th>Status</th>
-                        <th class="text-end">Actions</th>
+                        <th class="text-end">{{ __('messages.actions') }}</th>
 
                     </tr>
 
@@ -133,13 +133,13 @@ Product Variants
                                 @if($variant->status)
 
                                     <span class="badge badge-light-success">
-                                        Active
+                                        {{ __('messages.active') }}
                                     </span>
 
                                 @else
 
                                     <span class="badge badge-light-danger">
-                                        Inactive
+                                        {{ __('messages.inactive') }}
                                     </span>
 
                                 @endif
@@ -153,7 +153,7 @@ Product Variants
                                     data-kt-menu-trigger="click"
                                     data-kt-menu-placement="bottom-end">
 
-                                    Actions
+                                    {{ __('messages.actions') }}
 
                                 </a>
 
@@ -168,7 +168,7 @@ Product Variants
                                         <a href="{{ route('product-variants.edit',$variant->id) }}"
                                             class="menu-link px-3">
 
-                                            Edit
+                                            {{ __('messages.edit') }}
 
                                         </a>
 
@@ -181,7 +181,7 @@ Product Variants
                                             data-bs-toggle="modal"
                                             data-bs-target="#deleteModal-{{ $variant->id }}">
 
-                                            Delete
+                                            {{ __('messages.delete') }}
 
                                         </a>
 
@@ -238,7 +238,7 @@ Product Variants
                     <div class="modal-header">
 
                         <h5 class="modal-title">
-                            Confirm Delete
+                            {{ __('messages.confirm_delete') }}
                         </h5>
 
                         <button type="button"
@@ -274,14 +274,14 @@ Product Variants
                                 class="btn btn-light"
                                 data-bs-dismiss="modal">
 
-                            Cancel
+                            {{ __('messages.cancel') }}
 
                         </button>
 
                         <button type="submit"
                                 class="btn btn-danger">
 
-                            Delete
+                            {{ __('messages.delete') }}
 
                         </button>
 

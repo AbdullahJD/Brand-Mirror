@@ -1,7 +1,7 @@
 @extends('Store.layouts.master')
 
 @section('title')
-Category
+{{ __('messages.category') }}
 @endsection
 
 @section('content')
@@ -42,7 +42,7 @@ Category
                                 <h6 class="text-truncate">{{ $child->name }}</h6>
 
                                 <small class="text-body">
-                                    {{ $child->products->count() }} Products
+                                    {{ __('messages.products_count', ['count' => $child->products->count()]) }}
                                 </small>
 
                             </div>
@@ -113,7 +113,7 @@ Category
 
                 <div class="col-12 text-center">
                     <div class="alert alert-info">
-                        لا يوجد منتجات في هذا القسم
+                        {{ __('messages.no_products_in_category') }}
                     </div>
                 </div>
 

@@ -24,7 +24,7 @@
 			<div class="d-flex flex-column bgi-no-repeat rounded-top" style="background-image:url('{{ asset('assets/media/misc/pattern-1.jpg') }}')">
 				<!--begin::Title-->
 				<h3 class="text-white fw-bold px-9 mt-10 mb-6">
-					Notifications
+					{{ __('messages.notifications') }}
 					<span class="fs-8 opacity-75 ps-3">
 						{{ $notifications->count() }} reports
 					</span>
@@ -72,7 +72,7 @@
 
 						@empty
 							<div class="text-center text-muted py-5">
-								No notifications
+								{{ __('messages.no_notifications') }}
 							</div>
 						@endforelse
 					</div>
@@ -87,10 +87,10 @@
 
 							<button type="submit"
 									class="btn btn-sm btn-light-primary">
-								Mark All As Read
+								{{ __('messages.mark_all_read') }}
 							</button>
 						</form>
-						<a href="{{ route('notifications.index') }}" class="btn btn-color-gray-600 btn-active-color-primary">View All
+						<a href="{{ route('notifications.index') }}" class="btn btn-color-gray-600 btn-active-color-primary">{{ __('messages.view_all') }}
 						<!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
 						<span class="svg-icon svg-icon-5">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

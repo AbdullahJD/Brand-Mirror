@@ -75,7 +75,7 @@ class ProductVariantController extends Controller
             ->route('product-variants.index')
             ->with(
                 'success',
-                'Variant created successfully'
+                __('messages.flash_variant_created')
             );
     }
 
@@ -133,7 +133,7 @@ class ProductVariantController extends Controller
             ->route('product-variants.index')
             ->with(
                 'updated',
-                'Variant updated successfully'
+                __('messages.flash_variant_updated')
             );
     }
 
@@ -152,7 +152,7 @@ class ProductVariantController extends Controller
             ->route('product-variants.index')
             ->with(
                 'deleted',
-                'Variant deleted successfully'
+                __('messages.flash_variant_deleted')
             );
     }
 }

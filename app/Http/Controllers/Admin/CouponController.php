@@ -53,7 +53,7 @@ class CouponController extends Controller
             "category {$coupons->code} was created"
         );
 
-        return redirect()->route('coupons.index')->with('success', 'Coupon created successfully');
+        return redirect()->route('coupons.index')->with('success', __('messages.flash_coupon_created'));
     }
 
     public function show(string $id)
@@ -91,7 +91,7 @@ class CouponController extends Controller
             "category {$coupon->code} was updated"
         );
 
-        return redirect()->route('coupons.index')->with('updated', 'Coupon updated successfully');
+        return redirect()->route('coupons.index')->with('updated', __('messages.flash_coupon_updated'));
     }
 
     public function destroy(Coupon $coupon)
@@ -106,7 +106,7 @@ class CouponController extends Controller
             "category {$coupon->code} was deleted"
         );
 
-        return redirect()->route('coupons.index')->with('deleted', 'Coupon deleted successfully');
+        return redirect()->route('coupons.index')->with('deleted', __('messages.flash_coupon_deleted'));
     }
 
     public function toggle(Coupon $coupon)
@@ -120,6 +120,6 @@ class CouponController extends Controller
         $coupon->is_active = !$coupon->is_active;
         $coupon->save();
 
-        return back()->with('success', 'Coupon status updated');
+        return back()->with('success', __('messages.flash_coupon_status_updated'));
     }
 }

@@ -1,7 +1,7 @@
 @extends('Store.layouts.master')
 
 @section('title')
-Check Out Success
+{{ __('messages.checkout_success') }}
 @endsection
 
 @section('content')
@@ -10,53 +10,49 @@ Check Out Success
 
     <div class="text-center bg-white p-5 shadow-sm rounded" style="max-width: 500px; width: 100%;">
 
-        <!-- ICON -->
         <div class="mb-4">
             <div style="width:80px;height:80px;margin:auto;border-radius:50%;background:#e6f9ee;display:flex;align-items:center;justify-content:center;">
                 <span style="font-size:40px;color:#28a745;">✔</span>
             </div>
         </div>
 
-        <!-- TITLE -->
-        <h2 class="mb-2 text-success">Order Placed Successfully!</h2>
+        <h2 class="mb-2 text-success">{{ __('messages.order_placed_successfully') }}</h2>
 
         <p class="text-muted mb-4">
-            Thank you for your purchase. Your order has been received and is being processed.
+            {{ __('messages.order_thank_you') }}
         </p>
 
-        <!-- ORDER INFO -->
         <div class="bg-light p-3 rounded mb-4 text-start">
 
             <div class="d-flex justify-content-between mb-2">
-                <span>Order Number:</span>
+                <span>{{ __('messages.order_number') }}</span>
                 <strong>{{ $order->order_number ?? '-' }}</strong>
             </div>
 
             <div class="d-flex justify-content-between mb-2">
-                <span>Total Paid:</span>
+                <span>{{ __('messages.total_paid') }}</span>
                 <strong>${{ $order->final_total ?? 0 }}</strong>
             </div>
 
             <div class="d-flex justify-content-between">
-                <span>Status:</span>
+                <span>{{ __('messages.status') }}:</span>
                 <span class="badge bg-warning text-dark">
-                    {{ ucfirst($order->status ?? 'pending') }}
+                    {{ __('messages.status_' . ($order->status ?? 'pending')) }}
                 </span>
             </div>
 
         </div>
 
-        <!-- BUTTONS -->
         <div class="d-grid gap-2">
 
             <a href="{{ route('store.home') }}"
                class="btn btn-dark">
-                Continue Shopping
+                {{ __('messages.continue_shopping') }}
             </a>
 
             <a href="{{ route('store.orders.show', $order) }}"
                class="btn btn-outline-primary">
-                View Order Details
+                {{ __('messages.view_order_details') }}
             </a>
 
         </div>

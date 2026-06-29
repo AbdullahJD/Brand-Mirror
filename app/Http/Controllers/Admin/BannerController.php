@@ -49,7 +49,7 @@ class BannerController extends Controller
 
         return redirect()
             ->route('banners.index')
-            ->with('success', 'Banner created');
+            ->with('success', __('messages.flash_banner_created'));
     }
 
     public function show(string $id)
@@ -94,7 +94,7 @@ class BannerController extends Controller
             "banner {$banner->title} was updated"
         );
 
-        return redirect()->route('banners.index')->with('updated', 'Banner updated');
+        return redirect()->route('banners.index')->with('updated', __('messages.flash_banner_updated'));
     }
 
     public function destroy(Banner $banner)
@@ -112,6 +112,6 @@ class BannerController extends Controller
             "banner {$banner->title} was deleted"
         );
 
-        return redirect()->route('banners.index')->with('deleted', 'Banner deleted successfully');
+        return redirect()->route('banners.index')->with('deleted', __('messages.flash_banner_deleted'));
     }
 }

@@ -2,7 +2,7 @@
 @extends('Store.layouts.master')
 
 @section('title')
-Products
+{{ __('messages.products') }}
 @endsection
 
 @section('content')
@@ -12,9 +12,9 @@ Products
         <div class="row px-xl-5">
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
-                    <a class="breadcrumb-item text-dark" href="#">Home</a>
-                    <a class="breadcrumb-item text-dark" href="#">Shop</a>
-                    <span class="breadcrumb-item active">Shop Detail</span>
+                    <a class="breadcrumb-item text-dark" href="{{ route('store.home') }}">{{ __('messages.home') }}</a>
+                    <a class="breadcrumb-item text-dark" href="{{ route('store.shop') }}">{{ __('messages.shop') }}</a>
+                    <span class="breadcrumb-item active">{{ __('messages.shop_detail') }}</span>
                 </nav>
             </div>
         </div>
@@ -59,7 +59,7 @@ Products
                 <div class="h-100 bg-light p-30">
                     <h3>{{ $product->name }}</h3>
                     <p class="text-muted mb-2">
-                        Rating:
+                        {{ __('messages.rating') }}
                         <strong>{{ $averageRating }}/5</strong>
                     </p>
                     <div class="d-flex mb-3">
@@ -75,7 +75,7 @@ Products
                             @endfor
                         </div>
                         <small class="pt-1">
-                            ({{ $reviewsCount }} Reviews)
+                            {{ __('messages.reviews_count', ['count' => $reviewsCount]) }}
                         </small>
                     </div>
 
@@ -161,7 +161,7 @@ Products
                         <button 
                             class="btn btn-primary px-3 add-to-cart"
                             data-id="{{ $product->id }}">
-                            <i class="fa fa-shopping-cart mr-1"></i>Add ToCart
+                            <i class="fa fa-shopping-cart mr-1"></i>{{ __('messages.add_to_cart') }}
                         </button>
                     </div>
                 </div>
@@ -171,14 +171,14 @@ Products
             <div class="col">
                 <div class="bg-light p-30">
                     <div class="nav nav-tabs mb-4">
-                        <a class="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-1">Information</a>
+                        <a class="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-1">{{ __('messages.information') }}</a>
                         <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">
-                            Reviews ({{ $product->reviews()->where('is_approved', true)->count() }})
+                            {{ __('messages.reviews_tab', ['count' => $product->reviews()->where('is_approved', true)->count()]) }}
                         </a>
                     </div>
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="tab-pane-1">
-                            <h4 class="mb-3">Additional Information</h4>
+                            <h4 class="mb-3">{{ __('messages.additional_information') }}</h4>
 
                             <ul class="list-group list-group-flush">
                                 @foreach($product->additional_information ?? [] as $key => $value)
@@ -194,8 +194,7 @@ Products
                                 {{-- عرض المراجعات --}}
                                 <div class="col-md-6">
                                     <h4 class="mb-4">
-                                        {{ $product->reviews()->where('is_approved', true)->count() }}
-                                        Reviews
+                                        {{ __('messages.reviews_heading', ['count' => $product->reviews()->where('is_approved', true)->count()]) }}
                                     </h4>
                                     @forelse($product->reviews()->where('is_approved', true)->latest()->get() as $review)
                                         <div class="media mb-4">
@@ -225,13 +224,13 @@ Products
                                         </div>
                                     @empty
                                         <div class="alert alert-info">
-                                            No reviews yet.
+                                            {{ __('messages.no_reviews_yet') }}
                                         </div>
                                     @endforelse
                                 </div>
                                 {{-- نموذج إضافة مراجعة --}}
                                 <div class="col-md-6">
-                                    <h4 class="mb-4">Leave a Review</h4>
+                                    <h4 class="mb-4">{{ __('messages.leave_a_review') }}</h4>
                                     @if(session('success'))
                                         <div class="alert alert-success">
                                             {{ session('success') }}
@@ -240,21 +239,21 @@ Products
                                     <form action="{{ route('reviews.store', $product) }}" method="POST">
                                         @csrf
                                         <div class="form-group">
-                                            <label>Your Rating *</label>
+                                            <label>{{ __('messages.your_rating') }}</label>
                                             <select name="rating" class="form-control" required>
-                                                <option value="">Select Rating</option>
-                                                <option value="5">★★★★★ (5)</option>
-                                                <option value="4">★★★★☆ (4)</option>
-                                                <option value="3">★★★☆☆ (3)</option>
-                                                <option value="2">★★☆☆☆ (2)</option>
-                                                <option value="1">★☆☆☆☆ (1)</option>
+                                                <option value="">{{ __('messages.select_rating') }}</option>
+                                                <option value="5">{{ __('messages.rating_option_5') }}</option>
+                                                <option value="4">{{ __('messages.rating_option_4') }}</option>
+                                                <option value="3">{{ __('messages.rating_option_3') }}</option>
+                                                <option value="2">{{ __('messages.rating_option_2') }}</option>
+                                                <option value="1">{{ __('messages.rating_option_1') }}</option>
                                             </select>
                                             @error('rating')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label>Your Review *</label>
+                                            <label>{{ __('messages.your_review') }}</label>
                                             <textarea
                                                 name="comment"
                                                 rows="5"
@@ -266,7 +265,7 @@ Products
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label>Your Name *</label>
+                                            <label>{{ __('messages.your_name') }} *</label>
                                             <input
                                                 type="text"
                                                 name="name"
@@ -279,7 +278,7 @@ Products
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label>Your Email *</label>
+                                            <label>{{ __('messages.your_email') }} *</label>
                                             <input
                                                 type="email"
                                                 name="email"
@@ -294,7 +293,7 @@ Products
                                         <button
                                             type="submit"
                                             class="btn btn-primary px-4">
-                                            Submit Review
+                                            {{ __('messages.submit_review') }}
                                         </button>
                                     </form>
                                 </div>
@@ -312,7 +311,7 @@ Products
     @if($relatedProducts->count())
         <div class="container-fluid py-5">
             <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4">
-                <span class="bg-secondary pr-3">You May Also Like</span>
+                <span class="bg-secondary pr-3">{{ __('messages.you_may_also_like') }}</span>
             </h2>
 
             <div class="row px-xl-5">

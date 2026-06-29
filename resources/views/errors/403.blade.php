@@ -40,7 +40,7 @@
 					<!--begin::Wrapper-->
 					<div class="pt-lg-10 mb-10">
 						<!--begin::Logo-->
-						<h1 class="fw-bolder fs-2qx text-gray-800 mb-10">403 - Access Denied</h1>
+						<h1 class="fw-bolder fs-2qx text-gray-800 mb-10">{{ __('messages.403_heading') }}</h1>
 						<!--end::Logo-->
 						<!--begin::Message-->
 						<div class="fw-bold fs-3 text-muted mb-15">You do not have permission to access this page.
@@ -48,7 +48,7 @@
 						<!--end::Message-->
 						<!--begin::Action-->
 						<div class="text-center">
-							<a href="{{ route('dashboard') }}" class="btn btn-lg btn-primary fw-bolder">Go to homepage</a>
+							<a href="{{ route('dashboard') }}" class="btn btn-lg btn-primary fw-bolder">{{ __('messages.go_to_homepage') }}</a>
 						</div>
 						<!--end::Action-->
 					</div>

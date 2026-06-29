@@ -122,7 +122,7 @@ Edit Coupon
                                {{ $coupon->is_active ? 'checked' : '' }}>
 
                         <label class="form-check-label">
-                            Active
+                            {{ __('messages.active') }}
                         </label>
                     </div>
 

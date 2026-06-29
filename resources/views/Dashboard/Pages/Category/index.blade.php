@@ -53,7 +53,7 @@ Category
 									<th class="min-w-250px">Category Name</th>
 									<th class="min-w-150px">Parent Category</th>
 									<th class="min-w-100px">Status</th>
-									<th class="text-end">Actions</th>
+									<th class="text-end">{{ __('messages.actions') }}</th>
 								</tr>
 								<!--end::Table row-->
 							</thead>
@@ -92,11 +92,11 @@ Category
 										<td>
 											@if($category->status)
 												<span class="badge badge-light-success">
-													Active
+													{{ __('messages.active') }}
 												</span>
 											@else
 												<span class="badge badge-light-danger">
-													Inactive
+													{{ __('messages.inactive') }}
 												</span>
 											@endif
 										</td>
@@ -105,7 +105,7 @@ Category
 											<a href="#" class="btn btn-sm btn-light btn-active-light-primary"
 											data-kt-menu-trigger="click"
 											data-kt-menu-placement="bottom-end">
-												Actions
+												{{ __('messages.actions') }}
 											</a>
 
 											<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded
@@ -116,7 +116,7 @@ Category
 												<div class="menu-item px-3">
 													<a href="{{ route('categories.edit', $category->id) }}"
 													class="menu-link px-3">
-														Edit
+														{{ __('messages.edit') }}
 													</a>
 												</div>
 
@@ -124,7 +124,7 @@ Category
 													<a href="#" class="menu-link px-3 text-danger"
 													data-bs-toggle="modal"
 													data-bs-target="#deleteModal-{{ $category->id }}">
-														Delete
+														{{ __('messages.delete') }}
 													</a>
 												</div>
 
@@ -164,12 +164,12 @@ Category
 						@method('DELETE')
 
 						<div class="modal-header">
-							<h5 class="modal-title">تأكيد الحذف</h5>
+							<h5 class="modal-title">{{ __('messages.confirm_delete') }}</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 						</div>
 
 						<div class="modal-body">
-							<p>هل أنت متأكد أنك تريد حذف هذا القسم؟</p>
+							<p>{{ __('messages.confirm_delete_category') }}</p>
 							<p class="fw-bold text-danger">
 								{{ $category->name }}
 							</p>
@@ -177,11 +177,11 @@ Category
 
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-								إلغاء
+								{{ __('messages.cancel') }}
 							</button>
 
 							<button type="submit" class="btn btn-danger">
-								حذف
+								{{ __('messages.delete') }}
 							</button>
 						</div>
 

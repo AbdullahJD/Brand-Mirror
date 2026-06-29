@@ -136,7 +136,7 @@ Add Product Variants
                     <div class="mb-7">
 
                         <label class="form-label fs-5 fw-bold">
-                            Attributes
+                            {{ __('messages.attributes') }}
                         </label>
 
                         <div class="row">
@@ -212,14 +212,14 @@ Add Product Variants
                             <option value="1"
                                 {{ old('status', 1) == 1 ? 'selected' : '' }}>
 
-                                Active
+                                {{ __('messages.active') }}
 
                             </option>
 
                             <option value="0"
                                 {{ old('status') === "0" ? 'selected' : '' }}>
 
-                                Inactive
+                                {{ __('messages.inactive') }}
 
                             </option>
 
@@ -234,7 +234,7 @@ Add Product Variants
                     <a href="{{ route('product-variants.index') }}"
                        class="btn btn-light me-3">
 
-                        Cancel
+                        {{ __('messages.cancel') }}
 
                     </a>
 

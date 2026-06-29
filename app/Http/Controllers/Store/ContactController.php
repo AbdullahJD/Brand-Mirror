@@ -34,6 +34,6 @@ class ContactController extends Controller
                  ->subject($request->subject);
         });
 
-        return back()->with('success', 'Message sent successfully ✔');
+        return back()->with('success', __('messages.flash_message_sent'));
     }
 }

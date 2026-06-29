@@ -23,6 +23,14 @@
 		<link href="{{ URL::asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ URL::asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
 
+		@if(app()->getLocale() === 'ar')
+		<link href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700&display=swap" rel="stylesheet">
+		<style>
+			body.rtl { font-family: 'Cairo', Poppins, sans-serif; direction: rtl; }
+		</style>
+		@endif
+
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 		<!--end::Global Stylesheets Bundle-->
 	</head>

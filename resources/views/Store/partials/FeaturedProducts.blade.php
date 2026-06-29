@@ -1,6 +1,6 @@
 <div class="container-fluid pt-5 pb-3">
     <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4">
-        <span class="bg-secondary pr-3">Featured Products</span>
+        <span class="bg-secondary pr-3">{{ __('messages.featured_products') }}</span>
     </h2>
 
     <div class="row px-xl-5">
@@ -63,7 +63,7 @@
                         <small class="fa fa-star text-primary mr-1"></small>
                         <small class="fa fa-star text-primary mr-1"></small>
                         <small class="fa fa-star text-primary mr-1"></small>
-                        <small>(0)</small>
+                        <small>{{ __('messages.reviews_zero') }}</small>
                     </div>
 
                 </div>

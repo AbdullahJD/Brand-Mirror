@@ -213,7 +213,7 @@ Add Product
                             </option>
 
                             <option value="inactive">
-                                Inactive
+                                {{ __('messages.inactive') }}
                             </option>
 
                         </select>
@@ -226,7 +226,7 @@ Add Product
 
                     <a href="{{ route('products.index') }}"
                        class="btn btn-light me-3">
-                        Cancel
+                        {{ __('messages.cancel') }}
                     </a>
 
                     <button type="submit"

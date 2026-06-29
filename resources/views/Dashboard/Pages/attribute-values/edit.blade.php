@@ -58,7 +58,7 @@ Edit Atrribute Value
             <div class="card-footer text-end">
 
                 <button class="btn btn-primary">
-                    Update
+                    {{ __('messages.update') }}
                 </button>
 
             </div>

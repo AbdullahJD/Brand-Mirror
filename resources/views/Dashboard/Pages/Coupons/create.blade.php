@@ -108,7 +108,7 @@ Add Coupons
                                type="checkbox"
                                name="is_active"
                                checked>
-                        <label class="form-check-label">Active</label>
+                        <label class="form-check-label">{{ __('messages.active') }}</label>
                     </div>
 
                 </div>

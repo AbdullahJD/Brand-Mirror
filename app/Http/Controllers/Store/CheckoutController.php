@@ -63,6 +63,6 @@ class CheckoutController extends Controller
 
         return redirect()
             ->route('store.checkout.success', $order->id)
-            ->with('success', 'Order created successfully');
+            ->with('success', __('messages.flash_order_created'));
     }
 }

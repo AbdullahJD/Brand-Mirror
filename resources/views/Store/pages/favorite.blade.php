@@ -1,14 +1,14 @@
 @extends('Store.layouts.master')
 
 @section('title')
-Favorite
+{{ __('messages.favorite') }}
 @endsection
 
 @section('content')
 
 <div class="container-fluid pt-5 pb-3">
     <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4">
-        <span class="bg-secondary pr-3">My Favorites</span>
+        <span class="bg-secondary pr-3">{{ __('messages.my_favorites') }}</span>
     </h2>
 
     <div class="row px-xl-5" id="favorites-container">
@@ -67,7 +67,7 @@ Favorite
         @empty
             <div class="col-12 text-center">
                 <div class="alert alert-info">
-                    لا يوجد منتجات في المفضلة 💔
+                    {{ __('messages.no_favorites') }}
                 </div>
             </div>
         @endforelse

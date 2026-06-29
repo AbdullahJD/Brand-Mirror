@@ -1,7 +1,7 @@
 @extends('Store.layouts.master')
 
 @section('title')
-My Order
+{{ __('messages.my_order') }}
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@ My Order
 
     <h2 class="mb-4">
         <i class="fa fa-shopping-bag text-primary"></i>
-        My Orders
+        {{ __('messages.my_orders') }}
     </h2>
 
     @if($orders->count())
@@ -21,11 +21,11 @@ My Order
 
             <thead class="thead-dark">
                 <tr>
-                    <th>#</th>
-                    <th>Order Number</th>
-                    <th>Date</th>
-                    <th>Total</th>
-                    <th>Status</th>
+                    <th>{{ __('messages.table_number') }}</th>
+                    <th>{{ __('messages.order_number') }}</th>
+                    <th>{{ __('messages.date') }}</th>
+                    <th>{{ __('messages.total') }}</th>
+                    <th>{{ __('messages.status') }}</th>
                     <th></th>
                 </tr>
             </thead>
@@ -49,24 +49,24 @@ My Order
                         @switch($order->status)
 
                             @case('pending')
-                                <span class="badge badge-warning">Pending</span>
+                                <span class="badge badge-warning">{{ __('messages.status_pending') }}</span>
                                 @break
 
                             @case('processing')
-                                <span class="badge badge-info">Processing</span>
+                                <span class="badge badge-info">{{ __('messages.status_processing') }}</span>
                                 @break
 
                             @case('completed')
-                                <span class="badge badge-success">Completed</span>
+                                <span class="badge badge-success">{{ __('messages.status_completed') }}</span>
                                 @break
 
                             @case('cancelled')
-                                <span class="badge badge-danger">Cancelled</span>
+                                <span class="badge badge-danger">{{ __('messages.status_cancelled') }}</span>
                                 @break
 
                             @default
                                 <span class="badge badge-secondary">
-                                    {{ ucfirst($order->status) }}
+                                    {{ __('messages.status_' . $order->status) }}
                                 </span>
 
                         @endswitch
@@ -78,7 +78,7 @@ My Order
                         <a href="{{ route('store.orders.show',$order) }}"
                            class="btn btn-sm btn-primary">
 
-                            View Details
+                            {{ __('messages.view_details') }}
 
                         </a>
 
@@ -102,10 +102,10 @@ My Order
 
             <i class="fa fa-shopping-cart fa-4x text-muted mb-3"></i>
 
-            <h4>No Orders Yet</h4>
+            <h4>{{ __('messages.no_orders_yet') }}</h4>
 
             <a href="{{ route('store.shop') }}" class="btn btn-primary mt-3">
-                Start Shopping
+                {{ __('messages.start_shopping') }}
             </a>
 
         </div>

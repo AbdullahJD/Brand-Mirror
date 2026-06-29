@@ -15,7 +15,7 @@ Orders
             <div class="col-md-4">
                 <div class="card card-flush h-100">
                     <div class="card-body">
-                        <span class="text-gray-400 fw-bold fs-7">Total Orders</span>
+                        <span class="text-gray-400 fw-bold fs-7">{{ __('messages.total_orders') }}</span>
                         <div class="fs-2hx fw-bolder text-dark">{{ $stats['total_orders'] }}</div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@ Orders
                             <th>Status</th>
                             <th>Type</th>
                             <th>Date</th>
-                            <th class="text-end">Actions</th>
+                            <th class="text-end">{{ __('messages.actions') }}</th>
                         </tr>
                     </thead>
 
@@ -133,7 +133,7 @@ Orders
                                     @if($order->customer_id)
                                         <span class="badge badge-light-primary">User</span>
                                     @else
-                                        <span class="badge badge-light-secondary">Guest</span>
+                                        <span class="badge badge-light-secondary">{{ __('messages.guest') }}</span>
                                     @endif
                                 </td>
 
@@ -143,7 +143,7 @@ Orders
 
                                     <a href="{{ route('orders.show', $order) }}"
                                        class="btn btn-sm btn-light btn-active-light-primary">
-                                        View
+                                        {{ __('messages.view') }}
                                     </a>
 
                                 </td>
@@ -154,7 +154,7 @@ Orders
 
                             <tr>
                                 <td colspan="8" class="text-center">
-                                    No Orders Found
+                                    {{ __('messages.no_orders_found') }}
                                 </td>
                             </tr>
 

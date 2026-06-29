@@ -11,7 +11,7 @@
             <div class="card shadow-sm">
 
                 <div class="card-header">
-                    <h4>Track Your Order</h4>
+                    <h4>{{ __('messages.track_your_order') }}</h4>
                 </div>
 
                 <div class="card-body">
@@ -26,17 +26,17 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label>Order Number</label>
+                            <label>{{ __('messages.order_number') }}</label>
                             <input type="text" name="order_number" class="form-control" required>
                         </div>
 
                         <div class="mb-3">
-                            <label>Phone Number</label>
+                            <label>{{ __('messages.phone_number') }}</label>
                             <input type="text" name="phone" class="form-control" required>
                         </div>
 
                         <button class="btn btn-primary w-100">
-                            Track Order
+                            {{ __('messages.track_order') }}
                         </button>
 
                     </form>

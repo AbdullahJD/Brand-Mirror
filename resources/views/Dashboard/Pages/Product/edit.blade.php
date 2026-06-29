@@ -270,7 +270,7 @@ Edit Product
 
                             <option value="inactive"
                                 {{ $product->status == 'inactive' ? 'selected' : '' }}>
-                                Inactive
+                                {{ __('messages.inactive') }}
                             </option>
 
                         </select>
@@ -283,7 +283,7 @@ Edit Product
 
                     <a href="{{ route('products.index') }}"
                        class="btn btn-light me-3">
-                        Cancel
+                        {{ __('messages.cancel') }}
                     </a>
 
                     <button type="submit"

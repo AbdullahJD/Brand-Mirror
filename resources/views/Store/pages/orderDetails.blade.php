@@ -1,7 +1,7 @@
 @extends('Store.layouts.master')
 
 @section('title')
-Order Details
+{{ __('messages.order_details') }}
 @endsection
 
 @section('content')
@@ -16,7 +16,7 @@ Order Details
 
                 <div class="card-header">
                     <h4 class="mb-0">
-                        Order #{{ $order->order_number }}
+                        {{ __('messages.order_number_heading', ['number' => $order->order_number]) }}
                     </h4>
                 </div>
 
@@ -26,10 +26,10 @@ Order Details
 
                         <thead>
                             <tr>
-                                <th>Product</th>
-                                <th>Price</th>
-                                <th>Qty</th>
-                                <th>Total</th>
+                                <th>{{ __('messages.product') }}</th>
+                                <th>{{ __('messages.price') }}</th>
+                                <th>{{ __('messages.qty') }}</th>
+                                <th>{{ __('messages.total') }}</th>
                             </tr>
                         </thead>
 
@@ -80,25 +80,25 @@ Order Details
             <div class="card shadow-sm">
 
                 <div class="card-header">
-                    <h5>Order Summary</h5>
+                    <h5>{{ __('messages.order_summary') }}</h5>
                 </div>
 
                 <div class="card-body">
 
                     <div class="d-flex justify-content-between mb-2">
-                        <span>Subtotal</span>
+                        <span>{{ __('messages.subtotal') }}</span>
                         <strong>${{ number_format($order->subtotal,2) }}</strong>
                     </div>
 
                     <div class="d-flex justify-content-between mb-2">
-                        <span>Discount</span>
+                        <span>{{ __('messages.discount') }}</span>
                         <strong>
                             -${{ number_format($order->discount,2) }}
                         </strong>
                     </div>
 
                     <div class="d-flex justify-content-between mb-2">
-                        <span>Shipping</span>
+                        <span>{{ __('messages.shipping') }}</span>
                         <strong>${{ number_format($order->shipping_cost,2) }}</strong>
                     </div>
 
@@ -106,7 +106,7 @@ Order Details
 
                     <div class="d-flex justify-content-between">
 
-                        <h5>Total</h5>
+                        <h5>{{ __('messages.total') }}</h5>
 
                         <h5 class="text-success">
                             ${{ number_format($order->final_total,2) }}
@@ -117,15 +117,15 @@ Order Details
                     <hr>
 
                     <p>
-                        <strong>Status:</strong>
+                        <strong>{{ __('messages.status') }}:</strong>
 
                         <span class="badge bg-warning">
-                            {{ ucfirst($order->status) }}
+                            {{ __('messages.status_' . $order->status) }}
                         </span>
                     </p>
 
                     <p>
-                        <strong>Payment:</strong>
+                        <strong>{{ __('messages.payment') }}:</strong>
 
                         {{ ucfirst($order->payment_method) }}
                     </p>

@@ -37,7 +37,7 @@ Edit Attribute
 
                 <button type="submit"
                         class="btn btn-primary">
-                    Update
+                    {{ __('messages.update') }}
                 </button>
 
             </div>

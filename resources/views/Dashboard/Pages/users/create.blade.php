@@ -80,7 +80,7 @@ Add User
                             class="form-select">
 
                             <option value="employee">
-                                Employee
+                                {{ __('messages.employee') }}
                             </option>
 
                             <option value="admin">

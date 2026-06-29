@@ -13,7 +13,7 @@ Order Details
         <div class="d-flex justify-content-between align-items-center mb-5">
 
             <div>
-                <h2 class="mb-1">Order Details</h2>
+                <h2 class="mb-1">{{ __('messages.order_details') }}</h2>
                 <span class="text-muted">{{ $order->order_number }}</span>
             </div>
 

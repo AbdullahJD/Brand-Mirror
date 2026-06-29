@@ -24,13 +24,13 @@ class ReviewController extends Controller
             'is_approved' => true
         ]);
 
-        return back()->with('updated', 'Review Approved');
+        return back()->with('updated', __('messages.flash_review_approved'));
     }
 
     public function destroy(Review $review)
     {
         $review->delete();
 
-        return back()->with('deleted', 'Review Deleted');
+        return back()->with('deleted', __('messages.flash_review_deleted'));
     }
 }

@@ -1,7 +1,7 @@
 @extends('Store.layouts.master')
 
 @section('title')
-Check Out
+{{ __('messages.checkout') }}
 @endsection
 
 @section('content')
@@ -10,71 +10,65 @@ Check Out
 
     <div class="row g-5">
 
-        <!-- LEFT SIDE: FORM -->
         <div class="col-lg-7">
 
             <div class="bg-white p-4 shadow-sm rounded">
 
-                <h4 class="mb-4">Checkout Details</h4>
+                <h4 class="mb-4">{{ __('messages.checkout_details') }}</h4>
 
                 <form id="checkout-form">
                     @csrf
 
-                    <!-- NAME -->
                     <div class="mb-3">
-                        <label class="form-label">Full Name</label>
+                        <label class="form-label">{{ __('messages.full_name') }}</label>
                         <input type="text"
                                name="name"
                                class="form-control"
-                               placeholder="Enter your name"
+                               placeholder="{{ __('messages.enter_your_name') }}"
                                required>
                     </div>
 
-                    <!-- PHONE -->
                     <div class="mb-3">
-                        <label class="form-label">Phone Number</label>
+                        <label class="form-label">{{ __('messages.phone_number') }}</label>
                         <input type="text"
                                name="phone"
                                class="form-control"
-                               placeholder="059xxxxxxx"
+                               placeholder="{{ __('messages.phone_placeholder') }}"
                                required>
                     </div>
 
-                    <!-- ADDRESS -->
                     <div class="mb-3">
-                        <label class="form-label">Delivery Address</label>
+                        <label class="form-label">{{ __('messages.delivery_address') }}</label>
                         <textarea name="address"
                                   class="form-control"
                                   rows="3"
-                                  placeholder="City, Street, House number"
+                                  placeholder="{{ __('messages.address_placeholder') }}"
                                   required></textarea>
                     </div>
 
-                    <!-- COUPON -->
                     <div class="mb-3">
-                        <label class="form-label">Coupon Code (optional)</label>
+                        <label class="form-label">{{ __('messages.coupon_code_optional') }}</label>
 
                         <div class="input-group">
                             <input type="text"
                                 id="coupon-code"
                                 name="coupon_code"
                                 class="form-control"
-                                placeholder="SAVE10">
+                                placeholder="{{ __('messages.coupon_placeholder') }}">
 
                             <button type="button"
                                     class="btn btn-success"
                                     onclick="applyCouponCheckout()">
-                                Apply
+                                {{ __('messages.apply') }}
                             </button>
                         </div>
 
                         <small id="coupon-message" class="text-muted"></small>
                     </div>
 
-                    <!-- BUTTON -->
                     <button type="submit"
                             class="btn btn-dark w-100 py-3 mt-3">
-                        Confirm Order
+                        {{ __('messages.confirm_order') }}
                     </button>
 
                 </form>
@@ -83,14 +77,12 @@ Check Out
 
         </div>
 
-        <!-- RIGHT SIDE: ORDER SUMMARY -->
         <div class="col-lg-5">
 
             <div class="bg-light p-4 rounded shadow-sm">
 
-                <h5 class="mb-4">Order Summary</h5>
+                <h5 class="mb-4">{{ __('messages.order_summary') }}</h5>
 
-                <!-- ITEMS -->
                 @foreach($cart->items as $item)
                     <div class="d-flex justify-content-between mb-2">
                         <span>
@@ -102,21 +94,18 @@ Check Out
 
                 <hr>
 
-                <!-- SUBTOTAL -->
                 <div class="d-flex justify-content-between">
-                    <span>Subtotal</span>
+                    <span>{{ __('messages.subtotal') }}</span>
                     <strong>${{ $cart->items->sum('subtotal') }}</strong>
                 </div>
 
-                <!-- SHIPPING -->
                 <div class="d-flex justify-content-between">
-                    <span>Shipping</span>
+                    <span>{{ __('messages.shipping') }}</span>
                     <strong>$5.00</strong>
                 </div>
 
-                <!-- DISCOUNT -->
                 <div class="d-flex justify-content-between text-success">
-                    <span>Discount</span>
+                    <span>{{ __('messages.discount') }}</span>
                     <strong id="discount-value">
                         - ${{ $cart->discount ?? 0 }}
                     </strong>
@@ -124,16 +113,15 @@ Check Out
 
                 <hr>
 
-                <!-- TOTAL -->
                 <div class="d-flex justify-content-between fs-5">
-                    <span><strong>Total</strong></span>
+                    <span><strong>{{ __('messages.total') }}</strong></span>
                     <strong id="final-total">
                         ${{ $cart->items->sum('subtotal') + 5 - ($cart->discount ?? 0) }}
                     </strong>
                 </div>
 
                 <div class="text-muted small mt-3">
-                    🚚 Cash on delivery — Pay when you receive your order
+                    {{ __('messages.cash_on_delivery_note') }}
                 </div>
 
             </div>
@@ -148,12 +136,23 @@ Check Out
 
 @section('js')
 <script>
+    const checkoutI18n = {
+        processing: @json(__('messages.processing')),
+        orderCreated: @json(__('messages.order_created')),
+        orderNumber: @json(__('messages.order_number_label')),
+        error: @json(__('messages.error')),
+        somethingWrong: @json(__('messages.something_went_wrong')),
+        serverError: @json(__('messages.server_error')),
+        tryAgainLater: @json(__('messages.try_again_later')),
+        confirmOrder: @json(__('messages.confirm_order')),
+    };
+
     document.getElementById('checkout-form').addEventListener('submit', async function(e) {
         e.preventDefault();
 
         const btn = this.querySelector('button[type="submit"]');
         btn.disabled = true;
-        btn.innerText = 'Processing...';
+        btn.innerText = checkoutI18n.processing;
 
         try {
             const response = await fetch("{{ route('store.checkout') }}", {
@@ -172,12 +171,12 @@ Check Out
             });
 
             const data = await response.json();
-            console.log(data);
+
             if (data.status) {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Order Created 🎉',
-                    text: 'Order #' + data.order_number,
+                    title: checkoutI18n.orderCreated,
+                    text: checkoutI18n.orderNumber.replace(':number', data.order_number),
                 }).then(() => {
                     window.location.href = "/checkout/success/" + data.order_id;
                 });
@@ -185,21 +184,21 @@ Check Out
             } else {
                 Swal.fire({
                     icon: 'error',
-                    title: 'Error',
-                    text: data.message || 'Something went wrong'
+                    title: checkoutI18n.error,
+                    text: data.message || checkoutI18n.somethingWrong
                 });
             }
 
         } catch (error) {
             Swal.fire({
                 icon: 'error',
-                title: 'Server Error',
-                text: 'Please try again later'
+                title: checkoutI18n.serverError,
+                text: checkoutI18n.tryAgainLater
             });
         }
 
         btn.disabled = false;
-        btn.innerText = 'Confirm Order';
+        btn.innerText = checkoutI18n.confirmOrder;
     });
 </script>
 @endsection
