@@ -81,7 +81,7 @@ class CouponService
 
         $discount = $this->calculateDiscount($coupon, $orderTotal);
 
-        $this->applyCoupon($coupon);
+        // $this->applyCoupon($coupon);
 
         return [
             'coupon' => $coupon,
