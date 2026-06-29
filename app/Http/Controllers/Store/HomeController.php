@@ -57,7 +57,7 @@ class HomeController extends Controller
         ->where('status', 1)
         ->first();
         
-        return view('store.pages.home', compact(
+        return view('Store.pages.home', compact(
             'featuredProducts', 
             'recentProducts', 
             'favoriteIds', 
