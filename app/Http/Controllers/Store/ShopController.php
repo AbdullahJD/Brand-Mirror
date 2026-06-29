@@ -27,7 +27,7 @@ class ShopController extends Controller
             ->take(10)
             ->get();
 
-        return view('store.pages.product-show', compact(
+        return view('Store.pages.product-show', compact(
             'product',
             'reviewsCount',
             'averageRating',
