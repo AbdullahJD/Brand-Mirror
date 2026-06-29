@@ -20,10 +20,13 @@
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
-    <!-- Bootstrap (RTL for Arabic) -->
+    <!-- Bootstrap الأساسي (للجميع) -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+{{-- 
     @if(app()->getLocale() === 'ar')
-    <link href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css" rel="stylesheet">
-    @endif
+        <!-- RTL فقط -->
+        <link href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css" rel="stylesheet">
+    @endif --}}
 
     <!-- Libraries Stylesheet -->
     <link href="{{ URL::asset('website/lib/animate/animate.min.css') }}" rel="stylesheet">
@@ -41,5 +44,19 @@
         body.rtl .ml-3, body.rtl .ml-n1 { margin-left: 0 !important; margin-right: 0.25rem !important; }
         body.rtl .dropdown-menu-right { right: auto; left: 0; }
         body.rtl .fa-angle-right { transform: rotate(180deg); }
+        body.rtl {
+            direction: rtl;
+            text-align: right;
+        }
+        .rtl-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px; /* هذا أهم سطر */
+        }
+
+        html[dir="rtl"] .rtl-actions {
+            margin-right: auto;
+            margin-left: 0;
+        }
     </style>
     @endif

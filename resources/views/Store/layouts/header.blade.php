@@ -44,7 +44,7 @@
         </div>
 
         <!-- Customer Service + Account + Language -->
-        <div class="col-lg-4 text-right d-flex justify-content-end align-items-center">
+        <div class="col-lg-4 d-flex align-items-center justify-content-end gap-3">
 
             <div class="mr-3">
                 @include('components.language-switcher', ['btnClass' => 'btn-outline-dark'])
@@ -163,7 +163,7 @@
                         @endguest
                         <a href="{{ route('store.contact') }}" class="nav-item nav-link">{{ __('messages.contact') }}</a>
                     </div>
-                    <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
+                    <div class="navbar-nav py-0 d-none d-lg-block ml-auto rtl-actions">
                         <a href="{{ route('store.favorites.page') }}" class="btn px-0 ml-3" id="favorites-btn">
                             <i id="header-heart-icon" class="far fa-heart text-primary"></i>
                             <span id="header-fav-count"

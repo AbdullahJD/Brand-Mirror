@@ -21,7 +21,11 @@
 		<!--end::Page Vendor Stylesheets-->
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
 		<link href="{{ URL::asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
-		<link href="{{ URL::asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+		@if(app()->getLocale() === 'ar')
+			<link href="{{ asset('assets/css/style.bundle.rtl.css') }}" rel="stylesheet" type="text/css" />
+		@else
+			<link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+		@endif
 
 		@if(app()->getLocale() === 'ar')
 		<link href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css" rel="stylesheet">

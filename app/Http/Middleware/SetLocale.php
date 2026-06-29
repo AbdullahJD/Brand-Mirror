@@ -12,13 +12,19 @@ class SetLocale
 
     public function handle(Request $request, Closure $next): Response
     {
-        $locale = session('locale', config('app.locale', 'en'));
+        $locale = session('locale');
 
-        if (! in_array($locale, $this->supportedLocales, true)) {
+        if (! $locale) {
+            $locale = $request->getPreferredLanguage(['en', 'ar']) ?? 'en';
+        }
+
+        if (! in_array($locale, $this->supportedLocales)) {
             $locale = 'en';
         }
 
         app()->setLocale($locale);
+
+        session(['locale' => $locale]);
 
         return $next($request);
     }
