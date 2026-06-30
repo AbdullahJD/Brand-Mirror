@@ -11,7 +11,7 @@
     <!--begin::Brand-->
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         @if(auth()->check() && auth()->user()->role === 'admin')
-            <a href="{{ route('admin.dashboard') }}">
+            <a href="{{ route('/management-hub-v4r9.dashboard') }}">
                 <img alt="Logo" src="{{ URL::asset('assets/media/logos/logo.png') }}" class="h-150px logo" />
             </a>
         @endif
@@ -62,7 +62,7 @@
                 @if(auth()->check() && auth()->user()->role === 'admin')
                     {{-- Dashboard Admin --}}
                     <div class="menu-item here show">
-                        <a href="{{ route('admin.dashboard') }}" class="menu-link">
+                        <a href="{{ route('/management-hub-v4r9.dashboard') }}" class="menu-link">
                             <span class="menu-icon">
                                 <span class="svg-icon svg-icon-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -229,7 +229,7 @@
                 @if(auth()->check() && auth()->user()->role === 'employee')
                     {{-- Dashboard EMPLOYEE --}}
                     <div class="menu-item here show">
-                        <a href="{{ route('employee.dashboard') }}" class="menu-link">
+                        <a href="{{ route('/staff-x7p2.dashboard') }}" class="menu-link">
                             <span class="menu-icon">
                                 <span class="svg-icon svg-icon-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -261,7 +261,7 @@
 
                         <div class="menu-sub menu-sub-accordion menu-active-bg">
                             <div class="menu-item">
-                                <a href="{{ route('employee.orders.index') }}" class="menu-link">
+                                <a href="{{ route('/staff-x7p2.orders.index') }}" class="menu-link">
                                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
                                     <span class="menu-title">{{ __('messages.orders') }}</span>
                                 </a>
@@ -279,7 +279,7 @@
 
                         <div class="menu-sub menu-sub-accordion menu-active-bg">
                             <div class="menu-item">
-                                <a href="{{ route('employee.coupons.index') }}" class="menu-link">
+                                <a href="{{ route('/staff-x7p2.coupons.index') }}" class="menu-link">
                                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
                                     <span class="menu-title">{{ __('messages.view_coupons') }}</span>
                                 </a>

@@ -331,7 +331,7 @@
 											</span>
 											<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-active-bg py-lg-4 w-lg-225px">
 												<div class="menu-item">
-													<a href="{{ route('employee.orders.index') }}" class="menu-link py-3">
+													<a href="{{ route('/staff-x7p2.orders.index') }}" class="menu-link py-3">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -398,7 +398,7 @@
 							<!--end::Menu item-->
 							<!--begin::Menu item-->
 							<div class="menu-item px-5">
-								<form method="POST" action="{{ route('admin.logout') }}">
+								<form method="POST" action="{{ route('/management-hub-v4r9.logout') }}">
 									@csrf
 									<button type="submit" class="menu-link px-5 border-0 bg-transparent w-100 text-start">
 										{{ __('messages.sign_out') }}

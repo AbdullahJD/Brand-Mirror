@@ -472,11 +472,11 @@ return [
     'error_updating_status' => 'Error updating status',
 
     // Auth (admin)
-    'page_title_sign_in' => 'One Piece Store Sign in',
-    'welcome_title' => 'Welcome to One Piece Store',
+    'page_title_sign_in' => 'Brand Mirror Store Sign in',
+    'welcome_title' => 'Welcome to Brand Mirror Store',
     'welcome_tagline_1' => 'Premium style. Quality you can trust.',
     'welcome_tagline_2' => 'Discover our latest collection.',
-    'sign_in_heading' => 'Sign In to One Piece',
+    'sign_in_heading' => 'Sign In to Brand Mirror',
     'forgot_welcome_title' => 'Welcome to Metronic',
     'forgot_welcome_tagline_1' => 'Discover Amazing Metronic',
     'forgot_welcome_tagline_2' => 'with great build tools',
@@ -488,17 +488,17 @@ return [
     'contact_us_footer' => 'Contact Us',
 
     // Errors
-    '403_page_title' => 'One Piece Store 403 - Access Denied',
+    '403_page_title' => 'Brand Mirror Store 403 - Access Denied',
     '403_heading' => '403 - Access Denied',
     '403_message_line_1' => 'You do not have permission to access this page.',
     '403_message_line_2' => 'Please contact the administrator if you believe this is a mistake.',
     'go_to_homepage' => 'Go to homepage',
-    '404_page_title' => 'One Piece Store 404 - Not Found',
+    '404_page_title' => 'Brand Mirror Store 404 - Not Found',
     '404_heading' => 'Seems there is nothing here',
     'return_home' => 'Return Home',
 
     // Footer admin
-    'footer_copyright' => 'One Piece Store. All rights reserved.',
+    'footer_copyright' => 'Brand Mirror Store. All rights reserved.',
     'built_by' => 'Built by Abdullah Aljuaidi',
 
     // Flash messages (controllers)

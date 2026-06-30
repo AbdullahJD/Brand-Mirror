@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
 
-    Route::get('/admin/login', [AuthenticatedSessionController::class, 'create'])
-        ->name('admin.login');
+    Route::get('//management-hub-v4r9/login', [AuthenticatedSessionController::class, 'create'])
+        ->name('/management-hub-v4r9.login');
 
-    Route::post('/admin/login', [AuthenticatedSessionController::class, 'store']);
+    Route::post('//management-hub-v4r9/login', [AuthenticatedSessionController::class, 'store']);
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->name('password.request');
@@ -49,6 +49,6 @@ Route::middleware('auth')->group(function () {
 
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
-    Route::post('admin/logout', [AuthenticatedSessionController::class, 'destroy'])
-            ->name('admin.logout');
+    Route::post('/management-hub-v4r9/logout', [AuthenticatedSessionController::class, 'destroy'])
+            ->name('/management-hub-v4r9.logout');
 });

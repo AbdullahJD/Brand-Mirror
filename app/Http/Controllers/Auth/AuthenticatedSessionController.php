@@ -38,8 +38,8 @@ class AuthenticatedSessionController extends Controller
 
         //  أهم جزء: التوجيه حسب الدور
         return match ($user->role) {
-            'admin' => redirect()->route('admin.dashboard'),
-            'employee' => redirect()->route('employee.dashboard'),
+            'admin' => redirect()->route('/management-hub-v4r9.dashboard'),
+            'employee' => redirect()->route('/staff-x7p2.dashboard'),
             default => abort(403),
         };
     }
@@ -55,6 +55,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('admin.login');
+        return redirect()->route('/management-hub-v4r9.login');
     }
 }

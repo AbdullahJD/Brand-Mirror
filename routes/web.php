@@ -38,9 +38,9 @@ Route::get('/lang/{locale}', [LocaleController::class, 'switch'])->name('lang.sw
 | ADMIN ROUTES
 |--------------------------------------------------------------------------
 */
-Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
+Route::middleware(['auth', 'role:admin'])->prefix('/management-hub-v4r9')->group(function () {
 
-        Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+        Route::get('/', [DashboardController::class, 'index'])->name('/management-hub-v4r9.dashboard');
 
         Route::resource('users', UserController::class);
 
@@ -72,7 +72,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 | EMPLOYEE ROUTES
 |--------------------------------------------------------------------------
 */
-Route::middleware(['auth', 'role:employee'])->prefix('employee')->name('employee.')->group(function () {
+Route::middleware(['auth', 'role:employee'])->prefix('/staff-x7p2')->name('/staff-x7p2.')->group(function () {
 
     Route::get('/', [EmployeeController::class, 'index'])
     ->name('dashboard');
@@ -95,8 +95,8 @@ Route::middleware(['auth', 'role:employee'])->prefix('employee')->name('employee
 Route::middleware(['auth'])->get('/dashboard', function () {
 
     return match (auth()->user()->role) {
-        'admin' => redirect()->route('admin.dashboard'),
-        'employee' => redirect()->route('employee.dashboard'),
+        'admin' => redirect()->route('/management-hub-v4r9.dashboard'),
+        'employee' => redirect()->route('/staff-x7p2.dashboard'),
         default => abort(403),
     };
 

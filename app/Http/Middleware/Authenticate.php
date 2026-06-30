@@ -17,8 +17,8 @@ class Authenticate extends Middleware
         }
 
         // admin أو أي صفحة داخل admin
-        if ($request->is('admin') || $request->is('admin/*')) {
-            return route('admin.login');
+        if ($request->is('admin') || $request->is('/management-hub-v4r9/*')) {
+            return route('/management-hub-v4r9.login');
         }
 
         return route('store.login');
