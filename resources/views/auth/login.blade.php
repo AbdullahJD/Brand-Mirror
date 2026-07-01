@@ -37,9 +37,9 @@
                             <!--begin::Content-->
                             <div class="d-flex flex-row-fluid flex-column text-center p-10 pt-lg-20">
                                 <!--begin::Logo-->
-                                {{-- <div class="py-9 mb-5">
-                                    <img alt="Logo" src="{{ URL::asset('assets/media/logos/logo-121.png') }}" class="h-00px" />
-                                </div> --}}
+                                <div class="py-9 mb-5">
+                                    <img alt="Logo" src="{{ URL::asset('assets/media/logos/logo-121.jpeg') }}" class="h-150px" />
+                                </div>
                                 <!--end::Logo-->
                                 <!--begin::Title-->
                                 <h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #986923;">{{ __('messages.welcome_title') }}</h1>

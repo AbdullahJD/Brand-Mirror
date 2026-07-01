@@ -49,14 +49,14 @@
             <div class="mr-3">
                 @include('components.language-switcher', ['btnClass' => 'btn-outline-dark'])
             </div>
-
+{{-- 
             <div class="mr-4 text-right">
                 <p class="m-0">{{ __('messages.customer_service') }}</p>
 
                 <h6 class="m-0" dir="ltr" style="unicode-bidi: plaintext;">
                     +012 345 6789
                 </h6>
-            </div>
+            </div> --}}
 
             <div class="dropdown">
 
