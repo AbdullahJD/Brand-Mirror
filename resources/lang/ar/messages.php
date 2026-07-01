@@ -472,11 +472,11 @@ return [
     'error_updating_status' => 'خطأ في تحديث الحالة',
 
     // Auth (admin)
-    'page_title_sign_in' => 'تسجيل الدخول - One Piece Store',
-    'welcome_title' => 'مرحباً بك في One Piece Store',
+    'page_title_sign_in' => 'تسجيل الدخول - Brand Mirror Store',
+    'welcome_title' => 'مرحباً بك في Brand Mirror Store',
     'welcome_tagline_1' => 'أناقة مميزة. جودة يمكنك الوثوق بها.',
     'welcome_tagline_2' => 'اكتشف أحدث مجموعاتنا.',
-    'sign_in_heading' => 'تسجيل الدخول إلى One Piece',
+    'sign_in_heading' => 'تسجيل الدخول إلى Brand Mirror Store',
     'forgot_welcome_title' => 'مرحباً بك في Metronic',
     'forgot_welcome_tagline_1' => 'اكتشف Metronic الرائع',
     'forgot_welcome_tagline_2' => 'مع أدوات بناء قوية',
@@ -498,7 +498,7 @@ return [
     'return_home' => 'العودة للرئيسية',
 
     // Footer admin
-    'footer_copyright' => 'One Piece Store. جميع الحقوق محفوظة.',
+    'footer_copyright' => 'Brand Mirror Store. جميع الحقوق محفوظة.',
     'built_by' => 'بُني بواسطة Abdullah Aljuaidi',
 
     // Flash messages (controllers)
