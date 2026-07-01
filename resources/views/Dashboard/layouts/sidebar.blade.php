@@ -13,7 +13,7 @@
         @if(auth()->check() && auth()->user()->role === 'admin')
             <a href="{{ route('/management-hub-v4r9.dashboard') }}">
                 <img alt="Logo" src="{{ URL::asset('assets/media/logos/logo.png') }}" class="img-fluid"
-                style="max-width: 100%; height: auto;" />
+                style="max-width: 90%; height: auto;" />
             </a>
         @endif
 
