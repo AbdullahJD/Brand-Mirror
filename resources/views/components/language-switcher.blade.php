@@ -3,13 +3,13 @@
         <a href="{{ route('lang.switch', 'en') }}"
            class="btn btn-sm {{ $btnClass ?? 'btn-outline-primary' }}"
            title="{{ __('messages.english') }}">
-            English
+            {{ __('messages.english') }}
         </a>
     @else
         <a href="{{ route('lang.switch', 'ar') }}"
            class="btn btn-sm {{ $btnClass ?? 'btn-outline-primary' }}"
            title="{{ __('messages.arabic') }}">
-            العربية
+            {{ __('messages.arabic') }}
         </a>
     @endif
 </div>

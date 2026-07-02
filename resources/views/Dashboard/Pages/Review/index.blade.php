@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 
 @section('title')
-Review
+{{ __('messages.reviews_page_title') }}
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@ Review
             <div class="card-header align-items-center py-5 gap-2 gap-md-5">
 
                 <div class="card-title">
-                    <h3 class="fw-bold">Reviews</h3>
+                    <h3 class="fw-bold">{{ __('messages.reviews_heading') }}</h3>
                 </div>
 
             </div>
@@ -29,11 +29,11 @@ Review
                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
 
                             <th>#</th>
-                            <th>Product</th>
-                            <th>Customer</th>
-                            <th>Rating</th>
-                            <th>Comment</th>
-                            <th>Status</th>
+                            <th>{{ __('messages.product') }}</th>
+                            <th>{{ __('messages.customer') }}</th>
+                            <th>{{ __('messages.rating') }}</th>
+                            <th>{{ __('messages.comment') }}</th>
+                            <th>{{ __('messages.status') }}</th>
                             <th class="text-end">{{ __('messages.actions') }}</th>
 
                         </tr>
@@ -51,7 +51,7 @@ Review
                                 {{-- Product --}}
                                 <td>
                                     <span class="fw-bold text-dark">
-                                        {{ $review->product->name ?? 'No Product' }}
+                                        {{ $review->product->name ?? __('messages.no_product') }}
                                     </span>
                                 </td>
 
@@ -85,11 +85,11 @@ Review
                                 <td>
                                     @if($review->is_approved)
                                         <span class="badge badge-light-success">
-                                            Approved
+                                            {{ __('messages.approved') }}
                                         </span>
                                     @else
                                         <span class="badge badge-light-warning">
-                                            Pending
+                                            {{ __('messages.status_pending') }}
                                         </span>
                                     @endif
                                 </td>
@@ -104,7 +104,7 @@ Review
                                             @csrf
                                             @method('PATCH')
                                             <button class="btn btn-sm btn-light-success">
-                                                Approve
+                                                {{ __('messages.approve') }}
                                             </button>
                                         </form>
                                     @endif
@@ -116,7 +116,7 @@ Review
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-sm btn-light-danger"
-                                                onclick="return confirm('Delete this review?')">
+                                                onclick="return confirm('{{ __('messages.confirm_delete_review') }}')">
                                             {{ __('messages.delete') }}
                                         </button>
                                     </form>
@@ -125,7 +125,7 @@ Review
                         @empty
                             <tr>
                                 <td colspan="7" class="text-center">
-                                    No Reviews Found
+                                    {{ __('messages.no_reviews_found') }}
                                 </td>
                             </tr>
                         @endforelse

@@ -3,7 +3,7 @@
 		<!--begin::Container-->
 		<div class="container-fluid d-flex align-items-stretch justify-content-between">
 			<!--begin::Aside mobile toggle-->
-			<div class="d-flex align-items-center d-lg-none ms-n2 me-2" title="Show aside menu">
+			<div class="d-flex align-items-center d-lg-none ms-n2 me-2" title="{{ __('messages.show_aside_menu') }}">
 				<div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px" id="kt_aside_mobile_toggle">
 					<!--begin::Svg Icon | path: icons/duotune/abstract/abs015.svg-->
 					<span class="svg-icon svg-icon-1">
@@ -19,7 +19,7 @@
 			<!--begin::Mobile logo-->
 			<div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
 				<a href="../../demo1/dist/index.html" class="d-lg-none">
-					<img alt="Logo" src="{{ URL::asset('assets/media/logos/logo-2.svg') }}" class="h-30px" />
+					<img alt="{{ __('messages.logo_alt') }}" src="{{ URL::asset('assets/media/logos/logo-2.svg') }}" class="h-30px" />
 				</a>
 			</div>
 			<!--end::Mobile logo-->
@@ -46,7 +46,7 @@
 										<span class="menu-arrow d-lg-none"></span>
 									</span>
 									<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
-										<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="right-start" class="menu-item menu-lg-down-accordion">
+										<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="{{ app()->getLocale() == 'ar' ? 'left-start' : 'right-start' }}" class="menu-item menu-lg-down-accordion">
 											<span class="menu-link py-3">
 												<span class="menu-icon">
 													<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -62,7 +62,7 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">All Categories</span>
+														<span class="menu-title">{{ __('messages.all_categories') }}</span>
 													</a>
 												</div>
 												<div class="menu-item">
@@ -70,20 +70,20 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">Add Category</span>
+														<span class="menu-title">{{ __('messages.add_category') }}</span>
 													</a>
 												</div>
 											</div>
 										</div>
 
-										<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="right-start" class="menu-item menu-lg-down-accordion">
+										<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="{{ app()->getLocale() == 'ar' ? 'left-start' : 'right-start' }}" class="menu-item menu-lg-down-accordion">
 											<span class="menu-link py-3">
 												<span class="menu-icon">
 													<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
 													<span class="menu-icon">📦</span>
 													<!--end::Svg Icon-->
 												</span>
-												<span class="menu-title">Product</span>
+												<span class="menu-title">{{ __('messages.product') }}</span>
 												<span class="menu-arrow"></span>
 											</span>
 											<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-active-bg py-lg-4 w-lg-225px">
@@ -92,7 +92,7 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">All Products</span>
+														<span class="menu-title">{{ __('messages.all_products_admin') }}</span>
 													</a>
 												</div>
 
@@ -101,20 +101,20 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">Add Product</span>
+														<span class="menu-title">{{ __('messages.add_product') }}</span>
 													</a>
 												</div>
 											</div>
 										</div>
 
-										<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="right-start" class="menu-item menu-lg-down-accordion">
+										<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="{{ app()->getLocale() == 'ar' ? 'left-start' : 'right-start' }}" class="menu-item menu-lg-down-accordion">
 											<span class="menu-link py-3">
 												<span class="menu-icon">
 													<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
 													<span class="menu-icon">🧩</span>
 													<!--end::Svg Icon-->
 												</span>
-												<span class="menu-title">Variants</span>
+												<span class="menu-title">{{ __('messages.variants') }}</span>
 												<span class="menu-arrow"></span>
 											</span>
 											<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-active-bg py-lg-4 w-lg-225px">
@@ -123,7 +123,7 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">All Variants</span>
+														<span class="menu-title">{{ __('messages.all_variants') }}</span>
 													</a>
 												</div>
 
@@ -132,7 +132,7 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">Add Variant</span>
+														<span class="menu-title">{{ __('messages.add_variant') }}</span>
 													</a>
 												</div>
 											</div>
@@ -146,7 +146,7 @@
 										<span class="menu-arrow d-lg-none"></span>
 									</span>
 									<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
-										<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="right-start" class="menu-item menu-lg-down-accordion">
+										<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="{{ app()->getLocale() == 'ar' ? 'left-start' : 'right-start' }}" class="menu-item menu-lg-down-accordion">
 											<span class="menu-link py-3">
 												<span class="menu-icon">
 													<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -162,7 +162,7 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">All Attributes</span>
+														<span class="menu-title">{{ __('messages.all_attributes') }}</span>
 													</a>
 												</div>
 
@@ -171,13 +171,13 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">Add Attribute</span>
+														<span class="menu-title">{{ __('messages.add_attribute') }}</span>
 													</a>
 												</div>
 											</div>
 										</div>
 
-										<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="right-start" class="menu-item menu-lg-down-accordion">
+										<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="{{ app()->getLocale() == 'ar' ? 'left-start' : 'right-start' }}" class="menu-item menu-lg-down-accordion">
 											<span class="menu-link py-3">
 												<span class="menu-icon">
 													<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -194,7 +194,7 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">All Attribute Values</span>
+														<span class="menu-title">{{ __('messages.all_attribute_values') }}</span>
 													</a>
 												</div>
 
@@ -203,7 +203,7 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">All Attribute Value</span>
+														<span class="menu-title">{{ __('messages.add_attribute_value') }}</span>
 													</a>
 												</div>
 											</div>
@@ -217,7 +217,7 @@
 										<span class="menu-arrow d-lg-none"></span>
 									</span>
 									<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
-										<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="right-start" class="menu-item menu-lg-down-accordion">
+										<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="{{ app()->getLocale() == 'ar' ? 'left-start' : 'right-start' }}" class="menu-item menu-lg-down-accordion">
 											<span class="menu-link py-3">
 												<span class="menu-icon">
 													<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -233,7 +233,7 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">All Orders</span>
+														<span class="menu-title">{{ __('messages.all_orders') }}</span>
 													</a>
 												</div>											
 											</div>
@@ -247,7 +247,7 @@
 										<span class="menu-arrow d-lg-none"></span>
 									</span>
 									<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
-										<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="right-start" class="menu-item menu-lg-down-accordion">
+										<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="{{ app()->getLocale() == 'ar' ? 'left-start' : 'right-start' }}" class="menu-item menu-lg-down-accordion">
 											<span class="menu-link py-3">
 												<span class="menu-icon">
 													<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -263,7 +263,7 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">All Banners</span>
+														<span class="menu-title">{{ __('messages.all_banners') }}</span>
 													</a>
 												</div>	
 
@@ -272,13 +272,13 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">Add Banner</span>
+														<span class="menu-title">{{ __('messages.add_banner') }}</span>
 													</a>
 												</div>	
 											</div>
 										</div>
 
-										<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="right-start" class="menu-item menu-lg-down-accordion">
+										<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="{{ app()->getLocale() == 'ar' ? 'left-start' : 'right-start' }}" class="menu-item menu-lg-down-accordion">
 											<span class="menu-link py-3">
 												<span class="menu-icon">
 													<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -294,7 +294,7 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">All Coupons</span>
+														<span class="menu-title">{{ __('messages.all_coupons') }}</span>
 													</a>
 												</div>
 												<div class="menu-item">
@@ -302,7 +302,7 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">Add Coupon</span>
+														<span class="menu-title">{{ __('messages.add_coupon') }}</span>
 													</a>
 												</div>
 											</div>
@@ -319,7 +319,7 @@
 										<span class="menu-arrow d-lg-none"></span>
 									</span>
 									<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
-										<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="right-start" class="menu-item menu-lg-down-accordion">
+										<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="{{ app()->getLocale() == 'ar' ? 'left-start' : 'right-start' }}" class="menu-item menu-lg-down-accordion">
 											<span class="menu-link py-3">
 												<span class="menu-icon">
 													<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -335,7 +335,7 @@
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
-														<span class="menu-title">Order Status</span>
+													<span class="menu-title">{{ __('messages.order_status') }}</span>
 													</a>
 												</div>											
 											</div>
@@ -372,7 +372,7 @@
 							data-kt-menu-attach="parent"
 							data-kt-menu-placement="bottom-end">
 
-							<img src="{{ $avatar }}" alt="user" />
+							<img src="{{ $avatar }}" alt="{{ __('messages.user_avatar_alt') }}" />
 
 						</div>
 						<!--begin::User account menu-->
@@ -382,7 +382,7 @@
 								<div class="menu-content d-flex align-items-center px-3">
 									<!--begin::Avatar-->
 									<div class="symbol symbol-50px me-5">
-										<img alt="Logo" src="{{ $avatar }}" />
+										<img alt="{{ __('messages.user_avatar_alt') }}" src="{{ $avatar }}" />
 									</div>
 									<!--end::Avatar-->
 									<!--begin::Username-->
@@ -425,7 +425,7 @@
 					</div>
 					<!--end::User menu-->
 					<!--begin::Header menu toggle-->
-					<div class="d-flex align-items-center d-lg-none ms-2 me-n3" title="Show header menu">
+					<div class="d-flex align-items-center d-lg-none ms-2 me-n3" title="{{ __('messages.show_header_menu') }}">
 						<div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px" id="kt_header_menu_mobile_toggle">
 							<!--begin::Svg Icon | path: icons/duotune/text/txt001.svg-->
 							<span class="svg-icon svg-icon-1">

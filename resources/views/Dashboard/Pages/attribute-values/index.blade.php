@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 
 @section('title')
-Attribute Values
+{{ __('messages.attribute_values_page_title') }}
 @endsection
 
 @section('content')
@@ -49,7 +49,7 @@ Attribute Values
 
                         <input type="text"
                             class="form-control form-control-solid w-250px ps-14"
-                            placeholder="Search Attribute Value" />
+                            placeholder="{{ __('messages.search_attribute_value') }}" />
 
                     </div>
 
@@ -60,7 +60,7 @@ Attribute Values
                     <a href="{{ route('attribute-values.create') }}"
                         class="btn btn-primary">
 
-                        Add Attribute Value
+                        {{ __('messages.add_attribute_value') }}
 
                     </a>
 
@@ -78,9 +78,9 @@ Attribute Values
 
                             <th>#</th>
 
-                            <th>Attribute</th>
+                            <th>{{ __('messages.attribute') }}</th>
 
-                            <th>Value</th>
+                            <th>{{ __('messages.value') }}</th>
 
                             <th class="text-end">
                                 {{ __('messages.actions') }}
@@ -160,7 +160,7 @@ Attribute Values
                             <tr>
 
                                 <td colspan="4" class="text-center">
-                                    No Attribute Values Found
+                                    {{ __('messages.no_attribute_values_found') }}
                                 </td>
 
                             </tr>
@@ -211,7 +211,7 @@ Attribute Values
                 <div class="modal-body">
 
                     <p>
-                        Are you sure you want to delete this attribute value?
+                        {{ __('messages.confirm_delete_attribute_value') }}
                     </p>
 
                     <p class="fw-bold text-danger">

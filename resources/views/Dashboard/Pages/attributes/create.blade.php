@@ -1,5 +1,9 @@
 @extends('Dashboard.layouts.master')
 
+@section('title')
+{{ __('messages.add_attribute') }}
+@endsection
+
 @section('content')
 
 <div class="container-xxl">
@@ -7,7 +11,7 @@
     <div class="card">
 
         <div class="card-header">
-            <h2>Add Attribute</h2>
+            <h2>{{ __('messages.add_attribute') }}</h2>
         </div>
 
         <form method="POST"
@@ -18,24 +22,24 @@
             <div class="card-body">
 
                 <label class="required form-label">
-                    Arabic Attribute Name
+                    {{ __('messages.arabic_attribute_name') }}
                 </label>
 
                 <input type="text"
                        name="name_ar"
                        class="form-control"
                        value="{{ old('name_ar') }}"
-                       placeholder="Arabic Attribute Name">
+                       placeholder="{{ __('messages.arabic_attribute_name') }}">
 
                 <label class="required form-label mt-5">
-                    English Attribute Name
+                    {{ __('messages.english_attribute_name') }}
                 </label>
 
                 <input type="text"
                        name="name_en"
                        class="form-control"
                        value="{{ old('name_en') }}"
-                       placeholder="Size">
+                       placeholder="{{ __('messages.name_placeholder_size') }}">
 
             </div>
 

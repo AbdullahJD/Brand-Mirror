@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 
 @section('title')
-Products
+{{ __('messages.products_page_title') }}
 @endsection
 
 @section('content')
@@ -25,7 +25,7 @@ Products
                                     </svg>
                                 </span>
                                 <!--end::Svg Icon-->
-                                <input type="text" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Product" />
+                                <input type="text" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="{{ __('messages.search_product') }}" />
                             </div>
                             <!--end::Search-->
                         </div>
@@ -34,18 +34,18 @@ Products
                         <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
                             <div class="w-100 mw-150px">
                                 <!--begin::Select2-->
-                                <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Status" data-kt-ecommerce-product-filter="status">
+                                <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="{{ __('messages.status') }}" data-kt-ecommerce-product-filter="status">
                                     <option></option>
-                                    <option value="all">All</option>
-                                    <option value="published">Published</option>
-                                    <option value="scheduled">Scheduled</option>
-                                    <option value="Draft">Draft</option>
+                                    <option value="all">{{ __('messages.all') }}</option>
+                                    <option value="published">{{ __('messages.published') }}</option>
+                                    <option value="scheduled">{{ __('messages.scheduled') }}</option>
+                                    <option value="Draft">{{ __('messages.draft') }}</option>
                                     <option value="inactive">{{ __('messages.inactive') }}</option>
                                 </select>
                                 <!--end::Select2-->
                             </div>
                             <!--begin::Add product-->
-                            <a href="{{ route('products.create') }}" class="btn btn-primary">Add Product</a>
+                            <a href="{{ route('products.create') }}" class="btn btn-primary">{{ __('messages.add_product') }}</a>
                             <!--end::Add product-->
                         </div>
                         <!--end::Card toolbar-->
@@ -60,13 +60,13 @@ Products
                                 <!--begin::Table row-->
                                 <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                     <th>#</th>
-                                    <th>Image</th>
-                                    <th>Product</th>
-                                    <th>Category</th>
-                                    <th>Price</th>
-                                    <th>Discount Price</th>
-                                    <th>Stock</th>
-                                    <th>Status</th>
+                                    <th>{{ __('messages.image') }}</th>
+                                    <th>{{ __('messages.product') }}</th>
+                                    <th>{{ __('messages.category') }}</th>
+                                    <th>{{ __('messages.price') }}</th>
+                                    <th>{{ __('messages.discount_price') }}</th>
+                                    <th>{{ __('messages.stock') }}</th>
+                                    <th>{{ __('messages.status') }}</th>
                                     <th class="text-end">{{ __('messages.actions') }}</th>
                                 </tr>
                                 <!--end::Table row-->
@@ -127,17 +127,17 @@ Products
                                             
                                              @if($product->status == 'published')
                                                 <span class="badge badge-light-success">
-                                                    Published
+                                                    {{ __('messages.published') }}
                                                 </span>
 
                                             @elseif($product->status == 'draft')
                                                 <span class="badge badge-light-warning">
-                                                    Draft
+                                                    {{ __('messages.draft') }}
                                                 </span>
 
                                             @elseif($product->status == 'scheduled')
                                                 <span class="badge badge-light-info">
-                                                    Scheduled
+                                                    {{ __('messages.scheduled') }}
                                                 </span>
                                             @else
                                                 <span class="badge badge-light-danger">
@@ -180,7 +180,7 @@ Products
                                 @empty
                                     <tr>
                                         <td colspan="9" class="text-center">
-                                            No Products Found
+                                            {{ __('messages.no_products_found_admin') }}
                                         </td>
                                     </tr>
                                 @endforelse

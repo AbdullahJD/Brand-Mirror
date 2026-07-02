@@ -1,14 +1,13 @@
 @extends('Dashboard.layouts.master')
 
 @section('title')
-Product Variants
+{{ __('messages.variants_page_title') }}
 @endsection
 
 @section('content')
 
 <div class="post d-flex flex-column-fluid" id="kt_post">
 
-```
 <div id="kt_content_container" class="container-xxl">
 
     <div class="card card-flush">
@@ -50,7 +49,7 @@ Product Variants
 
                     <input type="text"
                         class="form-control form-control-solid w-250px ps-14"
-                        placeholder="Search Variant" />
+                        placeholder="{{ __('messages.search_variant') }}" />
 
                 </div>
 
@@ -61,7 +60,7 @@ Product Variants
                 <a href="{{ route('product-variants.create') }}"
                     class="btn btn-primary">
 
-                    Add Variant
+                    {{ __('messages.add_variant') }}
 
                 </a>
 
@@ -78,12 +77,12 @@ Product Variants
                     <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
 
                         <th>#</th>
-                        <th>Product</th>
-                        <th>SKU</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
+                        <th>{{ __('messages.product') }}</th>
+                        <th>{{ __('messages.sku') }}</th>
+                        <th>{{ __('messages.price') }}</th>
+                        <th>{{ __('messages.quantity') }}</th>
                         <th>{{ __('messages.attributes') }}</th>
-                        <th>Status</th>
+                        <th>{{ __('messages.status') }}</th>
                         <th class="text-end">{{ __('messages.actions') }}</th>
 
                     </tr>
@@ -121,7 +120,7 @@ Product Variants
                                 @empty
 
                                     <span class="text-muted">
-                                        No Values
+                                        {{ __('messages.no_values') }}
                                     </span>
 
                                 @endforelse
@@ -198,7 +197,7 @@ Product Variants
                         <tr>
 
                             <td colspan="8" class="text-center">
-                                No Variants Found
+                                {{ __('messages.no_variants_found') }}
                             </td>
 
                         </tr>
@@ -214,7 +213,6 @@ Product Variants
     </div>
 
 </div>
-```
 
 </div>
 
@@ -251,18 +249,18 @@ Product Variants
                     <div class="modal-body">
 
                         <p>
-                            Are you sure you want to delete this variant?
+                            {{ __('messages.confirm_delete_variant') }}
                         </p>
 
                         <div class="alert alert-warning mb-0">
 
-                            <strong>Product:</strong>
+                            <strong>{{ __('messages.product_label') }}</strong>
                             {{ $variant->product->name }}
 
                             <br>
 
-                            <strong>SKU:</strong>
-                            {{ $variant->sku ?: 'N/A' }}
+                            <strong>{{ __('messages.sku_label') }}</strong>
+                            {{ $variant->sku ?: __('messages.not_available') }}
 
                         </div>
 

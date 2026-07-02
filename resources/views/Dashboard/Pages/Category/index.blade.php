@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 
 @section('title')
-Category
+{{ __('messages.category_page_title') }}
 @endsection
 
 @section('content')
@@ -26,7 +26,7 @@ Category
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<input type="text" data-kt-ecommerce-category-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Category" />
+								<input type="text" data-kt-ecommerce-category-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="{{ __('messages.search_category') }}" />
 							</div>
 							<!--end::Search-->
 						</div>
@@ -34,7 +34,7 @@ Category
 						<!--begin::Card toolbar-->
 						<div class="card-toolbar">
 							<!--begin::Add customer-->
-							<a href="{{ route('categories.create') }}" class="btn btn-primary">Add Category</a>
+							<a href="{{ route('categories.create') }}" class="btn btn-primary">{{ __('messages.add_category') }}</a>
 							<!--end::Add customer-->
 						</div>
 						<!--end::Card toolbar-->
@@ -49,10 +49,10 @@ Category
 								<!--begin::Table row-->
 								<tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
 									<th class="w-10px pe-2">#</th>
-									<th class="min-w-250px">image</th>
-									<th class="min-w-250px">Category Name</th>
-									<th class="min-w-150px">Parent Category</th>
-									<th class="min-w-100px">Status</th>
+									<th class="min-w-250px">{{ __('messages.image') }}</th>
+									<th class="min-w-250px">{{ __('messages.category_name') }}</th>
+									<th class="min-w-150px">{{ __('messages.parent_category') }}</th>
+									<th class="min-w-100px">{{ __('messages.status') }}</th>
 									<th class="text-end">{{ __('messages.actions') }}</th>
 								</tr>
 								<!--end::Table row-->
@@ -70,7 +70,7 @@ Category
 												<img src="{{ asset('storage/'.$category->image) }}"
 													width="50" class="rounded">
 											@else
-												<span>No image</span>
+												<span>{{ __('messages.no_image') }}</span>
 											@endif
 										</td>
 										<td>
@@ -86,7 +86,7 @@ Category
 										</td>
 
 										<td>
-											{{ $category->parent?->name ?? 'Main Category' }}
+											{{ $category->parent?->name ?? __('messages.main_category') }}
 										</td>
 
 										<td>
@@ -135,7 +135,7 @@ Category
 								@empty
 									<tr>
 										<td colspan="5" class="text-center">
-											No Categories Found
+											{{ __('messages.no_categories_found') }}
 										</td>
 									</tr>
 								@endforelse

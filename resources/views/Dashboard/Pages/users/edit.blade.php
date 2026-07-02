@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 
 @section('title')
-Edit User
+{{ __('messages.edit_user') }}
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@ Edit User
 
                 <div class="card-header">
                     <div class="card-title">
-                        <h2>Edit User</h2>
+                        <h2>{{ __('messages.edit_user') }}</h2>
                     </div>
                 </div>
 
@@ -29,7 +29,7 @@ Edit User
                     <div class="mb-5">
 
                         <label class="required form-label">
-                            Name
+                            {{ __('messages.name') }}
                         </label>
 
                         <input
@@ -44,7 +44,7 @@ Edit User
                     <div class="mb-5">
 
                         <label class="required form-label">
-                            Email
+                            {{ __('messages.email') }}
                         </label>
 
                         <input
@@ -59,7 +59,7 @@ Edit User
                     <div class="mb-5">
 
                         <label class="form-label">
-                            New Password
+                            {{ __('messages.new_password') }}
                         </label>
 
                         <input
@@ -69,7 +69,7 @@ Edit User
                         >
 
                         <small class="text-muted">
-                            Leave empty if you don't want to change password
+                            {{ __('messages.password_optional_hint') }}
                         </small>
 
                     </div>
@@ -77,7 +77,7 @@ Edit User
                     <div class="mb-5">
 
                         <label class="required form-label">
-                            Role
+                            {{ __('messages.role') }}
                         </label>
 
                         <select
@@ -93,7 +93,7 @@ Edit User
                             <option
                                 value="admin"
                                 {{ $user->role == 'admin' ? 'selected' : '' }}>
-                                Admin
+                                {{ __('messages.role_admin') }}
                             </option>
 
                         </select>
@@ -107,7 +107,7 @@ Edit User
                     <button
                         type="submit"
                         class="btn btn-primary">
-                        Update User
+                        {{ __('messages.update_user') }}
                     </button>
 
                 </div>

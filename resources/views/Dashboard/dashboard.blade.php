@@ -36,7 +36,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3>{{ $usersCount }}</h3>
-                    <span class="text-muted">Users</span>
+                    <span class="text-muted">{{ __('messages.stats_users') }}</span>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3>${{ $revenue }}</h3>
-                    <span class="text-muted">Revenue (Delivered)</span>
+                    <span class="text-muted">{{ __('messages.revenue_delivered') }}</span>
                 </div>
             </div>
         </div>
@@ -63,10 +63,10 @@
                 <thead class="table-light">
                     <tr>
                         <th>#</th>
-                        <th>Customer</th>
-                        <th>Total</th>
-                        <th>Status</th>
-                        <th>Date</th>
+                        <th>{{ __('messages.customer') }}</th>
+                        <th>{{ __('messages.total') }}</th>
+                        <th>{{ __('messages.status') }}</th>
+                        <th>{{ __('messages.date') }}</th>
                     </tr>
                 </thead>
 
@@ -88,11 +88,11 @@
 
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $order->user?->name ?? 'Guest' }}</td>
+                        <td>{{ $order->user?->name ?? __('messages.guest') }}</td>
                         <td>${{ $order->final_total ?? $order->total }}</td>
                         <td>
                             <span class="badge {{ $colors[$status] ?? 'bg-secondary' }}">
-                                {{ ucfirst($order->status) }}
+                                {{ __('messages.status_' . $status) }}
                             </span>
                         </td>
                         <td>{{ $order->created_at->format('Y-m-d H:i') }}</td>
@@ -110,7 +110,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h4>Orders Status</h4>
+                    <h4>{{ __('messages.orders_status_chart') }}</h4>
                     <canvas id="ordersChart"></canvas>
                 </div>
             </div>
@@ -119,7 +119,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h4>Revenue Per Month</h4>
+                    <h4>{{ __('messages.revenue_per_month_chart') }}</h4>
                     <canvas id="revenueChart"></canvas>
                 </div>
             </div>
@@ -135,12 +135,15 @@
 @push('scripts')
     <script>
     document.addEventListener("DOMContentLoaded", function () {
+        const statusLabels = {!! json_encode(
+            $statusCounts->keys()->map(fn($status) => __('messages.status_' . strtolower($status)))->values()
+        ) !!};
 
         // Orders Chart
         new Chart(document.getElementById('ordersChart'), {
             type: 'pie',
             data: {
-                labels: {!! json_encode($statusCounts->keys()) !!},
+                labels: statusLabels,
                 datasets: [{
                     data: {!! json_encode($statusCounts->values()) !!},
                     backgroundColor: [
@@ -161,7 +164,7 @@
             data: {
                 labels: {!! json_encode($revenuePerMonth->keys()) !!},
                 datasets: [{
-                    label: 'Revenue',
+                    label: @json(__('messages.revenue_label')),
                     data: {!! json_encode($revenuePerMonth->values()) !!},
                     borderColor: '#198754',
                     backgroundColor: 'rgba(25,135,84,0.2)',

@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 
 @section('title')
-Edit Coupon
+{{ __('messages.edit_coupon') }}
 @endsection
 
 @section('content')
@@ -27,7 +27,7 @@ Edit Coupon
 
                 <div class="card-header">
                     <div class="card-title">
-                        <h2>Edit Coupon</h2>
+                        <h2>{{ __('messages.edit_coupon') }}</h2>
                     </div>
                 </div>
 
@@ -35,7 +35,7 @@ Edit Coupon
 
                     {{-- Code --}}
                     <div class="mb-5">
-                        <label class="form-label required">Coupon Code</label>
+                        <label class="form-label required">{{ __('messages.coupon_code') }}</label>
                         <input type="text"
                                name="code"
                                class="form-control"
@@ -44,22 +44,22 @@ Edit Coupon
 
                     {{-- Type --}}
                     <div class="mb-5">
-                        <label class="form-label required">Type</label>
+                        <label class="form-label required">{{ __('messages.coupon_type') }}</label>
 
                         <select name="type" class="form-select">
                             <option value="percentage" {{ $coupon->type == 'percentage' ? 'selected' : '' }}>
-                                Percentage
+                                {{ __('messages.type_percentage') }}
                             </option>
 
                             <option value="fixed" {{ $coupon->type == 'fixed' ? 'selected' : '' }}>
-                                Fixed
+                                {{ __('messages.type_fixed') }}
                             </option>
                         </select>
                     </div>
 
                     {{-- Value --}}
                     <div class="mb-5">
-                        <label class="form-label required">Value</label>
+                        <label class="form-label required">{{ __('messages.coupon_value') }}</label>
                         <input type="number"
                                name="value"
                                class="form-control"
@@ -68,7 +68,7 @@ Edit Coupon
 
                     {{-- Min Order --}}
                     <div class="mb-5">
-                        <label class="form-label">Min Order Amount</label>
+                        <label class="form-label">{{ __('messages.min_order_amount') }}</label>
                         <input type="number"
                                name="min_order_amount"
                                class="form-control"
@@ -77,7 +77,7 @@ Edit Coupon
 
                     {{-- Max Discount --}}
                     <div class="mb-5">
-                        <label class="form-label">Max Discount</label>
+                        <label class="form-label">{{ __('messages.max_discount') }}</label>
                         <input type="number"
                                name="max_discount"
                                class="form-control"
@@ -86,7 +86,7 @@ Edit Coupon
 
                     {{-- Usage Limit --}}
                     <div class="mb-5">
-                        <label class="form-label">Usage Limit</label>
+                        <label class="form-label">{{ __('messages.usage_limit') }}</label>
                         <input type="number"
                                name="usage_limit"
                                class="form-control"
@@ -97,7 +97,7 @@ Edit Coupon
                     <div class="row mb-5">
 
                         <div class="col">
-                            <label class="form-label">Start At</label>
+                            <label class="form-label">{{ __('messages.start_at') }}</label>
                             <input type="date"
                                    name="start_at"
                                    class="form-control"
@@ -105,7 +105,7 @@ Edit Coupon
                         </div>
 
                         <div class="col">
-                            <label class="form-label">End At</label>
+                            <label class="form-label">{{ __('messages.end_at') }}</label>
                             <input type="date"
                                    name="end_at"
                                    class="form-control"
@@ -130,7 +130,7 @@ Edit Coupon
 
                 <div class="card-footer text-end">
                     <button type="submit" class="btn btn-primary">
-                        Update Coupon
+                        {{ __('messages.update_coupon') }}
                     </button>
                 </div>
 

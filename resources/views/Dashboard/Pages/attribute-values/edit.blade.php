@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 
 @section('title')
-Edit Atrribute Value
+{{ __('messages.edit_attribute_value') }}
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@ Edit Atrribute Value
     <div class="card">
 
         <div class="card-header">
-            <h2>Edit Attribute Value</h2>
+            <h2>{{ __('messages.edit_attribute_value') }}</h2>
         </div>
 
         <form method="POST"
@@ -23,7 +23,7 @@ Edit Atrribute Value
             <div class="card-body">
 
                 <label class="form-label">
-                    Attribute
+                    {{ __('messages.attribute') }}
                 </label>
 
                 <select name="attribute_id"
@@ -45,7 +45,7 @@ Edit Atrribute Value
                 <br>
 
                 <label class="form-label">
-                    Arabic Value
+                    {{ __('messages.arabic_value') }}
                 </label>
 
                 <input type="text"
@@ -54,7 +54,7 @@ Edit Atrribute Value
                        value="{{ old('value_ar', $attributeValue->value_ar) }}">
 
                 <label class="form-label mt-5">
-                    English Value
+                    {{ __('messages.english_value') }}
                 </label>
 
                 <input type="text"

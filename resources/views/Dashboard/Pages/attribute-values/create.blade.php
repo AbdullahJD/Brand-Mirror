@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 
 @section('title')
-Add Attribute Value
+{{ __('messages.add_attribute_value') }}
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@ Add Attribute Value
     <div class="card">
 
         <div class="card-header">
-            <h2>Add Attribute Value</h2>
+            <h2>{{ __('messages.add_attribute_value') }}</h2>
         </div>
 
         <form method="POST"
@@ -22,7 +22,7 @@ Add Attribute Value
             <div class="card-body">
 
                 <label class="form-label">
-                    Attribute
+                    {{ __('messages.attribute') }}
                 </label>
 
                 <select name="attribute_id"
@@ -41,24 +41,24 @@ Add Attribute Value
                 <br>
 
                 <label class="form-label">
-                    Arabic Value
+                    {{ __('messages.arabic_value') }}
                 </label>
 
                 <input type="text"
                        name="value_ar"
                        class="form-control"
                        value="{{ old('value_ar') }}"
-                       placeholder="Arabic Value">
+                       placeholder="{{ __('messages.arabic_value') }}">
 
                 <label class="form-label mt-5">
-                    English Value
+                    {{ __('messages.english_value') }}
                 </label>
 
                 <input type="text"
                        name="value_en"
                        class="form-control"
                        value="{{ old('value_en') }}"
-                       placeholder="XL">
+                       placeholder="{{ __('messages.value_placeholder_xl') }}">
 
             </div>
 

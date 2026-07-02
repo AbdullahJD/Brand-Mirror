@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 
 @section('title')
-User (Admin || Employee)
+{{ __('messages.users_page_title') }}
 @endsection
 
 @section('content')
@@ -14,12 +14,12 @@ User (Admin || Employee)
             <div class="card-header align-items-center py-5">
 
                 <div class="card-title">
-                    <h2>Users Management</h2>
+                    <h2>{{ __('messages.users_management') }}</h2>
                 </div>
 
                 <div class="card-toolbar">
                     <a href="{{ route('users.create') }}" class="btn btn-primary">
-                        Add User
+                        {{ __('messages.add_user') }}
                     </a>
                 </div>
 
@@ -32,10 +32,10 @@ User (Admin || Employee)
                     <thead>
                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                             <th>#</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Created At</th>
+                            <th>{{ __('messages.name') }}</th>
+                            <th>{{ __('messages.email') }}</th>
+                            <th>{{ __('messages.role') }}</th>
+                            <th>{{ __('messages.created_at') }}</th>
                             <th class="text-end">{{ __('messages.actions') }}</th>
                         </tr>
                     </thead>
@@ -55,7 +55,7 @@ User (Admin || Employee)
                                 <td>
                                     @if($user->role === 'admin')
                                         <span class="badge badge-light-danger">
-                                            Admin
+                                            {{ __('messages.role_admin') }}
                                         </span>
                                     @else
                                         <span class="badge badge-light-primary">
@@ -107,7 +107,7 @@ User (Admin || Employee)
 
                             <tr>
                                 <td colspan="6" class="text-center">
-                                    No Users Found
+                                    {{ __('messages.no_users_found') }}
                                 </td>
                             </tr>
 
@@ -144,13 +144,13 @@ User (Admin || Employee)
 
                 <div class="modal-header">
                     <h5 class="modal-title">
-                        Delete User
+                        {{ __('messages.delete_user') }}
                     </h5>
                 </div>
 
                 <div class="modal-body">
 
-                    Are you sure you want to delete:
+                    {{ __('messages.confirm_delete_named') }}
 
                     <strong>{{ $user->name }}</strong>
 

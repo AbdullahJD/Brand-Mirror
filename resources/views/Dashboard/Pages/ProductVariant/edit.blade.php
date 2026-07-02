@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 
 @section('title')
-Edit Product Variants
+{{ __('messages.edit_product_variant') }}
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@ Edit Product Variants
                 <div class="card-header">
 
                     <div class="card-title">
-                        <h2>Edit Product Variant</h2>
+                        <h2>{{ __('messages.edit_product_variant') }}</h2>
                     </div>
 
                 </div>
@@ -50,7 +50,7 @@ Edit Product Variants
                     <div class="mb-7">
 
                         <label class="required form-label">
-                            Product
+                            {{ __('messages.product') }}
                         </label>
 
                         <select name="product_id"
@@ -58,7 +58,7 @@ Edit Product Variants
                                 data-control="select2">
 
                             <option value="">
-                                Select Product
+                                {{ __('messages.select_product') }}
                             </option>
 
                             @foreach($products as $product)
@@ -80,7 +80,7 @@ Edit Product Variants
                     <div class="mb-7">
 
                         <label class="form-label">
-                            SKU
+                            {{ __('messages.sku') }}
                         </label>
 
                         <input type="text"
@@ -98,7 +98,7 @@ Edit Product Variants
                             <div class="mb-7">
 
                                 <label class="form-label">
-                                    Price
+                                    {{ __('messages.price') }}
                                 </label>
 
                                 <input type="number"
@@ -117,7 +117,7 @@ Edit Product Variants
                             <div class="mb-7">
 
                                 <label class="required form-label">
-                                    Quantity
+                                    {{ __('messages.quantity') }}
                                 </label>
 
                                 <input type="number"
@@ -214,7 +214,7 @@ Edit Product Variants
                     <div class="mb-7">
 
                         <label class="required form-label">
-                            Status
+                            {{ __('messages.status') }}
                         </label>
 
                         <select name="status"
@@ -252,7 +252,7 @@ Edit Product Variants
                     <button type="submit"
                             class="btn btn-primary">
 
-                        Update Variant
+                        {{ __('messages.update_variant') }}
 
                     </button>
 

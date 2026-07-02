@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 
 @section('title')
-Add Product
+{{ __('messages.add_product_heading') }}
 @endsection
 
 @section('content')
@@ -19,7 +19,7 @@ Add Product
 
                 <div class="card-header">
                     <div class="card-title">
-                        <h2>Add Product</h2>
+                        <h2>{{ __('messages.add_product_heading') }}</h2>
                     </div>
                 </div>
 
@@ -28,7 +28,7 @@ Add Product
                     {{-- Product Names --}}
                     <div class="mb-5">
                         <label class="required form-label">
-                            Arabic Product Name
+                            {{ __('messages.arabic_product_name') }}
                         </label>
 
                         <input type="text"
@@ -39,7 +39,7 @@ Add Product
 
                     <div class="mb-5">
                         <label class="required form-label">
-                            English Product Name
+                            {{ __('messages.english_product_name') }}
                         </label>
 
                         <input type="text"
@@ -51,7 +51,7 @@ Add Product
                     {{-- Category --}}
                     <div class="mb-5">
                         <label class="required form-label">
-                            Category
+                            {{ __('messages.category') }}
                         </label>
 
                         <select name="category_id"
@@ -59,7 +59,7 @@ Add Product
                                 data-control="select2">
 
                             <option value="">
-                                Select Category
+                                {{ __('messages.select_category') }}
                             </option>
 
                             @foreach($categories as $category)
@@ -74,7 +74,7 @@ Add Product
                     {{-- Descriptions --}}
                     <div class="mb-5">
                         <label class="form-label">
-                            Arabic Description
+                            {{ __('messages.arabic_description') }}
                         </label>
 
                         <textarea name="description_ar"
@@ -84,7 +84,7 @@ Add Product
 
                     <div class="mb-5">
                         <label class="form-label">
-                            English Description
+                            {{ __('messages.english_description') }}
                         </label>
 
                         <textarea name="description_en"
@@ -95,7 +95,7 @@ Add Product
                     {{-- Price --}}
                     <div class="mb-5">
                         <label class="required form-label">
-                            Price
+                            {{ __('messages.price') }}
                         </label>
 
                         <input type="number"
@@ -108,7 +108,7 @@ Add Product
                     {{-- Discount Price --}}
                     <div class="mb-5">
                         <label class="form-label">
-                            Discount Price
+                            {{ __('messages.discount_price') }}
                         </label>
 
                         <input type="number"
@@ -121,7 +121,7 @@ Add Product
                     {{-- Stock --}}
                     <div class="mb-5">
                         <label class="required form-label">
-                            Stock
+                            {{ __('messages.stock') }}
                         </label>
 
                         <input type="number"
@@ -133,7 +133,7 @@ Add Product
                     {{-- Main Image --}}
                     <div class="mb-5">
                         <label class="form-label">
-                            Main Image
+                            {{ __('messages.main_image') }}
                         </label>
 
                         <input type="file"
@@ -144,7 +144,7 @@ Add Product
                     {{-- Gallery Images --}}
                     <div class="mb-5">
                         <label class="form-label">
-                            Product Gallery
+                            {{ __('messages.product_gallery') }}
                         </label>
 
                         <input type="file"
@@ -164,7 +164,7 @@ Add Product
                                    value="1">
 
                             <label class="form-check-label">
-                                Featured Product
+                                {{ __('messages.featured_product') }}
                             </label>
 
                         </div>
@@ -174,7 +174,7 @@ Add Product
                     {{-- Arabic Additional Information --}}
                     <div class="mb-5">
                         <label class="form-label">
-                            Arabic Additional Information
+                            {{ __('messages.arabic_additional_information') }}
                         </label>
 
                         <div id="info-wrapper-ar">
@@ -184,20 +184,20 @@ Add Product
                                     <input type="text"
                                         name="info_keys_ar[]"
                                         class="form-control"
-                                        placeholder="Brand">
+                                        placeholder="{{ __('messages.info_key_placeholder') }}">
                                 </div>
 
                                 <div class="col-md-5">
                                     <input type="text"
                                         name="info_values_ar[]"
                                         class="form-control"
-                                        placeholder="Nike">
+                                        placeholder="{{ __('messages.info_value_placeholder') }}">
                                 </div>
 
                                 <div class="col-md-2">
                                     <button type="button"
                                             class="btn btn-danger remove-info">
-                                        X
+                                        {{ __('messages.remove_short') }}
                                     </button>
                                 </div>
                             </div>
@@ -209,14 +209,14 @@ Add Product
                                 data-add-info="info-wrapper-ar"
                                 data-info-key-name="info_keys_ar[]"
                                 data-info-value-name="info_values_ar[]">
-                            Add Arabic Information
+                            {{ __('messages.add_arabic_information') }}
                         </button>
                     </div>
 
                     {{-- English Additional Information --}}
                     <div class="mb-5">
                         <label class="form-label">
-                            English Additional Information
+                            {{ __('messages.english_additional_information') }}
                         </label>
 
                         <div id="info-wrapper-en">
@@ -226,20 +226,20 @@ Add Product
                                     <input type="text"
                                         name="info_keys_en[]"
                                         class="form-control"
-                                        placeholder="Brand">
+                                        placeholder="{{ __('messages.info_key_placeholder') }}">
                                 </div>
 
                                 <div class="col-md-5">
                                     <input type="text"
                                         name="info_values_en[]"
                                         class="form-control"
-                                        placeholder="Nike">
+                                        placeholder="{{ __('messages.info_value_placeholder') }}">
                                 </div>
 
                                 <div class="col-md-2">
                                     <button type="button"
                                             class="btn btn-danger remove-info">
-                                        X
+                                        {{ __('messages.remove_short') }}
                                     </button>
                                 </div>
                             </div>
@@ -251,7 +251,7 @@ Add Product
                                 data-add-info="info-wrapper-en"
                                 data-info-key-name="info_keys_en[]"
                                 data-info-value-name="info_values_en[]">
-                            Add English Information
+                            {{ __('messages.add_english_information') }}
                         </button>
                     </div>
 
@@ -259,22 +259,22 @@ Add Product
                     <div class="mb-5">
 
                         <label class="required form-label">
-                            Status
+                            {{ __('messages.status') }}
                         </label>
 
                         <select name="status"
                                 class="form-select">
 
                             <option value="published">
-                                Published
+                                {{ __('messages.published') }}
                             </option>
 
                             <option value="Scheduled">
-                                Scheduled
+                                {{ __('messages.scheduled') }}
                             </option>
 
                             <option value="draft" selected>
-                                Draft
+                                {{ __('messages.draft') }}
                             </option>
 
                             <option value="inactive">
@@ -296,7 +296,7 @@ Add Product
 
                     <button type="submit"
                             class="btn btn-primary">
-                        Save Product
+                        {{ __('messages.save_product') }}
                     </button>
 
                 </div>

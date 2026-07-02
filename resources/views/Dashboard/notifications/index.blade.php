@@ -7,7 +7,7 @@
     <div id="kt_content_container" class="container-xxl">
 
         <div class="card-header align-items-center py-5 gap-2 gap-md-5">
-            <h3>All Notifications</h3>
+            <h3>{{ __('messages.all_notifications') }}</h3>
         </div>
 
         <div class="card-body pt-0">
@@ -33,7 +33,7 @@
             @empty
 
                 <div class="text-center py-5">
-                    No notifications found
+                    {{ __('messages.no_notifications_found') }}
                 </div>
 
             @endforelse

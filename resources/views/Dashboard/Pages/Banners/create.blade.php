@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 
 @section('title')
-Add Banner
+{{ __('messages.add_banner_heading') }}
 @endsection
 
 @section('content')
@@ -19,7 +19,7 @@ Add Banner
 
                 <div class="card-header">
                     <div class="card-title">
-                        <h2>Add Banner</h2>
+                        <h2>{{ __('messages.add_banner_heading') }}</h2>
                     </div>
                 </div>
 
@@ -27,7 +27,7 @@ Add Banner
 
                     <div class="mb-5">
                         <label class="form-label">
-                            Arabic Title
+                            {{ __('messages.arabic_title') }}
                         </label>
 
                         <input type="text"
@@ -38,7 +38,7 @@ Add Banner
 
                     <div class="mb-5">
                         <label class="form-label">
-                            English Title
+                            {{ __('messages.english_title') }}
                         </label>
 
                         <input type="text"
@@ -49,7 +49,7 @@ Add Banner
 
                     <div class="mb-5">
                         <label class="required form-label">
-                            Banner Image
+                            {{ __('messages.banner_image') }}
                         </label>
 
                         <input type="file"
@@ -59,7 +59,7 @@ Add Banner
 
                     <div class="mb-5">
                         <label class="form-label">
-                            Link
+                            {{ __('messages.link') }}
                         </label>
 
                         <input type="url"
@@ -70,20 +70,20 @@ Add Banner
 
                     <!--  POSITION IMPORTANT -->
                     <div class="mb-3">
-                        <label>Position</label>
+                        <label>{{ __('messages.position') }}</label>
 
                         <select name="position" class="form-control">
-                            <option value="home_slider">Home Slider</option>
-                            <option value="offer_left">Offer Left</option>
-                            <option value="offer_right">Offer Right</option>
-                            <option value="offer_top">Offer Top</option>
-                            <option value="offer_bottom">Offer Bottom</option>
+                            <option value="home_slider">{{ __('messages.position_home_slider') }}</option>
+                            <option value="offer_left">{{ __('messages.position_offer_left') }}</option>
+                            <option value="offer_right">{{ __('messages.position_offer_right') }}</option>
+                            <option value="offer_top">{{ __('messages.position_offer_top') }}</option>
+                            <option value="offer_bottom">{{ __('messages.position_offer_bottom') }}</option>
                         </select>
                     </div>
 
                     <div class="mb-5">
                         <label class="form-label">
-                            Status
+                            {{ __('messages.status') }}
                         </label>
 
                         <select name="status"
@@ -104,7 +104,7 @@ Add Banner
 
                 <div class="card-footer text-end">
                     <button class="btn btn-primary">
-                        Save Banner
+                        {{ __('messages.save_banner') }}
                     </button>
                 </div>
 

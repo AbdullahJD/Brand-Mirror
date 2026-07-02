@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 
 @section('title')
-Add Product Variants
+{{ __('messages.add_product_variant') }}
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@ Add Product Variants
                 <div class="card-header">
 
                     <div class="card-title">
-                        <h2>Add Product Variant</h2>
+                        <h2>{{ __('messages.add_product_variant') }}</h2>
                     </div>
 
                 </div>
@@ -50,7 +50,7 @@ Add Product Variants
                     <div class="mb-7">
 
                         <label class="required form-label">
-                            Product
+                            {{ __('messages.product') }}
                         </label>
 
                         <select name="product_id"
@@ -58,7 +58,7 @@ Add Product Variants
                                 data-control="select2">
 
                             <option value="">
-                                Select Product
+                                {{ __('messages.select_product') }}
                             </option>
 
                             @foreach($products as $product)
@@ -80,13 +80,13 @@ Add Product Variants
                     <div class="mb-7">
 
                         <label class="form-label">
-                            SKU
+                            {{ __('messages.sku') }}
                         </label>
 
                         <input type="text"
                                name="sku"
                                class="form-control"
-                               placeholder="Example: TS-RED-XL"
+                               placeholder="{{ __('messages.sku_placeholder') }}"
                                value="{{ old('sku') }}">
 
                     </div>
@@ -99,7 +99,7 @@ Add Product Variants
                             <div class="mb-7">
 
                                 <label class="form-label">
-                                    Price
+                                    {{ __('messages.price') }}
                                 </label>
 
                                 <input type="number"
@@ -118,7 +118,7 @@ Add Product Variants
                             <div class="mb-7">
 
                                 <label class="required form-label">
-                                    Quantity
+                                    {{ __('messages.quantity') }}
                                 </label>
 
                                 <input type="number"
@@ -203,7 +203,7 @@ Add Product Variants
                     <div class="mb-7">
 
                         <label class="required form-label">
-                            Status
+                            {{ __('messages.status') }}
                         </label>
 
                         <select name="status"
@@ -241,7 +241,7 @@ Add Product Variants
                     <button type="submit"
                             class="btn btn-primary">
 
-                        Save Variant
+                        {{ __('messages.save_variant') }}
 
                     </button>
 

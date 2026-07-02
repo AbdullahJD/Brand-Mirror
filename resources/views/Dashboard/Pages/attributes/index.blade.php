@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 
 @section('title')
-Attributes
+{{ __('messages.attributes_page_title') }}
 @endsection
 
 @section('content')
@@ -39,7 +39,7 @@ Attributes
 
                         <input type="text"
                             class="form-control form-control-solid w-250px ps-14"
-                            placeholder="Search Attribute" />
+                            placeholder="{{ __('messages.search_attribute') }}" />
 
                     </div>
 
@@ -49,7 +49,7 @@ Attributes
 
                     <a href="{{ route('attributes.create') }}"
                         class="btn btn-primary">
-                        Add Attribute
+                        {{ __('messages.add_attribute') }}
                     </a>
 
                 </div>
@@ -66,9 +66,9 @@ Attributes
 
                             <th>#</th>
 
-                            <th>Attribute Name</th>
+                            <th>{{ __('messages.attribute_name') }}</th>
 
-                            <th>Values Count</th>
+                            <th>{{ __('messages.values_count') }}</th>
 
                             <th class="text-end">
                                 {{ __('messages.actions') }}
@@ -148,7 +148,7 @@ Attributes
                             <tr>
 
                                 <td colspan="4" class="text-center">
-                                    No Attributes Found
+                                    {{ __('messages.no_attributes_found') }}
                                 </td>
 
                             </tr>
@@ -199,7 +199,7 @@ Attributes
                 <div class="modal-body">
 
                     <p>
-                        Are you sure you want to delete this attribute?
+                        {{ __('messages.confirm_delete_attribute') }}
                     </p>
 
                     <p class="fw-bold text-danger">

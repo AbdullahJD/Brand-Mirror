@@ -85,6 +85,13 @@
 <!--end::Javascript-->
 
 <script>
+const adminMessages = {
+    infoKeyPlaceholder: @json(__('messages.info_key_placeholder')),
+    infoValuePlaceholder: @json(__('messages.info_value_placeholder')),
+    removeShort: @json(__('messages.remove_short')),
+    submitting: @json(__('messages.submitting')),
+};
+
 function buildInfoRow(keyName, valueName) {
     return `
         <div class="row mb-2">
@@ -92,20 +99,20 @@ function buildInfoRow(keyName, valueName) {
                 <input type="text"
                        name="${keyName}"
                        class="form-control"
-                       placeholder="Attribute">
+                       placeholder="${adminMessages.infoKeyPlaceholder}">
             </div>
 
             <div class="col-md-5">
                 <input type="text"
                        name="${valueName}"
                        class="form-control"
-                       placeholder="Value">
+                       placeholder="${adminMessages.infoValuePlaceholder}">
             </div>
 
             <div class="col-md-2">
                 <button type="button"
                         class="btn btn-danger remove-info">
-                    X
+                    ${adminMessages.removeShort}
                 </button>
             </div>
         </div>
@@ -146,7 +153,7 @@ document.addEventListener("submit", function (e) {
 
         if (btn) {
             btn.disabled = true;
-            btn.innerText = "Submitting...";
+            btn.innerText = adminMessages.submitting;
         }
     }
 });

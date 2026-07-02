@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 
 @section('title')
-Add User
+{{ __('messages.add_user') }}
 @endsection
 
 @section('content')
@@ -19,7 +19,7 @@ Add User
 
                 <div class="card-header">
                     <div class="card-title">
-                        <h2>Add User</h2>
+                        <h2>{{ __('messages.add_user') }}</h2>
                     </div>
                 </div>
 
@@ -28,7 +28,7 @@ Add User
                     <div class="mb-5">
 
                         <label class="required form-label">
-                            Name
+                            {{ __('messages.name') }}
                         </label>
 
                         <input
@@ -43,7 +43,7 @@ Add User
                     <div class="mb-5">
 
                         <label class="required form-label">
-                            Email
+                            {{ __('messages.email') }}
                         </label>
 
                         <input
@@ -58,7 +58,7 @@ Add User
                     <div class="mb-5">
 
                         <label class="required form-label">
-                            Password
+                            {{ __('messages.password') }}
                         </label>
 
                         <input
@@ -72,7 +72,7 @@ Add User
                     <div class="mb-5">
 
                         <label class="required form-label">
-                            Role
+                            {{ __('messages.role') }}
                         </label>
 
                         <select
@@ -84,7 +84,7 @@ Add User
                             </option>
 
                             <option value="admin">
-                                Admin
+                                {{ __('messages.role_admin') }}
                             </option>
 
                         </select>
@@ -97,7 +97,7 @@ Add User
 
                     <button type="submit"
                         class="btn btn-primary">
-                        Save User
+                        {{ __('messages.save_user') }}
                     </button>
 
                 </div>

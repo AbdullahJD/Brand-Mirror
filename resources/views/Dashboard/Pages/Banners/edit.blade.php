@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 
 @section('title')
-Edit Banner
+{{ __('messages.edit_banner') }}
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@ Edit Banner
 
                     <div class="card-header">
                         <div class="card-title">
-                            <h2>Edit Banner</h2>
+                            <h2>{{ __('messages.edit_banner') }}</h2>
                         </div>
                     </div>
 
@@ -28,7 +28,7 @@ Edit Banner
 
                         <div class="mb-5">
                             <label class="form-label">
-                                Arabic Title
+                                {{ __('messages.arabic_title') }}
                             </label>
 
                             <input type="text"
@@ -39,7 +39,7 @@ Edit Banner
 
                         <div class="mb-5">
                             <label class="form-label">
-                                English Title
+                                {{ __('messages.english_title') }}
                             </label>
 
                             <input type="text"
@@ -55,7 +55,7 @@ Edit Banner
                                 class="rounded mb-3">
 
                             <label class="form-label">
-                                Change Image
+                                {{ __('messages.change_image') }}
                             </label>
 
                             <input type="file"
@@ -65,7 +65,7 @@ Edit Banner
 
                         <div class="mb-5">
                             <label class="form-label">
-                                Link
+                                {{ __('messages.link') }}
                             </label>
 
                             <input type="url"
@@ -76,7 +76,7 @@ Edit Banner
 
                         <!-- POSITION -->
                         <div class="mb-3">
-                            <label>Position</label>
+                            <label>{{ __('messages.position') }}</label>
 
                             <select name="position" class="form-control">
 
@@ -90,7 +90,7 @@ Edit Banner
 
                                     <option value="{{ $pos }}"
                                         {{ $banner->position == $pos ? 'selected' : '' }}>
-                                        {{ $pos }}
+                                        {{ __('messages.position_' . $pos) }}
                                     </option>
 
                                 @endforeach
@@ -100,7 +100,7 @@ Edit Banner
 
                         <div class="mb-5">
                             <label class="form-label">
-                                Status
+                                {{ __('messages.status') }}
                             </label>
 
                             <select name="status"
@@ -124,7 +124,7 @@ Edit Banner
                     <div class="card-footer text-end">
 
                         <button class="btn btn-primary">
-                            Update Banner
+                            {{ __('messages.update_banner') }}
                         </button>
 
                     </div>

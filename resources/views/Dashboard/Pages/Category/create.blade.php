@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 
 @section('title')
-Add Categories
+{{ __('messages.add_categories') }}
 @endsection
 
 @section('content')
@@ -16,7 +16,7 @@ Add Categories
 
                 <div class="card-header">
                     <div class="card-title">
-                        <h2>Add Category</h2>
+                        <h2>{{ __('messages.add_category') }}</h2>
                     </div>
                 </div>
 
@@ -25,41 +25,41 @@ Add Categories
                     {{-- Names --}}
                     <div class="mb-5">
                         <label class="required form-label">
-                            Arabic Category Name
+                            {{ __('messages.arabic_category_name') }}
                         </label>
 
                         <input
                             type="text"
                             name="name_ar"
                             class="form-control"
-                            placeholder="Arabic Category Name"
+                            placeholder="{{ __('messages.arabic_category_name') }}"
                             value="{{ old('name_ar') }}"
                         >
                     </div>
 
                     <div class="mb-5">
                         <label class="required form-label">
-                            English Category Name
+                            {{ __('messages.english_category_name') }}
                         </label>
 
                         <input
                             type="text"
                             name="name_en"
                             class="form-control"
-                            placeholder="English Category Name"
+                            placeholder="{{ __('messages.english_category_name') }}"
                             value="{{ old('name_en') }}"
                         >
                     </div>
 
                     <div class="mb-5">
-                        <label class="form-label">Image</label>
+                        <label class="form-label">{{ __('messages.image') }}</label>
                         <input type="file" name="image" class="form-control">
                     </div>
 
                     {{-- Descriptions --}}
                     <div class="mb-5">
                         <label class="form-label">
-                            Arabic Description
+                            {{ __('messages.arabic_description') }}
                         </label>
 
                         <textarea
@@ -71,7 +71,7 @@ Add Categories
 
                     <div class="mb-5">
                         <label class="form-label">
-                            English Description
+                            {{ __('messages.english_description') }}
                         </label>
 
                         <textarea
@@ -84,11 +84,11 @@ Add Categories
                     {{-- Parent Category --}}
                     <div class="mb-5">
                         <label class="form-label">
-                            Parent Category
+                            {{ __('messages.parent_category') }}
                         </label>
 
                         <select name="parent_id" class="form-select">
-                            <option value="">Main Category</option>
+                            <option value="">{{ __('messages.main_category') }}</option>
 
                             @foreach($categories as $category)
                                 <option
@@ -104,7 +104,7 @@ Add Categories
                     {{-- Status --}}
                     <div class="mb-5">
                         <label class="form-label">
-                            Status
+                            {{ __('messages.status') }}
                         </label>
 
                         <select name="status" class="form-select">
@@ -117,7 +117,7 @@ Add Categories
 
                 <div class="card-footer text-end">
                     <button type="submit" class="btn btn-primary">
-                        Save Category
+                        {{ __('messages.save_category') }}
                     </button>
                 </div>
 

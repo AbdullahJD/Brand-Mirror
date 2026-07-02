@@ -26,7 +26,7 @@
 				<h3 class="text-white fw-bold px-9 mt-10 mb-6">
 					{{ __('messages.notifications') }}
 					<span class="fs-8 opacity-75 ps-3">
-						{{ $notifications->count() }} reports
+						{{ __('messages.reports_count', ['count' => $notifications->count()]) }}
 					</span>
 				</h3>
 				<!--end::Title-->
@@ -52,7 +52,7 @@
 									<div class="mb-0 me-2">
 										@if(!$notification->is_read)
 											<span class="badge badge-light-primary mb-1">
-												New
+												{{ __('messages.new') }}
 											</span>
 										@endif
 										<a href="{{ route('notifications.read', $notification->id) }}" class="fs-6 text-gray-800 fw-bolder">

@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 
 @section('title')
-Coupons
+{{ __('messages.coupons_page_title') }}
 @endsection
 
 @section('content')
@@ -24,13 +24,13 @@ Coupons
 
                         <input type="text"
                                class="form-control form-control-solid w-250px ps-14"
-                               placeholder="Search Coupons">
+                               placeholder="{{ __('messages.search_coupons') }}">
                     </div>
                 </div>
                 @if(auth()->user()->role === 'admin')
                     <div class="card-toolbar">
                         <a href="{{ route('coupons.create') }}" class="btn btn-primary">
-                            Add Coupon
+                            {{ __('messages.add_coupon') }}
                         </a>
                     </div>
                 @endif
@@ -45,11 +45,11 @@ Coupons
                     <thead>
                         <tr class="text-gray-400 fw-bolder fs-7 text-uppercase">
                             <th>#</th>
-                            <th>Code</th>
-                            <th>Type</th>
-                            <th>Value</th>
-                            <th>Usage</th>
-                            <th>Status</th>
+                            <th>{{ __('messages.code') }}</th>
+                            <th>{{ __('messages.coupon_type') }}</th>
+                            <th>{{ __('messages.coupon_value') }}</th>
+                            <th>{{ __('messages.usage') }}</th>
+                            <th>{{ __('messages.status') }}</th>
                             <th class="text-end">{{ __('messages.actions') }}</th>
                         </tr>
                     </thead>
@@ -68,7 +68,7 @@ Coupons
                                 </td>
 
                                 <td>
-                                    {{ ucfirst($coupon->type) }}
+                                    {{ __('messages.type_' . $coupon->type) }}
                                 </td>
 
                                 <td>
@@ -77,7 +77,7 @@ Coupons
 
                                 <td>
                                     <span class="badge badge-light-primary">
-                                        {{ $coupon->used_count }} / {{ $coupon->usage_limit ?? 'Unlimited' }}
+                                        {{ $coupon->used_count }} / {{ $coupon->usage_limit ?? __('messages.unlimited') }}
                                     </span>
                                 </td>
 
@@ -121,7 +121,7 @@ Coupons
                                                     @method('PATCH')
 
                                                     <button type="submit" class="menu-link px-3 border-0 bg-transparent w-100 text-start">
-                                                        {{ $coupon->is_active ? 'Deactivate' : 'Activate' }}
+                                                        {{ $coupon->is_active ? __('messages.deactivate') : __('messages.activate') }}
                                                     </button>
                                                 </form>
                                             </div>
@@ -133,7 +133,7 @@ Coupons
                         @empty
                             <tr>
                                 <td colspan="7" class="text-center">
-                                    No Coupons Found
+                                    {{ __('messages.no_coupons_found') }}
                                 </td>
                             </tr>
                         @endforelse
@@ -161,12 +161,12 @@ Coupons
                 @method('DELETE')
 
                 <div class="modal-header">
-                    <h5 class="modal-title">Delete Coupon</h5>
+                    <h5 class="modal-title">{{ __('messages.delete_coupon') }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
                 <div class="modal-body">
-                    <p>Are you sure you want to delete this coupon?</p>
+                    <p>{{ __('messages.confirm_delete_coupon') }}</p>
                     <p class="fw-bold text-danger">{{ $coupon->code }}</p>
                 </div>
 

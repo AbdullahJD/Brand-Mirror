@@ -1,7 +1,7 @@
 @extends('Dashboard.layouts.master')
 
 @section('title')
-Banners
+{{ __('messages.banners_page_title') }}
 @endsection
 
 @section('content')
@@ -17,14 +17,14 @@ Banners
                     <div class="d-flex align-items-center position-relative my-1">
                         <input type="text"
                             class="form-control form-control-solid w-250px"
-                            placeholder="Search Banner" />
+                            placeholder="{{ __('messages.search_banner') }}" />
                     </div>
                 </div>
 
                 <div class="card-toolbar">
                     <a href="{{ route('banners.create') }}"
                     class="btn btn-primary">
-                        Add Banner
+                        {{ __('messages.add_banner') }}
                     </a>
                 </div>
 
@@ -37,11 +37,11 @@ Banners
                     <thead>
                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                             <th>#</th>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th>Link</th>
-                            <th>Position</th>
-                            <th>Status</th>
+                            <th>{{ __('messages.image') }}</th>
+                            <th>{{ __('messages.title') }}</th>
+                            <th>{{ __('messages.link') }}</th>
+                            <th>{{ __('messages.position') }}</th>
+                            <th>{{ __('messages.status') }}</th>
                             <th class="text-end">{{ __('messages.actions') }}</th>
                         </tr>
                     </thead>
@@ -125,7 +125,7 @@ Banners
 
                             <tr>
                                 <td colspan="6" class="text-center">
-                                    No Banners Found
+                                    {{ __('messages.no_banners_found') }}
                                 </td>
                             </tr>
 
@@ -158,11 +158,11 @@ Banners
                     @method('DELETE')
 
                     <div class="modal-header">
-                        <h5 class="modal-title">Delete Banner</h5>
+                        <h5 class="modal-title">{{ __('messages.delete_banner') }}</h5>
                     </div>
 
                     <div class="modal-body">
-                        Are you sure you want to delete:
+                        {{ __('messages.confirm_delete_named') }}
                         <strong>{{ $banner->title }}</strong> ?
                     </div>
 

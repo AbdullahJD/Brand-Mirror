@@ -12,14 +12,14 @@
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         @if(auth()->check() && auth()->user()->role === 'admin')
             <a href="{{ route('/management-hub-v4r9.dashboard') }}">
-                <img alt="Logo" src="{{ URL::asset('assets/media/logos/logo.png') }}" class="img-fluid"
+                <img alt="{{ __('messages.logo_alt') }}" src="{{ URL::asset('assets/media/logos/logo.png') }}" class="img-fluid"
                 style="max-width: 90%; height: auto;" />
             </a>
         @endif
 
         @if(auth()->check() && auth()->user()->role === 'employee')
             <a href="{{ route('/staff-x7p2.dashboard') }}">
-                <img alt="Logo" src="{{ URL::asset('assets/media/logos/logo.png') }}" class="h-150px logo" />
+                <img alt="{{ __('messages.logo_alt') }}" src="{{ URL::asset('assets/media/logos/logo.png') }}" class="h-150px logo" />
             </a>
         @endif
 
