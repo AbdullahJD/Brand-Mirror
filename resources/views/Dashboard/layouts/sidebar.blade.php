@@ -18,7 +18,7 @@
         @endif
 
         @if(auth()->check() && auth()->user()->role === 'employee')
-            <a href="{{ route('employee.dashboard') }}">
+            <a href="{{ route('/staff-x7p2.dashboard') }}">
                 <img alt="Logo" src="{{ URL::asset('assets/media/logos/logo.png') }}" class="h-150px logo" />
             </a>
         @endif
