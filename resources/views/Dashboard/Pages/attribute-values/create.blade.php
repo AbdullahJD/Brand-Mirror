@@ -41,12 +41,23 @@ Add Attribute Value
                 <br>
 
                 <label class="form-label">
-                    Value
+                    Arabic Value
                 </label>
 
                 <input type="text"
-                       name="value"
+                       name="value_ar"
                        class="form-control"
+                       value="{{ old('value_ar') }}"
+                       placeholder="Arabic Value">
+
+                <label class="form-label mt-5">
+                    English Value
+                </label>
+
+                <input type="text"
+                       name="value_en"
+                       class="form-control"
+                       value="{{ old('value_en') }}"
                        placeholder="XL">
 
             </div>

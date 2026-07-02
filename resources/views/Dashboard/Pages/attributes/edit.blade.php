@@ -23,13 +23,22 @@ Edit Attribute
             <div class="card-body">
 
                 <label class="required form-label">
-                    Attribute Name
+                    Arabic Attribute Name
                 </label>
 
                 <input type="text"
-                       name="name"
+                       name="name_ar"
                        class="form-control"
-                       value="{{ $attribute->name }}">
+                       value="{{ old('name_ar', $attribute->name_ar) }}">
+
+                <label class="required form-label mt-5">
+                    English Attribute Name
+                </label>
+
+                <input type="text"
+                       name="name_en"
+                       class="form-control"
+                       value="{{ old('name_en', $attribute->name_en) }}">
 
             </div>
 

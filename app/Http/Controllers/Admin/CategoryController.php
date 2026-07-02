@@ -34,11 +34,16 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:255',
+            'name_ar' => 'required|string|max:255',
+            'name_en' => 'required|string|max:255',
+            'description_ar' => 'nullable|string',
+            'description_en' => 'nullable|string',
         ]);
         $data = $request->only([
-            'name',
-            'description',
+            'name_ar',
+            'name_en',
+            'description_ar',
+            'description_en',
             'parent_id',
             'status'
         ]);
@@ -84,7 +89,15 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        $data = $request->all();
+        $data = $request->validate([
+            'name_ar' => 'required|string|max:255',
+            'name_en' => 'required|string|max:255',
+            'description_ar' => 'nullable|string',
+            'description_en' => 'nullable|string',
+            'parent_id' => 'nullable|exists:categories,id',
+            'status' => 'required|boolean',
+            'image' => 'nullable|image',
+        ]);
 
         // 🔥 إذا في صورة جديدة
         if ($request->hasFile('image')) {

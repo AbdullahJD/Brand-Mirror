@@ -22,18 +22,32 @@ Add Categories
 
                 <div class="card-body">
 
-                    {{-- Name --}}
+                    {{-- Names --}}
                     <div class="mb-5">
                         <label class="required form-label">
-                            Category Name
+                            Arabic Category Name
                         </label>
 
                         <input
                             type="text"
-                            name="name"
+                            name="name_ar"
                             class="form-control"
-                            placeholder="Category Name"
-                            value="{{ old('name') }}"
+                            placeholder="Arabic Category Name"
+                            value="{{ old('name_ar') }}"
+                        >
+                    </div>
+
+                    <div class="mb-5">
+                        <label class="required form-label">
+                            English Category Name
+                        </label>
+
+                        <input
+                            type="text"
+                            name="name_en"
+                            class="form-control"
+                            placeholder="English Category Name"
+                            value="{{ old('name_en') }}"
                         >
                     </div>
 
@@ -42,17 +56,29 @@ Add Categories
                         <input type="file" name="image" class="form-control">
                     </div>
 
-                    {{-- Description --}}
+                    {{-- Descriptions --}}
                     <div class="mb-5">
                         <label class="form-label">
-                            Description
+                            Arabic Description
                         </label>
 
                         <textarea
-                            name="description"
+                            name="description_ar"
                             class="form-control"
                             rows="4"
-                        >{{ old('description') }}</textarea>
+                        >{{ old('description_ar') }}</textarea>
+                    </div>
+
+                    <div class="mb-5">
+                        <label class="form-label">
+                            English Description
+                        </label>
+
+                        <textarea
+                            name="description_en"
+                            class="form-control"
+                            rows="4"
+                        >{{ old('description_en') }}</textarea>
                     </div>
 
                     {{-- Parent Category --}}

@@ -33,7 +33,8 @@ class BannerController extends Controller
         $image = $request->file('image')->store('banners', 'public');
 
         $banner = Banner::create([
-            'title' => $request->title,
+            'title_ar' => $request->title_ar,
+            'title_en' => $request->title_en,
             'image' => $image,
             'link' => $request->link,
             'status' => $request->boolean('status'),
@@ -65,7 +66,8 @@ class BannerController extends Controller
     public function update(BannerRequest $request, Banner $banner)
     {
         $data = [
-            'title' => $request->title,
+            'title_ar' => $request->title_ar,
+            'title_en' => $request->title_en,
             'link' => $request->link,
             'status' => $request->boolean('status'),
             'position' => $request->position,

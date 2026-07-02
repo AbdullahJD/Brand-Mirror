@@ -38,8 +38,10 @@ class ProductController extends Controller
     {
         $request->validate([
             'category_id'    => 'required|exists:categories,id',
-            'name'           => 'required|string|max:255',
-            'description'    => 'nullable|string',
+            'name_ar'        => 'required|string|max:255',
+            'name_en'        => 'required|string|max:255',
+            'description_ar' => 'nullable|string',
+            'description_en' => 'nullable|string',
             'price'          => 'required|numeric',
             'discount_price' => 'nullable|numeric',
             'stock'          => 'required|integer',
@@ -56,31 +58,30 @@ class ProductController extends Controller
                 ->store('products', 'public');
         }
 
-        $additional_information = [];
+        $additionalInformationAr = $this->collectAdditionalInformation(
+            $request->input('info_keys_ar', []),
+            $request->input('info_values_ar', [])
+        );
 
-        if ($request->info_keys) {
-
-            foreach ($request->info_keys as $index => $key) {
-
-                if (!empty($key)) {
-
-                    $additional_information[$key] =
-                        $request->info_values[$index] ?? '';
-                }
-            }
-        }
+        $additionalInformationEn = $this->collectAdditionalInformation(
+            $request->input('info_keys_en', []),
+            $request->input('info_values_en', [])
+        );
 
         $product = Product::create([
             'category_id'    => $request->category_id,
-            'name'           => $request->name,
-            'description'    => $request->description,
+            'name_ar'        => $request->name_ar,
+            'name_en'        => $request->name_en,
+            'description_ar' => $request->description_ar,
+            'description_en' => $request->description_en,
             'price'          => $request->price,
             'discount_price' => $request->discount_price,
             'stock'          => $request->stock,
             'main_image'     => $mainImage,
             'is_featured'    => $request->has('is_featured'),
             'status'         => $request->status,
-            'additional_information' => $additional_information,
+            'additional_information_ar' => $additionalInformationAr,
+            'additional_information_en' => $additionalInformationEn,
         ]);
 
         if ($request->hasFile('images')) {
@@ -135,15 +136,16 @@ class ProductController extends Controller
     {
         $data = $request->validate([
             'category_id'     => 'required|exists:categories,id',
-            'name'            => 'required|string|max:255',
-            'description'     => 'nullable|string',
+            'name_ar'         => 'required|string|max:255',
+            'name_en'         => 'required|string|max:255',
+            'description_ar'  => 'nullable|string',
+            'description_en'  => 'nullable|string',
             'price'           => 'required|numeric',
             'discount_price'  => 'nullable|numeric',
             'stock'           => 'required|integer',
             'status'          => 'required',
             'main_image'      => 'nullable|image',
             'images.*'        => 'nullable|image',
-            'additional_information' => 'nullable|string',
         ]);
 
         // =========================
@@ -169,17 +171,15 @@ class ProductController extends Controller
         // =========================
         // UPDATE PRODUCT BASIC DATA
         // =========================
-        $additionalInformation = [];
-        foreach ($request->info_keys as $index => $key) {
-            if (!empty($key) && !empty($request->info_values[$index])) {
+        $data['additional_information_ar'] = $this->collectAdditionalInformation(
+            $request->input('info_keys_ar', []),
+            $request->input('info_values_ar', [])
+        );
 
-                $additionalInformation[$key] = $request->info_values[$index];
-            }
-        }
-        $product->update([
-            // باقي الحقول...
-            'additional_information' => $additionalInformation,
-        ]);
+        $data['additional_information_en'] = $this->collectAdditionalInformation(
+            $request->input('info_keys_en', []),
+            $request->input('info_values_en', [])
+        );
         
         $product->update($data);
 
@@ -242,5 +242,18 @@ class ProductController extends Controller
         return redirect()
             ->route('products.index')
             ->with('deleted', __('messages.flash_product_deleted'));
+    }
+
+    private function collectAdditionalInformation(array $keys, array $values): array
+    {
+        $additionalInformation = [];
+
+        foreach ($keys as $index => $key) {
+            if (! empty($key)) {
+                $additionalInformation[$key] = $values[$index] ?? '';
+            }
+        }
+
+        return $additionalInformation;
     }
 }

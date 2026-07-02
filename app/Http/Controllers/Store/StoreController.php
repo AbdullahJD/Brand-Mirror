@@ -42,11 +42,13 @@ class StoreController extends Controller
     {
         $q = $request->get('q');
 
-        $products = Product::where('name', 'like', "%{$q}%")
+        $products = Product::where('name_ar', 'like', "%{$q}%")
+            ->orWhere('name_en', 'like', "%{$q}%")
             ->limit(10)
             ->get();
 
-        $categories = Category::where('name', 'like', "%{$q}%")
+        $categories = Category::where('name_ar', 'like', "%{$q}%")
+            ->orWhere('name_en', 'like', "%{$q}%")
             ->limit(10)
             ->get();
 

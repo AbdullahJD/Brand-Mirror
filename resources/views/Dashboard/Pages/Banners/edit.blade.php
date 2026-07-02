@@ -28,12 +28,23 @@ Edit Banner
 
                         <div class="mb-5">
                             <label class="form-label">
-                                Title
+                                Arabic Title
                             </label>
 
                             <input type="text"
-                                name="title"
-                                value="{{ old('title',$banner->title) }}"
+                                name="title_ar"
+                                value="{{ old('title_ar', $banner->title_ar) }}"
+                                class="form-control">
+                        </div>
+
+                        <div class="mb-5">
+                            <label class="form-label">
+                                English Title
+                            </label>
+
+                            <input type="text"
+                                name="title_en"
+                                value="{{ old('title_en', $banner->title_en) }}"
                                 class="form-control">
                         </div>
 

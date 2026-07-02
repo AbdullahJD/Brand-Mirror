@@ -23,11 +23,18 @@ Edit Categories
 
                 <div class="card-body">
 
-                    {{-- Name --}}
+                    {{-- Names --}}
                     <div class="mb-5">
-                        <label class="form-label">Category Name</label>
-                        <input type="text" name="name"
-                               value="{{ $category->name }}"
+                        <label class="form-label">Arabic Category Name</label>
+                        <input type="text" name="name_ar"
+                               value="{{ old('name_ar', $category->name_ar) }}"
+                               class="form-control">
+                    </div>
+
+                    <div class="mb-5">
+                        <label class="form-label">English Category Name</label>
+                        <input type="text" name="name_en"
+                               value="{{ old('name_en', $category->name_en) }}"
                                class="form-control">
                     </div>
                     
@@ -37,10 +44,15 @@ Edit Categories
                     </div>
 
                     
-                    {{-- Description --}}
+                    {{-- Descriptions --}}
                     <div class="mb-5">
-                        <label class="form-label">Description</label>
-                        <textarea name="description" class="form-control">{{ $category->description }}</textarea>
+                        <label class="form-label">Arabic Description</label>
+                        <textarea name="description_ar" class="form-control">{{ old('description_ar', $category->description_ar) }}</textarea>
+                    </div>
+
+                    <div class="mb-5">
+                        <label class="form-label">English Description</label>
+                        <textarea name="description_en" class="form-control">{{ old('description_en', $category->description_en) }}</textarea>
                     </div>
 
                     {{-- Parent --}}

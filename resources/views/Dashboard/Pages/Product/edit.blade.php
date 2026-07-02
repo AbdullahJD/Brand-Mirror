@@ -26,16 +26,27 @@ Edit Product
 
                 <div class="card-body">
 
-                    {{-- Product Name --}}
+                    {{-- Product Names --}}
                     <div class="mb-5">
                         <label class="required form-label">
-                            Product Name
+                            Arabic Product Name
                         </label>
 
                         <input type="text"
-                               name="name"
+                               name="name_ar"
                                class="form-control"
-                               value="{{ old('name',$product->name) }}">
+                               value="{{ old('name_ar', $product->name_ar) }}">
+                    </div>
+
+                    <div class="mb-5">
+                        <label class="required form-label">
+                            English Product Name
+                        </label>
+
+                        <input type="text"
+                               name="name_en"
+                               class="form-control"
+                               value="{{ old('name_en', $product->name_en) }}">
                     </div>
 
                     {{-- Category --}}
@@ -62,15 +73,25 @@ Edit Product
                         </select>
                     </div>
 
-                    {{-- Description --}}
+                    {{-- Descriptions --}}
                     <div class="mb-5">
                         <label class="form-label">
-                            Description
+                            Arabic Description
                         </label>
 
-                        <textarea name="description"
+                        <textarea name="description_ar"
                                   rows="5"
-                                  class="form-control">{{ old('description',$product->description) }}</textarea>
+                                  class="form-control">{{ old('description_ar', $product->description_ar) }}</textarea>
+                    </div>
+
+                    <div class="mb-5">
+                        <label class="form-label">
+                            English Description
+                        </label>
+
+                        <textarea name="description_en"
+                                  rows="5"
+                                  class="form-control">{{ old('description_en', $product->description_en) }}</textarea>
                     </div>
 
                     {{-- Price --}}
@@ -172,20 +193,20 @@ Edit Product
 
                     </div>
 
-                    {{-- Additional Information --}}
+                    {{-- Arabic Additional Information --}}
                     <div class="mb-5">
                         <label class="form-label">
-                            Additional Information
+                            Arabic Additional Information
                         </label>
 
-                        <div id="info-wrapper">
+                        <div id="info-wrapper-ar">
 
-                            @if(!empty($product->additional_information))
-                                @foreach($product->additional_information as $key => $value)
+                            @if(!empty($product->additional_information_ar))
+                                @foreach($product->additional_information_ar as $key => $value)
                                     <div class="row mb-2">
                                         <div class="col-md-5">
                                             <input type="text"
-                                                name="info_keys[]"
+                                                name="info_keys_ar[]"
                                                 class="form-control"
                                                 value="{{ $key }}"
                                                 placeholder="Brand">
@@ -193,7 +214,7 @@ Edit Product
 
                                         <div class="col-md-5">
                                             <input type="text"
-                                                name="info_values[]"
+                                                name="info_values_ar[]"
                                                 class="form-control"
                                                 value="{{ $value }}"
                                                 placeholder="Nike">
@@ -212,14 +233,14 @@ Edit Product
                                 <div class="row mb-2">
                                     <div class="col-md-5">
                                         <input type="text"
-                                            name="info_keys[]"
+                                            name="info_keys_ar[]"
                                             class="form-control"
                                             placeholder="Brand">
                                     </div>
 
                                     <div class="col-md-5">
                                         <input type="text"
-                                            name="info_values[]"
+                                            name="info_values_ar[]"
                                             class="form-control"
                                             placeholder="Nike">
                                     </div>
@@ -237,9 +258,84 @@ Edit Product
                         </div>
 
                         <button type="button"
-                                id="add-info"
-                                class="btn btn-light-primary mt-2">
-                            Add Information
+                                class="btn btn-light-primary mt-2"
+                                data-add-info="info-wrapper-ar"
+                                data-info-key-name="info_keys_ar[]"
+                                data-info-value-name="info_values_ar[]">
+                            Add Arabic Information
+                        </button>
+                    </div>
+
+                    {{-- English Additional Information --}}
+                    <div class="mb-5">
+                        <label class="form-label">
+                            English Additional Information
+                        </label>
+
+                        <div id="info-wrapper-en">
+
+                            @if(!empty($product->additional_information_en))
+                                @foreach($product->additional_information_en as $key => $value)
+                                    <div class="row mb-2">
+                                        <div class="col-md-5">
+                                            <input type="text"
+                                                name="info_keys_en[]"
+                                                class="form-control"
+                                                value="{{ $key }}"
+                                                placeholder="Brand">
+                                        </div>
+
+                                        <div class="col-md-5">
+                                            <input type="text"
+                                                name="info_values_en[]"
+                                                class="form-control"
+                                                value="{{ $value }}"
+                                                placeholder="Nike">
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <button type="button"
+                                                    class="btn btn-danger remove-info">
+                                                X
+                                            </button>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @else
+
+                                <div class="row mb-2">
+                                    <div class="col-md-5">
+                                        <input type="text"
+                                            name="info_keys_en[]"
+                                            class="form-control"
+                                            placeholder="Brand">
+                                    </div>
+
+                                    <div class="col-md-5">
+                                        <input type="text"
+                                            name="info_values_en[]"
+                                            class="form-control"
+                                            placeholder="Nike">
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <button type="button"
+                                                class="btn btn-danger remove-info">
+                                            X
+                                        </button>
+                                    </div>
+                                </div>
+
+                            @endif
+
+                        </div>
+
+                        <button type="button"
+                                class="btn btn-light-primary mt-2"
+                                data-add-info="info-wrapper-en"
+                                data-info-key-name="info_keys_en[]"
+                                data-info-value-name="info_values_en[]">
+                            Add English Information
                         </button>
                     </div>
 

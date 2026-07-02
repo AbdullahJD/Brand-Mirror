@@ -85,20 +85,19 @@
 <!--end::Javascript-->
 
 <script>
-document.getElementById('add-info').addEventListener('click', function () {
-
-    let html = `
+function buildInfoRow(keyName, valueName) {
+    return `
         <div class="row mb-2">
             <div class="col-md-5">
                 <input type="text"
-                       name="info_keys[]"
+                       name="${keyName}"
                        class="form-control"
                        placeholder="Attribute">
             </div>
 
             <div class="col-md-5">
                 <input type="text"
-                       name="info_values[]"
+                       name="${valueName}"
                        class="form-control"
                        placeholder="Value">
             </div>
@@ -111,17 +110,29 @@ document.getElementById('add-info').addEventListener('click', function () {
             </div>
         </div>
     `;
-
-    document.getElementById('info-wrapper')
-        .insertAdjacentHTML('beforeend', html);
-});
+}
 
 document.addEventListener('click', function(e){
+    const addButton = e.target.closest('[data-add-info]');
+
+    if (addButton) {
+        const wrapper = document.getElementById(addButton.dataset.addInfo);
+
+        if (! wrapper) {
+            return;
+        }
+
+        wrapper.insertAdjacentHTML(
+            'beforeend',
+            buildInfoRow(addButton.dataset.infoKeyName, addButton.dataset.infoValueName)
+        );
+
+        return;
+    }
 
     if(e.target.classList.contains('remove-info')){
         e.target.closest('.row').remove();
     }
-
 });
 </script>
 
@@ -139,30 +150,4 @@ document.addEventListener("submit", function (e) {
         }
     }
 });
-</script>
-
-
-<script>
-	const btn = document.getElementById('add-info');
-
-	if (btn) {
-		btn.addEventListener('click', function () {
-			let html = `
-				<div class="row mb-2">
-					<div class="col-md-5">
-						<input type="text" name="info_keys[]" class="form-control" placeholder="Attribute">
-					</div>
-					<div class="col-md-5">
-						<input type="text" name="info_values[]" class="form-control" placeholder="Value">
-					</div>
-					<div class="col-md-2">
-						<button type="button" class="btn btn-danger remove-info">X</button>
-					</div>
-				</div>
-			`;
-
-			document.getElementById('info-wrapper')
-				.insertAdjacentHTML('beforeend', html);
-		});
-	}
 </script>

@@ -18,7 +18,9 @@ class BannerRequest extends FormRequest
     {
         return [
 
-            'title' => 'nullable|string|max:255',
+            'title_ar' => 'nullable|string|max:255',
+
+            'title_en' => 'nullable|string|max:255',
 
             'image' => $this->isMethod('post')
                 ? 'required|image|max:2048'

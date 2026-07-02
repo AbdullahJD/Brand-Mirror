@@ -33,10 +33,15 @@ class AttributeValueController extends Controller
     {
         $request->validate([
             'attribute_id' => 'required|exists:attributes,id',
-            'value' => 'required|string|max:255',
+            'value_ar' => 'required|string|max:255',
+            'value_en' => 'required|string|max:255',
         ]);
 
-        $attributeValue = AttributeValue::create($request->all());
+        $attributeValue = AttributeValue::create($request->only([
+            'attribute_id',
+            'value_ar',
+            'value_en',
+        ]));
 
         app(NotificationService::class)->notifyRoles(
             ['admin'],
@@ -70,10 +75,15 @@ class AttributeValueController extends Controller
     {
         $request->validate([
             'attribute_id' => 'required|exists:attributes,id',
-            'value' => 'required|string|max:255',
+            'value_ar' => 'required|string|max:255',
+            'value_en' => 'required|string|max:255',
         ]);
 
-        $attributeValue->update($request->all());
+        $attributeValue->update($request->only([
+            'attribute_id',
+            'value_ar',
+            'value_en',
+        ]));
 
         app(NotificationService::class)->notifyRoles(
             ['admin'],

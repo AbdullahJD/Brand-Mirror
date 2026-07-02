@@ -45,13 +45,22 @@ Edit Atrribute Value
                 <br>
 
                 <label class="form-label">
-                    Value
+                    Arabic Value
                 </label>
 
                 <input type="text"
-                       name="value"
+                       name="value_ar"
                        class="form-control"
-                       value="{{ $attributeValue->value }}">
+                       value="{{ old('value_ar', $attributeValue->value_ar) }}">
+
+                <label class="form-label mt-5">
+                    English Value
+                </label>
+
+                <input type="text"
+                       name="value_en"
+                       class="form-control"
+                       value="{{ old('value_en', $attributeValue->value_en) }}">
 
             </div>
 
